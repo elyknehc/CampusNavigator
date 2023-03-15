@@ -21,9 +21,6 @@ public class Location {
                 + "\n" + " floor: " + floor;
     }
 
-
-
-
     public int getX() {
         return this.x;
     }

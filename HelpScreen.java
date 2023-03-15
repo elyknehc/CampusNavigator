@@ -32,7 +32,7 @@ public class HelpScreen extends JFrame implements ActionListener{
         returnButton.setBounds(200, 500, 200,50);
 
         // Framing
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setTitle("Help Screen");
         this.setResizable(false);
         this.setLayout(null);

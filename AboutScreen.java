@@ -1,10 +1,8 @@
 import java.awt.Color;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.Font;
 import javax.swing.*;
 
-public class AboutScreen extends JFrame implements ActionListener {
+public class AboutScreen extends JFrame {
     JButton returnButton;
 
     AboutScreen(){
@@ -51,7 +49,7 @@ public class AboutScreen extends JFrame implements ActionListener {
         returnButton.setBounds(200, 480, 200,50);
 
         // Framing
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setTitle("About Screen");
         this.setResizable(false);
         this.setLayout(null);
@@ -71,10 +69,4 @@ public class AboutScreen extends JFrame implements ActionListener {
         this.setVisible(true);
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource()==returnButton) {
-            System.out.println("Hello");
-        }
-    }
 }

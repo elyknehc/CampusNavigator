@@ -13,6 +13,10 @@ public class POIInfo extends JPanel {
         JLabel building = new JLabel("Building: " + currPOI.getCategory());
         JLabel type = new JLabel("Type: ");
         JLabel description = new JLabel("Description: " + currPOI.getDescription());
+        JLabel favourite = new JLabel("Favourite: ");
+        JLabel weather = new JLabel("Weather:");
+        weather.setFont(new Font("Balsamiq", Font.PLAIN, 20));
+        favourite.setFont(new Font("Balsamiq", Font.PLAIN, 20));
         type.setFont(new Font("Balsamiq", Font.PLAIN, 20));
         description.setFont(new Font("Balsamiq", Font.PLAIN, 20));
         building.setFont(new Font("Balsamiq", Font.PLAIN, 20));
@@ -22,18 +26,21 @@ public class POIInfo extends JPanel {
         JPanel POIpanel = new JPanel();
         POIpanel.setLayout(new BoxLayout(POIpanel, BoxLayout.Y_AXIS));
         POIpanel.setBorder(BorderFactory.createLineBorder(Color.black));
-        POIpanel.add(Box.createRigidArea(new Dimension(15, 20))); // Add some spacing between components
+        POIpanel.add(Box.createRigidArea(new Dimension(10, 20))); // Add some spacing between components
         POIpanel.add(title);
-        POIpanel.add(Box.createRigidArea(new Dimension(15, 20))); // Add some spacing between components
+        POIpanel.add(Box.createRigidArea(new Dimension(10, 20))); // Add some spacing between components
         POIpanel.add(poiName);
-        POIpanel.add(Box.createRigidArea(new Dimension(15, 20))); // Add some spacing between components
+        POIpanel.add(Box.createRigidArea(new Dimension(10, 20))); // Add some spacing between components
         POIpanel.add(building);
-        POIpanel.add(Box.createRigidArea(new Dimension(15, 20))); // Add some spacing between components
+        POIpanel.add(Box.createRigidArea(new Dimension(10, 20))); // Add some spacing between components
         POIpanel.add(type);
-        POIpanel.add(Box.createRigidArea(new Dimension(15, 20))); // Add some spacing between components
+        POIpanel.add(Box.createRigidArea(new Dimension(10, 20))); // Add some spacing between components
         POIpanel.add(description);
+        POIpanel.add(Box.createRigidArea(new Dimension(10, 20))); // Add some spacing between components
+        POIpanel.add(favourite);
         POIpanel.setVisible(true);
         setLayout(new BorderLayout());
+        POIpanel.setPreferredSize(new Dimension(400, 600));
         add(POIpanel);
     }
 }

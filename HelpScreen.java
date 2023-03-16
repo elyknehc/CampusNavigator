@@ -1,11 +1,14 @@
+
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.Font;
 import javax.swing.*;
 
-public class HelpScreen extends JFrame implements ActionListener{
+public class HelpScreen extends JFrame{
     HelpScreen() {
+
+        
         // Title Label
         JLabel title = new JLabel("Western GIS");
         title.setForeground(Color.black);
@@ -30,6 +33,12 @@ public class HelpScreen extends JFrame implements ActionListener{
         JButton returnButton = new JButton("Return to App");
         returnButton.setFont(new Font("Balsamiq", Font.BOLD, 18));
         returnButton.setBounds(200, 500, 200,50);
+        returnButton.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            dispose();
+        }
+    });
 
         // Framing
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -44,9 +53,4 @@ public class HelpScreen extends JFrame implements ActionListener{
         this.add(returnButton);
         this.setVisible(true);
     }
-    @Override
-    public void actionPerformed(ActionEvent e) {
-
-    }
-    
 }

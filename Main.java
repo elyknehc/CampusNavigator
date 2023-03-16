@@ -1,7 +1,7 @@
 import javax.swing.*;
+
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.util.EventListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.Color;

@@ -1,10 +1,11 @@
+
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.*;
 
 public class AboutScreen extends JFrame {
-    JButton returnButton;
-
     AboutScreen(){
 
         JLabel title = new JLabel("Western GIS");
@@ -47,6 +48,12 @@ public class AboutScreen extends JFrame {
         JButton returnButton = new JButton("Return to App");
         returnButton.setFont(new Font("Balsamiq", Font.BOLD, 18));
         returnButton.setBounds(200, 480, 200,50);
+        returnButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+            }
+        });
 
         // Framing
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

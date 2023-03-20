@@ -16,7 +16,6 @@ public class Main {
             footerPanel.setBackground(new Color(51, 153, 204));
             
             
-            
             JPanel panelSwitch = new JPanel();
             panelSwitch.setBounds(0, 0, 333, 523);
             panelSwitch.setLayout(new CardLayout());

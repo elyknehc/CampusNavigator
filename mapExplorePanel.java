@@ -5,10 +5,11 @@ import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
-public class mapExplorePanel {
+public class MapExplorePanel {
    JTextField searchBar;
+   JCheckBox washrooms, classrooms, genLabs, stairwells, entryExits, elevators, userCreatedPOIs, favourites;
    
-   mapExplorePanel() {
+   public void mapExplorePanel() {
       // create JPanel for left panel and set properties
       JPanel leftPanel = new JPanel();
       leftPanel.setBounds(0, 0, 333, 600);
@@ -50,21 +51,21 @@ public class mapExplorePanel {
       poiLabel.setBounds(50, 100, 200, 25);
 
       // create checkboxes for POI Layers and set properties
-      JCheckBox washrooms = new JCheckBox("Washrooms");
+      washrooms = new JCheckBox("Washrooms");
       washrooms.setBounds(50, 150, 200, 25);
-      JCheckBox classrooms = new JCheckBox("Classrooms");
+      classrooms = new JCheckBox("Classrooms");
       classrooms.setBounds(50, 175, 200, 25);
-      JCheckBox genLabs = new JCheckBox("GenLabs");
+      genLabs = new JCheckBox("GenLabs");
       genLabs.setBounds(50, 200, 200, 25);
-      JCheckBox stairwells = new JCheckBox("Stairwells");
+      stairwells = new JCheckBox("Stairwells");
       stairwells.setBounds(50, 225, 200, 25);
-      JCheckBox entryExits = new JCheckBox("Entry/Exits");
+      entryExits = new JCheckBox("Entry/Exits");
       entryExits.setBounds(50, 250, 200, 25);
-      JCheckBox elevators = new JCheckBox("Elevators");
+      elevators = new JCheckBox("Elevators");
       elevators.setBounds(50, 275, 200, 25);
-      JCheckBox userCreatedPOIs = new JCheckBox("User-created POIs");
+      userCreatedPOIs = new JCheckBox("User-created POIs");
       userCreatedPOIs.setBounds(50, 300, 200, 25);
-      JCheckBox favourites = new JCheckBox("Favourites");
+      favourites = new JCheckBox("Favourites");
       favourites.setBounds(50, 325, 200, 25);
 
       // create dropdown menu for floors and set properties
@@ -91,4 +92,9 @@ public class mapExplorePanel {
       leftPanel.add(floorDropdown);
       leftPanel.add(addPOIButton);
    }
+
+    private boolean[] getFilterValeus() {
+        boolean[] filterValues = {washrooms.isSelected(), classrooms.isSelected(), genLabs.isSelected(), stairwells.isSelected(), entryExits.isSelected(), elevators.isSelected(), userCreatedPOIs.isSelected(), favourites.isSelected()};
+        return filterValues;
+    }
 }

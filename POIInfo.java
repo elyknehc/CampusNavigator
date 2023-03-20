@@ -7,7 +7,6 @@ import javax.swing.*;
 public class POIInfo extends JPanel {
     POI currPOI = new POI("Middle Sex College", "", "", 3);
     POIInfo() {
-
 		JLabel title = new JLabel("POI Information");
 		title.setBounds(30, 21, 333, 14);
 		add(title);
@@ -37,7 +36,6 @@ public class POIInfo extends JPanel {
         building.setFont(new Font("Balsamiq", Font.PLAIN, 20));
         poiName.setFont(new Font("Balsamiq", Font.BOLD, 25));
         title.setFont(new Font("Balsamiq", Font.PLAIN, 20));
-        setBackground(Color.green);
         setLayout(null);
     }
 }

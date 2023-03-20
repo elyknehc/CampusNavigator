@@ -1,7 +1,5 @@
 import javax.swing.*;
-import java.awt.BorderLayout;
 import java.awt.CardLayout;
-import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.Color;
@@ -13,9 +11,7 @@ public class Main {
         public void createGUI() {
             JPanel footerPanel = new JPanel();
             footerPanel.setBounds(0, 523, 984, 38);
-            footerPanel.setBackground(new Color(51, 153, 204));
-            
-            
+            footerPanel.setBackground(Color.gray);
             
             JPanel panelSwitch = new JPanel();
             panelSwitch.setBounds(0, 0, 333, 523);
@@ -23,11 +19,9 @@ public class Main {
             
             POIInfo first = new POIInfo();
             panelSwitch.add(first);
-            
-            JPanel second = new JPanel();
-            second.setBackground(new Color(0, 255, 255));
+
+            LoginPanel second = new LoginPanel();
             panelSwitch.add(second);
-            second.setLayout(null);
             
             JPanel third = new JPanel();
             third.setBackground(new Color(255, 0, 0));

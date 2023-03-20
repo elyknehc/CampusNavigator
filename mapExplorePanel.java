@@ -5,11 +5,11 @@ import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
-public class MapExplorePanel {
+public class mapExplorePanel {
    JTextField searchBar;
    JCheckBox washrooms, classrooms, genLabs, stairwells, entryExits, elevators, userCreatedPOIs, favourites;
    
-   public void mapExplorePanel() {
+   public mapExplorePanel() {
       // create JPanel for left panel and set properties
       JPanel leftPanel = new JPanel();
       leftPanel.setBounds(0, 0, 333, 600);

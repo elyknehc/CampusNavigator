@@ -1,7 +1,9 @@
+package com.example;
+
 public class POI {
     private String name, description, category;
     private int ID;
-    private boolean favourite;
+    private boolean isFavourite, isUser;
 
     public static void main(String[] args) {
         POI x = new POI("null", "null", "null",5);
@@ -18,7 +20,7 @@ public class POI {
     @Override
     public String toString() {
         return "POI Info:\n name: " + name + "\n" + " description: " + description + "\n" + " category: " + category
-                + "\n" + " favourite: " + favourite + "\n" + " id: " + ID;
+                + "\n" + " isFavourite: " + isFavourite + "\n" + " isUser: " + isUser + "\n" + " id: " + ID;
     }
     
 
@@ -54,12 +56,12 @@ public class POI {
         this.ID = ID;
     }
 
-    public boolean getFavourite() {
-        return this.favourite;
+    public boolean getisFavourite() {
+        return this.isFavourite;
     }
 
-    public void setFavourite(boolean favourite) {
-        this.favourite = favourite;
+    public void setisFavourite(boolean isFavourite) {
+        this.isFavourite = isFavourite;
     }
 
 }

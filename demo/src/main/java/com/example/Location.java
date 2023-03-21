@@ -1,3 +1,4 @@
+package com.example;
 public class Location {
     private int x, y, roomNum, floor;
     private String building;
@@ -7,7 +8,7 @@ public class Location {
         System.out.println(loc);
     }
 
-    public Location(int x, int y, int roomNum, int floor, String building) {
+    public Location(int x, int y, int roomNum, int floor, String jbuilding) {
         this.x = x;
         this.y = y;
         this.roomNum = roomNum;

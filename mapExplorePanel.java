@@ -5,15 +5,14 @@ import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
-public class mapExplorePanel {
+public class mapExplorePanel extends JPanel {
    JTextField searchBar;
    JCheckBox washrooms, classrooms, genLabs, stairwells, entryExits, elevators, userCreatedPOIs, favourites;
    
    public mapExplorePanel() {
       // create JPanel for left panel and set properties
-      JPanel leftPanel = new JPanel();
-      leftPanel.setBounds(0, 0, 333, 600);
-      leftPanel.setLayout(null);
+      setBounds(0, 0, 333, 600);
+      setLayout(null);
 
       // create JTextField for search bar and set properties
       searchBar = new JTextField("Search");
@@ -78,19 +77,19 @@ public class mapExplorePanel {
       addPOIButton.setBounds(50, 425, 200, 25);
 
       // add components to left panel
-      leftPanel.add(searchBar);
-      leftPanel.add(searchButton);
-      leftPanel.add(poiLabel);
-      leftPanel.add(washrooms);
-      leftPanel.add(classrooms);
-      leftPanel.add(genLabs);
-      leftPanel.add(stairwells);
-      leftPanel.add(entryExits);
-      leftPanel.add(elevators);
-      leftPanel.add(userCreatedPOIs);
-      leftPanel.add(favourites);
-      leftPanel.add(floorDropdown);
-      leftPanel.add(addPOIButton);
+      add(searchBar);
+      add(searchButton);
+      add(poiLabel);
+      add(washrooms);
+      add(classrooms);
+      add(genLabs);
+      add(stairwells);
+      add(entryExits);
+      add(elevators);
+      add(userCreatedPOIs);
+      add(favourites);
+      add(floorDropdown);
+      add(addPOIButton);
    }
 
     private boolean[] getFilterValeus() {

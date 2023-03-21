@@ -9,37 +9,61 @@ public class Main {
             new Main().createGUI();
         }
         public void createGUI() {
+            String panelBackground1 = "#373E98";
             JPanel footerPanel = new JPanel();
-            footerPanel.setBounds(0, 523, 984, 38);
-            footerPanel.setBackground(Color.gray);
+            footerPanel.setBounds(0, 523, 1284, 38);
+            footerPanel.setBackground(Color.decode(panelBackground1));
+            footerPanel.setBorder(BorderFactory.createLineBorder(Color.black));
+
             
             JPanel panelSwitch = new JPanel();
-            panelSwitch.setBounds(0, 0, 333, 523);
+            panelSwitch.setBounds(0, 0, 400, 523);
             panelSwitch.setLayout(new CardLayout());
-            
-            POIInfo first = new POIInfo();
+
+            LoginPanel first = new LoginPanel();
+            first.setBackground(Color.decode(panelBackground1));
             panelSwitch.add(first);
 
-            LoginPanel second = new LoginPanel();
-            panelSwitch.add(second);
-            
-            JPanel third = new JPanel();
-            third.setBackground(new Color(255, 0, 0));
-            panelSwitch.add(third, "name_73555699515100");
-            third.setLayout(null);
+        
+            POIInfo third = new POIInfo();
+            third.setBackground(Color.decode(panelBackground1));
+            panelSwitch.add(third);
 
-            JButton poiLayer = new JButton("POI Layer");
-            poiLayer.addActionListener(new ActionListener() {
+            
+            mapExplorePanel second = new mapExplorePanel();
+            second.setBackground(Color.decode(panelBackground1));
+            panelSwitch.add(second);
+
+
+            JButton mapExplore = new JButton("Map Explore Screen");
+            mapExplore.setForeground(Color.white);
+            mapExplore.setBackground(Color.black);
+            mapExplore.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     panelSwitch.removeAll();
-                    panelSwitch.add(first);
+                    panelSwitch.add(second);
                     panelSwitch.repaint();
                     panelSwitch.revalidate();
                 }
             });
-            footerPanel.add(poiLayer);        
+            footerPanel.add(mapExplore);        
             
-            JButton poiCreate = new JButton("POI Create");
+            JButton infoButton = new JButton("POI Information Screen");
+            infoButton.setForeground(Color.white);
+            infoButton.setBackground(Color.black);
+            infoButton.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    panelSwitch.removeAll();
+                    panelSwitch.add(third);
+                    panelSwitch.repaint();
+                    panelSwitch.revalidate();
+                }
+            });
+            footerPanel.add(infoButton);
+
+            JButton poiCreate = new JButton("Create POI");
+            poiCreate.setForeground(Color.white);
+            poiCreate.setBackground(Color.black);
             poiCreate.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     panelSwitch.removeAll();
@@ -51,17 +75,22 @@ public class Main {
             footerPanel.add(poiCreate);
 
             JButton adminEdit = new JButton("Admin Edit");
+            adminEdit.setForeground(Color.white);
+            adminEdit.setBackground(Color.black);
             adminEdit.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     panelSwitch.removeAll();
-                    panelSwitch.add(third);
+                    panelSwitch.add(first);
                     panelSwitch.repaint();
                     panelSwitch.revalidate();
                 }
             });
             footerPanel.add(adminEdit);
 
+
             JButton helpButton = new JButton("Help Button");
+            helpButton.setForeground(Color.white);
+            helpButton.setBackground(Color.black);
             helpButton.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     new HelpScreen();
@@ -70,6 +99,8 @@ public class Main {
             footerPanel.add(helpButton);
 
             JButton aboutButton = new JButton("About");
+            aboutButton.setForeground(Color.white);
+            aboutButton.setBackground(Color.black);
             aboutButton.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     new AboutScreen();
@@ -83,7 +114,7 @@ public class Main {
             main.setTitle("Western GIS");
             main.getContentPane().setLayout(null);
             main.setResizable(false);
-            main.setSize(1000,600);
+            main.setSize(1200,600);
             main.getContentPane().add(panelSwitch);
             main.getContentPane().add(footerPanel);
             main.setVisible(true);

@@ -29,18 +29,21 @@ public class POIInfo extends JPanel {
 		floor.setBounds(50, 270, 340, 60);
 		add(floor);
 
+		JLabel favourite = new JLabel("Favourite: ");
+		favourite.setBounds(50, 320, 200, 60);
+		add(favourite);
+
+		JToggleButton favouriteToggle = new JToggleButton("Favourite");
+		favouriteToggle.setBounds(175, 337, 100, 30);
+		add(favouriteToggle);
+
         type.setFont(new Font("Balsamiq", Font.PLAIN, 20));
         description.setFont(new Font("Balsamiq", Font.PLAIN, 20));
         building.setFont(new Font("Balsamiq", Font.PLAIN, 20));
         poiName.setFont(new Font("Balsamiq", Font.BOLD, 32));
         title.setFont(new Font("Balsamiq", Font.PLAIN, 20));
 		floor.setFont(new Font("Balsamiq", Font.PLAIN, 20));
-		type.setForeground(Color.white);
-		description.setForeground(Color.white);
-		building.setForeground(Color.white);
-		poiName.setForeground(Color.white);
-		title.setForeground(Color.white);
-		floor.setForeground(Color.white);
+		favourite.setFont(new Font("Balsamiq", Font.PLAIN, 20));
         setLayout(null);
     }
 }

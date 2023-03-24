@@ -7,7 +7,8 @@ import javax.swing.*;
 
 public class HelpScreen extends JFrame{
     HelpScreen() {
-
+        String panelBackground1 = "#373E98";
+        this.setBackground(Color.decode(panelBackground1));
         
         // Title Label
         JLabel title = new JLabel("Western GIS");

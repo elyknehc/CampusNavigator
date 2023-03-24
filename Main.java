@@ -11,13 +11,13 @@ public class Main {
         public void createGUI() {
             String panelBackground1 = "#373E98";
             JPanel footerPanel = new JPanel();
-            footerPanel.setBounds(0, 523, 1284, 38);
+            footerPanel.setBounds(0, 532, 1200, 40);
             footerPanel.setBackground(Color.decode(panelBackground1));
             footerPanel.setBorder(BorderFactory.createLineBorder(Color.black));
 
             
             JPanel panelSwitch = new JPanel();
-            panelSwitch.setBounds(0, 0, 400, 523);
+            panelSwitch.setBounds(0, 0, 400, 532);
             panelSwitch.setLayout(new CardLayout());
 
             LoginPanel first = new LoginPanel();
@@ -36,8 +36,6 @@ public class Main {
 
 
             JButton mapExplore = new JButton("Map Explore Screen");
-            mapExplore.setForeground(Color.white);
-            mapExplore.setBackground(Color.black);
             mapExplore.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     panelSwitch.removeAll();
@@ -49,8 +47,6 @@ public class Main {
             footerPanel.add(mapExplore);        
             
             JButton infoButton = new JButton("POI Information Screen");
-            infoButton.setForeground(Color.white);
-            infoButton.setBackground(Color.black);
             infoButton.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     panelSwitch.removeAll();
@@ -62,8 +58,6 @@ public class Main {
             footerPanel.add(infoButton);
 
             JButton poiCreate = new JButton("Create POI");
-            poiCreate.setForeground(Color.white);
-            poiCreate.setBackground(Color.black);
             poiCreate.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     panelSwitch.removeAll();
@@ -75,8 +69,6 @@ public class Main {
             footerPanel.add(poiCreate);
 
             JButton adminEdit = new JButton("Admin Edit");
-            adminEdit.setForeground(Color.white);
-            adminEdit.setBackground(Color.black);
             adminEdit.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     panelSwitch.removeAll();
@@ -89,8 +81,6 @@ public class Main {
 
 
             JButton helpButton = new JButton("Help Button");
-            helpButton.setForeground(Color.white);
-            helpButton.setBackground(Color.black);
             helpButton.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     new HelpScreen();
@@ -99,8 +89,6 @@ public class Main {
             footerPanel.add(helpButton);
 
             JButton aboutButton = new JButton("About");
-            aboutButton.setForeground(Color.white);
-            aboutButton.setBackground(Color.black);
             aboutButton.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     new AboutScreen();

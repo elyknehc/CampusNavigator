@@ -96,6 +96,14 @@ public class Main {
             });
             footerPanel.add(aboutButton);
 
+            // Added a container to hold the map on the right side
+            JPanel rightContainer = new JPanel();
+            rightContainer.setBounds(387, -2, 814, 532);
+
+            // Added scrollable
+            MapScrollPanel mapScroll = new MapScrollPanel();
+            rightContainer.add(mapScroll);
+            
             // Framing
             JFrame main = new JFrame();
             main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -105,6 +113,8 @@ public class Main {
             main.setSize(1200,600);
             main.getContentPane().add(panelSwitch);
             main.getContentPane().add(footerPanel);
+            main.getContentPane().add(rightContainer);
+
             main.setVisible(true);
         }
     

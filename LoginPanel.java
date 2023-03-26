@@ -4,9 +4,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class LoginPanel extends JPanel{
-    JButton enterButton;
-    JTextField passwordField;
-    String password;
+    private JButton enterButton;
+    private JTextField passwordField;
+    private String password;
     
     LoginPanel() {
         // create JPanel for left panel and set properties

@@ -7,40 +7,37 @@ import javax.swing.*;
 public class POIInfo extends JPanel {
     POI currPOI = new POI("Middle Sex College", "", "", 3);
     POIInfo() {
-        // Label
-        JLabel title = new JLabel("POI Information");
-        JLabel poiName = new JLabel("Name: " + currPOI.getName());
-        JLabel building = new JLabel("Building: " + currPOI.getCategory());
-        JLabel type = new JLabel("Type: ");
-        JLabel description = new JLabel("Description: " + currPOI.getDescription());
-        JLabel favourite = new JLabel("Favourite: ");
-        JLabel weather = new JLabel("Weather:");
-        weather.setFont(new Font("Balsamiq", Font.PLAIN, 20));
-        favourite.setFont(new Font("Balsamiq", Font.PLAIN, 20));
+
+		JLabel title = new JLabel("POI Information");
+		title.setBounds(30, 21, 333, 14);
+		add(title);
+		
+		JLabel poiName = new JLabel("Name: Example");
+		poiName.setBounds(30, 60, 333, 14);
+		add(poiName);
+		
+		JLabel building = new JLabel("Building:");
+		building.setBounds(30, 90, 333, 14);
+		add(building);
+		
+		JLabel type = new JLabel("Type: Example");
+		type.setBounds(30, 120, 333, 14);
+		add(type);
+		
+		JLabel description = new JLabel("Description: Example");
+		description.setBounds(30, 150, 333, 14);
+		add(description);
+		
+		JLabel floor = new JLabel("Floor: Example");
+		floor.setBounds(30, 180, 333, 14);
+		add(floor);
+
         type.setFont(new Font("Balsamiq", Font.PLAIN, 20));
         description.setFont(new Font("Balsamiq", Font.PLAIN, 20));
         building.setFont(new Font("Balsamiq", Font.PLAIN, 20));
         poiName.setFont(new Font("Balsamiq", Font.BOLD, 25));
         title.setFont(new Font("Balsamiq", Font.PLAIN, 20));
-        // Panel
-        JPanel POIpanel = new JPanel();
-        POIpanel.setLayout(new BoxLayout(POIpanel, BoxLayout.Y_AXIS));
-        POIpanel.setBorder(BorderFactory.createLineBorder(Color.black));
-        POIpanel.add(Box.createRigidArea(new Dimension(10, 20))); // Add some spacing between components
-        POIpanel.add(title);
-        POIpanel.add(Box.createRigidArea(new Dimension(10, 20))); // Add some spacing between components
-        POIpanel.add(poiName);
-        POIpanel.add(Box.createRigidArea(new Dimension(10, 20))); // Add some spacing between components
-        POIpanel.add(building);
-        POIpanel.add(Box.createRigidArea(new Dimension(10, 20))); // Add some spacing between components
-        POIpanel.add(type);
-        POIpanel.add(Box.createRigidArea(new Dimension(10, 20))); // Add some spacing between components
-        POIpanel.add(description);
-        POIpanel.add(Box.createRigidArea(new Dimension(10, 20))); // Add some spacing between components
-        POIpanel.add(favourite);
-        POIpanel.setVisible(true);
-        setLayout(new BorderLayout());
-        POIpanel.setPreferredSize(new Dimension(400, 600));
-        add(POIpanel);
+        setBackground(Color.green);
+        setLayout(null);
     }
 }

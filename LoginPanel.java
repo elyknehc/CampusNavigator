@@ -43,25 +43,15 @@ public class LoginPanel extends JPanel{
         });
 
         // create JLabel for title
-        JLabel titleLabel = new JLabel("WESTERN GIS");
-        titleLabel.setFont(new Font("MV Boli", Font.BOLD, 30));
-        titleLabel.setBounds(50, 40, 300, 40);
-
-        // create image and JLabel for Western Logo
-        JLabel logoLabel = new JLabel();
-        logoLabel.setBounds(50, 125, 200, 50);
-        ImageIcon westernLogo = new ImageIcon("./images/westernLogo.png");
-        Image logoImage = westernLogo.getImage().getScaledInstance(logoLabel.getWidth(), logoLabel.getHeight(), Image.SCALE_SMOOTH);
-        westernLogo = new ImageIcon(logoImage);
-        logoLabel.setIcon(westernLogo);
-
+        JLabel titleLabel = new JLabel("Western University GIS");
+        titleLabel.setBounds(50, 20, 340, 60);
+        titleLabel.setFont(new Font("Balsamiq", Font.PLAIN, 20));
         // add components to left panel
         add(passwordLabel1);
         add(passwordLabel2);
         add(passwordField);
         add(enterButton);
         add(titleLabel);
-        add(logoLabel);
     }
 
 }

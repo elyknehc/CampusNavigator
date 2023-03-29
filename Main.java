@@ -6,15 +6,16 @@ import java.awt.event.ActionListener;
 import java.awt.Color;
 
 public class Main {
+    public boolean isAdmin = true;
         public static void main(String[] args) {
             new Main().createGUI();
         }
         public void createGUI() {
+            
             String panelBackground1 = "#a012ff";
             JPanel footerPanel = new JPanel();
             footerPanel.setBounds(0, 0, 1384, 72);
             footerPanel.setBackground(Color.decode(panelBackground1));
-            footerPanel.setBorder(BorderFactory.createLineBorder(Color.black));
 
             JLabel logoLabel = new JLabel();
             logoLabel.setBounds(50, 125, 200, 50);
@@ -41,6 +42,27 @@ public class Main {
             second.setBackground(Color.white);
             panelSwitch.add(second);
 
+                        // Added a container to hold the map on the right side
+            JPanel rightContainer = new JPanel();
+            rightContainer.setBounds(445, 71, 939, 590);
+            rightContainer.setLayout(new CardLayout());
+
+
+            JPanel mainPicture = new JPanel();
+            ImageIcon icon = new ImageIcon("./images/main.jpg"); // Replace with the path to your image
+            Image image = icon.getImage();
+            int panelWidth = rightContainer.getWidth(); // Replace with the name of your panel
+            int panelHeight = rightContainer.getHeight(); // Replace with the name of your panel
+            Image scaledImage = image.getScaledInstance(panelWidth, panelHeight, Image.SCALE_SMOOTH);
+            ImageIcon scaledIcon = new ImageIcon(scaledImage);
+            JLabel imageLabel = new JLabel(scaledIcon);
+            mainPicture.add(imageLabel);
+            rightContainer.add(mainPicture);
+
+            // Added scrollable
+            MapScrollPanel mapScroll = new MapScrollPanel();
+            rightContainer.add(mapScroll);
+
 
             JButton mapExplore = new JButton("Map Explore Screen");
             mapExplore.addActionListener(new ActionListener() {
@@ -49,6 +71,10 @@ public class Main {
                     panelSwitch.add(second);
                     panelSwitch.repaint();
                     panelSwitch.revalidate();
+                   rightContainer.removeAll();
+                   rightContainer.add(mapScroll);
+                   rightContainer.repaint();
+                   rightContainer.revalidate();
                 }
             });
             footerPanel.add(mapExplore);        
@@ -75,18 +101,6 @@ public class Main {
             });
             footerPanel.add(poiCreate);
 
-            JButton adminEdit = new JButton("Admin Edit");
-            adminEdit.addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent e) {
-                    panelSwitch.removeAll();
-                    panelSwitch.add(first);
-                    panelSwitch.repaint();
-                    panelSwitch.revalidate();
-                }
-            });
-            footerPanel.add(adminEdit);
-
-
             JButton helpButton = new JButton("Help Button");
             helpButton.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
@@ -103,13 +117,21 @@ public class Main {
             });
             footerPanel.add(aboutButton);
 
-            // Added a container to hold the map on the right side
-            JPanel rightContainer = new JPanel();
-            rightContainer.setBounds(445, 71, 939, 590);
-
-            // Added scrollable
-            MapScrollPanel mapScroll = new MapScrollPanel();
-            rightContainer.add(mapScroll);
+            JButton adminEdit = new JButton("Admin Edit");
+            adminEdit.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    panelSwitch.removeAll();
+                    panelSwitch.add(first);
+                    panelSwitch.repaint();
+                    panelSwitch.revalidate();
+                }
+            });
+            footerPanel.add(adminEdit);
+            if (isAdmin) {
+                adminEdit.setVisible(true);
+            } else {
+                adminEdit.setVisible(false);
+            }
             
             // Framing
             JFrame main = new JFrame();
@@ -121,6 +143,7 @@ public class Main {
             main.getContentPane().add(panelSwitch);
             main.getContentPane().add(footerPanel);
             main.getContentPane().add(rightContainer);
+
 
             main.setVisible(true);
         }

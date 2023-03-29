@@ -10,7 +10,7 @@ public class MapScrollPanel extends JPanel {
     public MapScrollPanel() {
         // Sets up the panel
         setLayout(new BorderLayout());
-        setPreferredSize(new Dimension(778, 526));
+        setPreferredSize(new Dimension(800, 550));
         
         // Get image and insert image into label
         ImageIcon map = new ImageIcon("images/TESTMAP.jpg");

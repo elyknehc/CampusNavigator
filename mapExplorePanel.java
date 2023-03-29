@@ -11,12 +11,14 @@ public class mapExplorePanel extends JPanel {
    
    public mapExplorePanel() {
       // create JPanel for left panel and set properties
-      setBounds(0, 0, 333, 600);
       setLayout(null);
 
       // create JTextField for search bar and set properties
+      JLabel title = new JLabel("Map Explore Panel");
+      title.setBounds(50, 20, 340, 60);
+      title.setFont(new Font("Balsamiq", Font.PLAIN, 20));
       searchBar = new JTextField("Search");
-      searchBar.setBounds(50, 50, 200, 25);
+      searchBar.setBounds(50, 70, 200, 25);
       // Function to setup default text to dissappear or reappear
       searchBar.addFocusListener(new FocusListener() {
          public void focusGained(FocusEvent e) {
@@ -31,7 +33,7 @@ public class mapExplorePanel extends JPanel {
       
       // create search button and set properties
       JButton searchButton = new JButton();
-      searchButton.setBounds(253, 51, 22, 22);
+      searchButton.setBounds(253, 70, 22, 22);
       ImageIcon search = new ImageIcon("./images/searchButton.jpg");
       Image searchImage = search.getImage().getScaledInstance(searchButton.getWidth(), searchButton.getHeight(), Image.SCALE_SMOOTH);
         search = new ImageIcon(searchImage);
@@ -90,6 +92,7 @@ public class mapExplorePanel extends JPanel {
       add(favourites);
       add(floorDropdown);
       add(addPOIButton);
+      add(title);
    }
 
     private boolean[] getFilterValeus() {

@@ -11,7 +11,6 @@ public class LoginPanel extends JPanel{
     LoginPanel() {
         // create JPanel for left panel and set properties
         setBounds(0, 0, 333, 523);
-        setBackground(Color.CYAN);
         setLayout(null);
 
         // LEFT PANEL
@@ -19,11 +18,9 @@ public class LoginPanel extends JPanel{
         JLabel passwordLabel1 = new JLabel("Enter a password for admin access,");
         passwordLabel1.setBounds(55, 250, 250, 50);
         passwordLabel1.setFont(new Font("Balsamiq", Font.PLAIN, 10));
-        passwordLabel1.setForeground(Color.WHITE);
         JLabel passwordLabel2 = new JLabel("or leave blank for general access:");
         passwordLabel2.setBounds(55, 265, 250, 50);
         passwordLabel2.setFont(new Font("Balsamiq", Font.PLAIN, 10));
-        passwordLabel2.setForeground(Color.WHITE);
 
 
         // create JTextField for password input and set properties
@@ -49,7 +46,6 @@ public class LoginPanel extends JPanel{
         JLabel titleLabel = new JLabel("WESTERN GIS");
         titleLabel.setFont(new Font("MV Boli", Font.BOLD, 30));
         titleLabel.setBounds(50, 40, 300, 40);
-        titleLabel.setForeground(Color.WHITE);
 
         // create image and JLabel for Western Logo
         JLabel logoLabel = new JLabel();

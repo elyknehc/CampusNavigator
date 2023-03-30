@@ -30,5 +30,10 @@ public class User {
         favouritePOIList.remove(input);       
     }
 
-
+    public boolean getAdmin() {
+        return isAdmin;
+    }
+    public void setAdmin(boolean status) {
+        isAdmin = status;
+    }
 }

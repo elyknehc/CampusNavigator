@@ -1,43 +1,49 @@
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.BorderLayout;
-import java.awt.Dimension;
 import javax.swing.*;
 
 public class POIInfo extends JPanel {
     POI currPOI = new POI("Middle Sex College", "", "", 3);
     POIInfo() {
-
 		JLabel title = new JLabel("POI Information");
-		title.setBounds(30, 21, 333, 14);
+		title.setBounds(50, 20, 340, 60);
 		add(title);
 		
 		JLabel poiName = new JLabel("Name: Example");
-		poiName.setBounds(30, 60, 333, 14);
+		poiName.setBounds(50, 70, 340, 60);
 		add(poiName);
 		
 		JLabel building = new JLabel("Building:");
-		building.setBounds(30, 90, 333, 14);
+		building.setBounds(50, 120, 340, 60);
 		add(building);
 		
 		JLabel type = new JLabel("Type: Example");
-		type.setBounds(30, 120, 333, 14);
+		type.setBounds(50, 170, 170, 60);
 		add(type);
 		
 		JLabel description = new JLabel("Description: Example");
-		description.setBounds(30, 150, 333, 14);
+		description.setBounds(50, 220, 340, 60);
 		add(description);
 		
 		JLabel floor = new JLabel("Floor: Example");
-		floor.setBounds(30, 180, 333, 14);
+		floor.setBounds(50, 270, 340, 60);
 		add(floor);
+
+		JLabel favourite = new JLabel("Favourite: ");
+		favourite.setBounds(50, 320, 200, 60);
+		add(favourite);
+
+		JToggleButton favouriteToggle = new JToggleButton("Favourite");
+		favouriteToggle.setBounds(175, 337, 100, 30);
+		add(favouriteToggle);
 
         type.setFont(new Font("Balsamiq", Font.PLAIN, 20));
         description.setFont(new Font("Balsamiq", Font.PLAIN, 20));
         building.setFont(new Font("Balsamiq", Font.PLAIN, 20));
-        poiName.setFont(new Font("Balsamiq", Font.BOLD, 25));
+        poiName.setFont(new Font("Balsamiq", Font.BOLD, 32));
         title.setFont(new Font("Balsamiq", Font.PLAIN, 20));
-        setBackground(Color.green);
+		floor.setFont(new Font("Balsamiq", Font.PLAIN, 20));
+		favourite.setFont(new Font("Balsamiq", Font.PLAIN, 20));
         setLayout(null);
     }
 }

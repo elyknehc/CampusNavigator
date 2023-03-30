@@ -5,19 +5,20 @@ import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
-public class mapExplorePanel {
+public class mapExplorePanel extends JPanel {
    JTextField searchBar;
    JCheckBox washrooms, classrooms, genLabs, stairwells, entryExits, elevators, userCreatedPOIs, favourites;
    
    public mapExplorePanel() {
       // create JPanel for left panel and set properties
-      JPanel leftPanel = new JPanel();
-      leftPanel.setBounds(0, 0, 333, 600);
-      leftPanel.setLayout(null);
+      setLayout(null);
 
       // create JTextField for search bar and set properties
+      JLabel title = new JLabel("Map Explore Panel");
+      title.setBounds(50, 20, 340, 60);
+      title.setFont(new Font("Balsamiq", Font.PLAIN, 20));
       searchBar = new JTextField("Search");
-      searchBar.setBounds(50, 50, 200, 25);
+      searchBar.setBounds(50, 70, 200, 25);
       // Function to setup default text to dissappear or reappear
       searchBar.addFocusListener(new FocusListener() {
          public void focusGained(FocusEvent e) {
@@ -32,7 +33,7 @@ public class mapExplorePanel {
       
       // create search button and set properties
       JButton searchButton = new JButton();
-      searchButton.setBounds(253, 51, 22, 22);
+      searchButton.setBounds(253, 70, 22, 22);
       ImageIcon search = new ImageIcon("./images/searchButton.jpg");
       Image searchImage = search.getImage().getScaledInstance(searchButton.getWidth(), searchButton.getHeight(), Image.SCALE_SMOOTH);
         search = new ImageIcon(searchImage);
@@ -78,19 +79,20 @@ public class mapExplorePanel {
       addPOIButton.setBounds(50, 425, 200, 25);
 
       // add components to left panel
-      leftPanel.add(searchBar);
-      leftPanel.add(searchButton);
-      leftPanel.add(poiLabel);
-      leftPanel.add(washrooms);
-      leftPanel.add(classrooms);
-      leftPanel.add(genLabs);
-      leftPanel.add(stairwells);
-      leftPanel.add(entryExits);
-      leftPanel.add(elevators);
-      leftPanel.add(userCreatedPOIs);
-      leftPanel.add(favourites);
-      leftPanel.add(floorDropdown);
-      leftPanel.add(addPOIButton);
+      add(searchBar);
+      add(searchButton);
+      add(poiLabel);
+      add(washrooms);
+      add(classrooms);
+      add(genLabs);
+      add(stairwells);
+      add(entryExits);
+      add(elevators);
+      add(userCreatedPOIs);
+      add(favourites);
+      add(floorDropdown);
+      add(addPOIButton);
+      add(title);
    }
 
     private boolean[] getFilterValeus() {

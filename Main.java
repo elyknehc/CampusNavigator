@@ -119,6 +119,7 @@ public class Main {
                 }
             });
             footerPanel.add(adminEdit);
+
             if (isAdmin) {
                 adminEdit.setVisible(true);
             } else {

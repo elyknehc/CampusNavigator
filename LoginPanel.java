@@ -16,20 +16,19 @@ public class LoginPanel extends JPanel{
         // LEFT PANEL
         // create JLabels for password prompt and set properties
         JLabel passwordLabel1 = new JLabel("Enter a password for admin access,");
-        passwordLabel1.setBounds(55, 250, 250, 50);
-        passwordLabel1.setFont(new Font("Balsamiq", Font.PLAIN, 10));
+        passwordLabel1.setBounds(70, 200, 400, 50);
+        passwordLabel1.setFont(new Font("Balsamiq", Font.PLAIN,20));
         JLabel passwordLabel2 = new JLabel("or leave blank for general access:");
-        passwordLabel2.setBounds(55, 265, 250, 50);
-        passwordLabel2.setFont(new Font("Balsamiq", Font.PLAIN, 10));
-
+        passwordLabel2.setBounds(70, 230, 400, 50);
+        passwordLabel2.setFont(new Font("Balsamiq", Font.PLAIN, 20));
 
         // create JTextField for password input and set properties
         passwordField = new JTextField();
-        passwordField.setBounds(55, 310, 200, 25);
+        passwordField.setBounds(75, 265, 200, 25);
 
         // create JButton for entering password and set properties
         enterButton = new JButton("Enter");
-        enterButton.setBounds(55, 350, 200, 25);
+        enterButton.setBounds(75, 280, 200, 25);
         enterButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if (e.getSource()==enterButton) {

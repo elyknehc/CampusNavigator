@@ -7,8 +7,7 @@ import javax.swing.*;
 
 public class AboutScreen extends JFrame {
     AboutScreen(){
-        String panelBackground1 = "#373E98";
-        this.setBackground(Color.decode(panelBackground1));
+        String panelBackground1 = "#a012ff";
         JLabel title = new JLabel("Western GIS");
         title.setFont(new Font("Balsamiq", Font.BOLD, 55));
         title.setBounds(140, 40, 400, 50);
@@ -62,7 +61,7 @@ public class AboutScreen extends JFrame {
         this.setResizable(false);
         this.setLayout(null);
         this.setSize(600,600);
-        this.getContentPane().setBackground(Color.white);
+        this.getContentPane().setBackground(Color.decode(panelBackground1));
         this.add(title);
         this.add(returnButton);
         this.add(version);

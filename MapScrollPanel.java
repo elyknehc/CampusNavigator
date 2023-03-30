@@ -1,30 +1,39 @@
 import java.awt.*;
-
 import javax.swing.*;
 import javax.swing.border.Border;
 
 public class MapScrollPanel extends JPanel {
-    private JLabel label = new JLabel();
+    private JLabel mapHolder = new JLabel();
+    private JLabel pinLabel = new JLabel();
     private JScrollPane scrollPane = new JScrollPane();
 
     public MapScrollPanel() {
-        // Sets up the panel
-        setLayout(new BorderLayout());
-        setPreferredSize(new Dimension(800, 532));
-        
-        // Get image and insert image into label
+        // Get map and insert image into label
         ImageIcon map = new ImageIcon("images/TESTMAP.jpg");
-        label.setIcon(map);
-        label.setPreferredSize(new Dimension(map.getIconWidth(), map.getIconHeight()));
+        mapHolder.setIcon(map);
+        // label.setSize(new Dimension(map.getIconWidth(), map.getIconHeight()));
+        mapHolder.setSize(mapHolder.getPreferredSize());
+        mapHolder.setLocation(0,0);
 
+        // Get location pin image and insert image into label
+        ImageIcon pin = new ImageIcon("images/locationPin.png");
+        pinLabel.setIcon(pin);
+        // label.setSize(new Dimension(map.getIconWidth(), map.getIconHeight()));
+        pinLabel.setSize(pinLabel.getPreferredSize());
+        pinLabel.setLocation(100, 100);
+
+        // Set up container for layers
         JLayeredPane layersContainer = new JLayeredPane();
+        layersContainer.add(pinLabel, JLayeredPane.DEFAULT_LAYER);
         layersContainer.setPreferredSize(new Dimension(map.getIconWidth(), map.getIconHeight()));
-        layersContainer.add(label);
 
         // Set Scrollable Panel
         scrollPane.setViewportView(layersContainer);
-        scrollPane.setBounds(0,0, 800, 300);
+        scrollPane.setBounds(0,0, 800, 590);
         scrollPane.setWheelScrollingEnabled(true);
+        
+        // Sets up the panel
+        setLayout(new BorderLayout());
         add(scrollPane, BorderLayout.CENTER);
     }
 }

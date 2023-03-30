@@ -11,8 +11,7 @@ public class MapScrollPanel extends JPanel {
         // Get map and insert image into label
         ImageIcon map = new ImageIcon("images/TESTMAP.jpg");
         mapHolder.setIcon(map);
-        // label.setSize(new Dimension(map.getIconWidth(), map.getIconHeight()));
-        mapHolder.setSize(mapHolder.getPreferredSize());
+        mapHolder.setSize(new Dimension(map.getIconWidth(), map.getIconHeight()));
         mapHolder.setLocation(0,0);
 
         // Get location pin image and insert image into label
@@ -24,7 +23,8 @@ public class MapScrollPanel extends JPanel {
 
         // Set up container for layers
         JLayeredPane layersContainer = new JLayeredPane();
-        layersContainer.add(pinLabel, JLayeredPane.DEFAULT_LAYER);
+        layersContainer.add(pinLabel, Integer.valueOf(1));
+        layersContainer.add(mapHolder, Integer.valueOf(0));
         layersContainer.setPreferredSize(new Dimension(map.getIconWidth(), map.getIconHeight()));
 
         // Set Scrollable Panel

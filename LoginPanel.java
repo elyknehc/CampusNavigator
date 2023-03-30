@@ -36,6 +36,8 @@ public class LoginPanel extends JPanel{
                     if (password.equals("adminPassword")){
                         System.out.println("Correct password");
                         Main.setAdmin(true);
+                    } else {
+                        Main.setAdmin(false);
                     }
                 }
                 System.out.println(password); //Filler

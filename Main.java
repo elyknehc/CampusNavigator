@@ -1,50 +1,99 @@
 import javax.swing.*;
-import java.awt.BorderLayout;
+import java.awt.*;
 import java.awt.CardLayout;
-import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.Color;
 
 public class Main {
+    public static User currUser = new User(false);
+    static JButton adminEdit;
         public static void main(String[] args) {
             new Main().createGUI();
         }
-        public void createGUI() {
-            JPanel footerPanel = new JPanel();
-            footerPanel.setBounds(0, 523, 984, 38);
-            footerPanel.setBackground(new Color(51, 153, 204));
-            
-            
-            JPanel panelSwitch = new JPanel();
-            panelSwitch.setBounds(0, 0, 333, 523);
-            panelSwitch.setLayout(new CardLayout());
-            
-            POIInfo first = new POIInfo();
-            panelSwitch.add(first);
-            
-            JPanel second = new JPanel();
-            second.setBackground(new Color(0, 255, 255));
-            panelSwitch.add(second);
-            second.setLayout(null);
-            
-            JPanel third = new JPanel();
-            third.setBackground(new Color(255, 0, 0));
-            panelSwitch.add(third, "name_73555699515100");
-            third.setLayout(null);
 
-            JButton poiLayer = new JButton("POI Layer");
-            poiLayer.addActionListener(new ActionListener() {
+        public void createGUI() {
+
+            String panelBackground1 = "#a012ff";
+            JPanel footerPanel = new JPanel();
+            footerPanel.setBounds(0, 0, 1384, 72);
+            footerPanel.setBackground(Color.decode(panelBackground1));
+
+            JLabel logoLabel = new JLabel();
+            logoLabel.setBounds(50, 125, 200, 50);
+            ImageIcon westernLogo = new ImageIcon("./images/westernLogo.png");
+            Image logoImage = westernLogo.getImage().getScaledInstance(logoLabel.getWidth(), logoLabel.getHeight(),
+                    Image.SCALE_SMOOTH);
+            westernLogo = new ImageIcon(logoImage);
+            logoLabel.setIcon(westernLogo);
+            footerPanel.add(logoLabel);
+
+            JPanel panelSwitch = new JPanel();
+            panelSwitch.setBounds(0, 73, 446, 590);
+            panelSwitch.setLayout(new CardLayout());
+
+            LoginPanel first = new LoginPanel();
+            first.setBackground(Color.white);
+            panelSwitch.add(first);
+
+            POIInfo third = new POIInfo();
+            third.setBackground(Color.white);
+            panelSwitch.add(third);
+
+            mapExplorePanel second = new mapExplorePanel();
+            second.setBackground(Color.white);
+            panelSwitch.add(second);
+
+            // Added a container to hold the map on the right side
+            JPanel rightContainer = new JPanel();
+            rightContainer.setBounds(445, 71, 939, 590);
+            rightContainer.setLayout(new CardLayout());
+
+            MapSelection selection = new MapSelection();
+            rightContainer.add(selection);
+
+            // Added scrollable
+            MapScrollPanel mapScroll = new MapScrollPanel();
+            rightContainer.add(mapScroll);
+
+            JButton mapSelect = new JButton("Map Select");
+            mapSelect.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    rightContainer.removeAll();
+                    rightContainer.add(selection);
+                    rightContainer.repaint();
+                    rightContainer.revalidate();
+                }
+            });
+            footerPanel.add(mapSelect);
+
+            JButton mapExplore = new JButton("Map Explore Screen");
+            mapExplore.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     panelSwitch.removeAll();
-                    panelSwitch.add(first);
+                    panelSwitch.add(second);
+                    panelSwitch.repaint();
+                    panelSwitch.revalidate();
+                   rightContainer.removeAll();
+                   rightContainer.repaint();
+                   rightContainer.revalidate();
+                   rightContainer.add(mapScroll);
+                }
+            });
+            footerPanel.add(mapExplore);
+
+            JButton infoButton = new JButton("POI Information Screen");
+            infoButton.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    panelSwitch.removeAll();
+                    panelSwitch.add(third);
                     panelSwitch.repaint();
                     panelSwitch.revalidate();
                 }
             });
-            footerPanel.add(poiLayer);        
-            
-            JButton poiCreate = new JButton("POI Create");
+            footerPanel.add(infoButton);
+
+            JButton poiCreate = new JButton("Create POI");
             poiCreate.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     panelSwitch.removeAll();
@@ -54,17 +103,6 @@ public class Main {
                 }
             });
             footerPanel.add(poiCreate);
-
-            JButton adminEdit = new JButton("Admin Edit");
-            adminEdit.addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent e) {
-                    panelSwitch.removeAll();
-                    panelSwitch.add(third);
-                    panelSwitch.repaint();
-                    panelSwitch.revalidate();
-                }
-            });
-            footerPanel.add(adminEdit);
 
             JButton helpButton = new JButton("Help Button");
             helpButton.addActionListener(new ActionListener() {
@@ -82,16 +120,38 @@ public class Main {
             });
             footerPanel.add(aboutButton);
 
+            adminEdit = new JButton("Admin Edit");
+            adminEdit.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    panelSwitch.removeAll();
+                    panelSwitch.add(first);
+                    panelSwitch.repaint();
+                    panelSwitch.revalidate();
+                }
+            });
+            footerPanel.add(adminEdit);
+
             // Framing
             JFrame main = new JFrame();
             main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             main.setTitle("Western GIS");
             main.getContentPane().setLayout(null);
             main.setResizable(false);
-            main.setSize(1000,600);
+            main.setSize(1400, 700);
             main.getContentPane().add(panelSwitch);
             main.getContentPane().add(footerPanel);
+            main.getContentPane().add(rightContainer);
+
             main.setVisible(true);
+        }
+        
+        public static void setAdmin(boolean set){
+            if(currUser.getAdmin()){
+                adminEdit.setVisible(true);
+            }
+            else{
+                adminEdit.setVisible(false);
+            }
         }
     
 }

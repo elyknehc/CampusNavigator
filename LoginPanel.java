@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 
 public class LoginPanel extends JPanel implements ActionListener{
     JButton enterButton;
-    JTextField passwordField;
+    private JPasswordField passwordField;
     String password;
     
     LoginPanel() {
@@ -22,8 +22,8 @@ public class LoginPanel extends JPanel implements ActionListener{
         passwordLabel2.setBounds(55, 265, 250, 50);
 
         // create JTextField for password input and set properties
-        passwordField = new JTextField();
-        passwordField.setBounds(55, 310, 200, 25);
+        passwordField = new JPasswordField(20);
+        // passwordField.setBounds(55, 310, 200, 25);
 
         // create JButton for entering password and set properties
         enterButton = new JButton("Enter");
@@ -44,20 +44,19 @@ public class LoginPanel extends JPanel implements ActionListener{
         logoLabel.setIcon(westernLogo);
 
         // add components to left panel
-        leftPanel.add(passwordLabel1);
-        leftPanel.add(passwordLabel2);
-        leftPanel.add(passwordField);
-        leftPanel.add(enterButton);
-        leftPanel.add(titleLabel);
-        leftPanel.add(logoLabel);
-    }
+        add(passwordLabel1);
+        add(passwordLabel2);
+        add(passwordField);
+        add(enterButton);
+        add(titleLabel);
+        add(logoLabel);
+        }
 
     // Button event handler
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource()==enterButton) {
-            password = passwordField.getText();
+            TempMain.ChangeScreen("poiInfo");
         }
-        System.out.println(password);
     }
 }

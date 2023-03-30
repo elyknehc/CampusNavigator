@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 import java.awt.Color;
 
 public class Main {
-    public static boolean isAdmin = false;
+    public static User currUser = new User(false);
     static JButton adminEdit;
         public static void main(String[] args) {
             new Main().createGUI();
@@ -55,6 +55,17 @@ public class Main {
             // Added scrollable
             MapScrollPanel mapScroll = new MapScrollPanel();
             rightContainer.add(mapScroll);
+
+            JButton mapSelect = new JButton("Map Select");
+            mapSelect.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    rightContainer.removeAll();
+                    rightContainer.add(selection);
+                    rightContainer.repaint();
+                    rightContainer.revalidate();
+                }
+            });
+            footerPanel.add(mapSelect);
 
             JButton mapExplore = new JButton("Map Explore Screen");
             mapExplore.addActionListener(new ActionListener() {
@@ -120,12 +131,6 @@ public class Main {
             });
             footerPanel.add(adminEdit);
 
-            if (isAdmin) {
-                adminEdit.setVisible(true);
-            } else {
-                adminEdit.setVisible(false);
-            }
-
             // Framing
             JFrame main = new JFrame();
             main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -141,12 +146,10 @@ public class Main {
         }
         
         public static void setAdmin(boolean set){
-            if(set){
-                isAdmin = true;
+            if(currUser.getAdmin()){
                 adminEdit.setVisible(true);
             }
             else{
-                isAdmin = false;
                 adminEdit.setVisible(false);
             }
         }

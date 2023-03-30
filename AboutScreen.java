@@ -13,7 +13,6 @@ public class AboutScreen extends JFrame {
         title.setBounds(140, 40, 400, 50);
 
         // About Label
-        
         JLabel version = new JLabel("Version 0.0");
         JLabel date = new JLabel("Released March 6th 2023");
         JLabel creators = new JLabel("Creators:");

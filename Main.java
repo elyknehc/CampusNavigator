@@ -72,9 +72,9 @@ public class Main {
                     panelSwitch.repaint();
                     panelSwitch.revalidate();
                    rightContainer.removeAll();
-                   rightContainer.add(mapScroll);
                    rightContainer.repaint();
                    rightContainer.revalidate();
+                   rightContainer.add(mapScroll);
                 }
             });
             footerPanel.add(mapExplore);        

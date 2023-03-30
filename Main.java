@@ -47,17 +47,8 @@ public class Main {
             rightContainer.setBounds(445, 71, 939, 590);
             rightContainer.setLayout(new CardLayout());
 
-
-            JPanel mainPicture = new JPanel();
-            ImageIcon icon = new ImageIcon("./images/main.jpg"); // Replace with the path to your image
-            Image image = icon.getImage();
-            int panelWidth = rightContainer.getWidth(); // Replace with the name of your panel
-            int panelHeight = rightContainer.getHeight(); // Replace with the name of your panel
-            Image scaledImage = image.getScaledInstance(panelWidth, panelHeight, Image.SCALE_SMOOTH);
-            ImageIcon scaledIcon = new ImageIcon(scaledImage);
-            JLabel imageLabel = new JLabel(scaledIcon);
-            mainPicture.add(imageLabel);
-            rightContainer.add(mainPicture);
+            MapSelection selection = new MapSelection();
+            rightContainer.add(selection);
 
             // Added scrollable
             MapScrollPanel mapScroll = new MapScrollPanel();

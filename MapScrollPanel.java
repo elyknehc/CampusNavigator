@@ -9,7 +9,7 @@ public class MapScrollPanel extends JPanel {
 
     public MapScrollPanel() {
         // Get map and insert image into label
-        ImageIcon map = new ImageIcon("images/TESTMAP.jpg");
+        ImageIcon map = new ImageIcon("images/HSB-BF/HSB-BF-1.jpg");
         mapHolder.setIcon(map);
         mapHolder.setSize(new Dimension(map.getIconWidth(), map.getIconHeight()));
         mapHolder.setLocation(0,0);

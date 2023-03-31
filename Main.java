@@ -13,7 +13,7 @@ public class Main {
         }
         public void createGUI() {
 
-            String panelBackground1 = "#a012ff";
+            String   panelBackground1 = "#a012ff";
             JPanel footerPanel = new JPanel();
             footerPanel.setBounds(0, 0, 1384, 72);
             footerPanel.setBackground(Color.decode(panelBackground1));

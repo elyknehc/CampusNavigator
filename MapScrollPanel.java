@@ -17,7 +17,6 @@ public class MapScrollPanel extends JPanel {
         // Get location pin image and insert image into label
         ImageIcon pin = new ImageIcon("images/locationPin.png");
         pinLabel.setIcon(pin);
-        // label.setSize(new Dimension(map.getIconWidth(), map.getIconHeight()));
         pinLabel.setSize(pinLabel.getPreferredSize());
         pinLabel.setLocation(100, 100);
 

@@ -3,11 +3,6 @@ public class POI {
     private int ID;
     private boolean favourite;
 
-    public static void main(String[] args) {
-        POI x = new POI("null", "null", "null",5);
-        System.out.println(x);
-    }
-
     public POI(String name, String description, String category, int ID) {
         this.name = name;
         this.description = description;

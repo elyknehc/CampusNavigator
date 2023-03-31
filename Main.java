@@ -11,7 +11,6 @@ public class Main {
         public static void main(String[] args) {
             new Main().createGUI();
         }
-
         public void createGUI() {
 
             String panelBackground1 = "#a012ff";

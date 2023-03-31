@@ -7,11 +7,13 @@ public class LoginPanel extends JPanel{
     private JButton enterButton;
     private JTextField passwordField;
     private String password;
+    public static boolean pressed = false;
     
     LoginPanel() {
         // create JPanel for left panel and set properties
         setBounds(0, 0, 333, 523);
         setLayout(null);
+        System.out.println(pressed);
 
         // LEFT PANEL
         // create JLabels for password prompt and set properties
@@ -36,11 +38,14 @@ public class LoginPanel extends JPanel{
                     if (password.equals("adminPassword")){
                         System.out.println("Correct password");
                         Main.currUser.setAdmin(true);
+                        pressed = true;
                     } else {
                         Main.currUser.setAdmin(false);
+                        pressed = true;
                     }
                 }
                 System.out.println(password); //Filler
+                System.out.println(pressed);
             }
         });
 

@@ -1,9 +1,7 @@
-import java.awt.Color;
 import java.awt.Font;
 import javax.swing.*;
 
 public class POIInfo extends JPanel {
-    POI currPOI = new POI("Middle Sex College", "", "", 3);
     POIInfo() {
 		JLabel title = new JLabel("POI Information");
 		title.setBounds(50, 20, 340, 60);

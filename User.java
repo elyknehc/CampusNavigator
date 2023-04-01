@@ -47,5 +47,13 @@ public class User {
     public static boolean getIsCreating () {
         return isCreating;
     }
+
+    public static void setCancel(boolean set) {
+        cancelled = set; 
+    }
+
+    public static boolean getCancel () {
+        return cancelled;
+    }
 }
 

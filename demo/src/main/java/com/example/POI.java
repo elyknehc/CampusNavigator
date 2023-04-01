@@ -41,7 +41,6 @@ public class POI {
         System.out.println(tempJson.get("name"));
         return new POI((String) tempJson.get("name"), (String) tempJson.get("description"), (String) tempJson.get("category"), (int) tempJson.get("ID"), (boolean) tempJson.get("isFavourite"), (boolean) tempJson.get("isUser"));
         // POI temp = new POI();
-
     }
     
 

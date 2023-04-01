@@ -19,6 +19,7 @@ public class User {
     public void addFavouritePOI(POI input) {
         favouritePOIList.add(input);
     }
+    
 
     // ASK GROUP LATER --> isn't this similar to POI.java toString() method?
     /*public void viewPOIInfo() {

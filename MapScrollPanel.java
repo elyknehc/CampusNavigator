@@ -40,6 +40,9 @@ public class MapScrollPanel extends JPanel {
                 ovals.add(new Oval(x, y));
                 imageLabel.repaint();
                 new CreatePOIScreen();
+
+                
+                
             }
         
                 

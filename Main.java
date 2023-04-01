@@ -35,10 +35,6 @@ public class Main {
             first.setBackground(Color.white);
             panelSwitch.add(first);
 
-            POIInfo third = new POIInfo();
-            third.setBackground(Color.white);
-            panelSwitch.add(third);
-
             mapExplorePanel second = new mapExplorePanel();
             second.setBackground(Color.white);
             panelSwitch.add(second);
@@ -80,17 +76,6 @@ public class Main {
                 }
             });
             footerPanel.add(mapExplore);
-
-            JButton infoButton = new JButton("POI Information Screen");
-            infoButton.addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent e) {
-                    panelSwitch.removeAll();
-                    panelSwitch.add(third);
-                    panelSwitch.repaint();
-                    panelSwitch.revalidate();
-                }
-            });
-            footerPanel.add(infoButton);
 
             JButton poiCreate = new JButton("Create POI");
             poiCreate.addActionListener(new ActionListener() {

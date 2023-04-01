@@ -16,13 +16,13 @@ class Json {
       System.out.println(jo.toString());
       */
       /*ArrayList<POI> result = new ArrayList<POI>();
-
+      
         try{
             String text = new String(Files.readAllBytes(Paths.get("POIData.json")), "StandardCharsets.UTF_8");
-
+      
             JSONObject obj = new JSONObject(text);
             JSONArray arr = obj.getJSONArray("employees");
-
+      
             for(int i = 0; i < arr.length(); i++){
                 String name = arr.getJSONObject(i).getString("name");
                 short salary = Short.parseShort(arr.getJSONObject(i).getString("salary"));
@@ -40,14 +40,16 @@ class Json {
             System.out.println(ex.toString());
         }
         */
-        String resourceName = "/POIData.json";
-        InputStream is = Json.class.getResourceAsStream(resourceName);
-        if (is == null) {
-            throw new NullPointerException("Cannot find resource file " + resourceName);
-        }
+      String resourceName = "/POIData.json";
+      InputStream is = Json.class.getResourceAsStream(resourceName);
+      if (is == null) {
+         throw new NullPointerException("Cannot find resource file " + resourceName);
+      }
 
-        JSONTokener tokener = new JSONTokener(is);
-        JSONObject object = new JSONObject(tokener);
-        System.out.println(object.toString());
-        }
+      JSONTokener tokener = new JSONTokener(is);
+      JSONObject object = new JSONObject(tokener);
+      System.out.println(object.toString());
+   }
+        
+   //ARSLAAAN CHANGE
    }

@@ -1,76 +1,93 @@
-
-package com.example;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 
-public class CreatePOIScreen extends JFrame {
-    private JTextField nameField;
-    private JTextField categoryField;
-    private JTextField descriptionField;
-    private JTextField idField;
-    private JCheckBox favoriteCheckBox;
-    private JTextField floorField;
-
+public class CreatePOIScreen extends JFrame implements ActionListener {
+    private JButton createButton, titleButton, xButton, yButton, saveButton, cancelButton;
+    private JTextField titleField, xField, yField, infoField;
+    private JLabel titleLabel, xLabel, yLabel, infoLabel;
+    private JPanel createPanel, infoPanel;
+    
     public CreatePOIScreen() {
-        setTitle("CreatePOIScreen");
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setLayout(new GridLayout(7, 2));
-        setSize(400, 250);
+        // Set the properties of the JFrame
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setTitle("Create Point of Interest");
+        setSize(500, 500);
+        getContentPane().setBackground(Color.BLUE);
 
-        JLabel nameLabel = new JLabel("Name of POI: ");
-        add(nameLabel);
-        nameField = new JTextField();
-        add(nameField);
+        // Create the create panel and add the create button to it
+        createPanel = new JPanel();
+        createButton = new JButton("Create Point of Interest");
+        createButton.addActionListener(this);
+        createPanel.add(createButton);
+        add(createPanel, BorderLayout.NORTH);
 
-        JLabel categoryLabel = new JLabel("Category: ");
-        add(categoryLabel);
-        categoryField = new JTextField();
-        add(categoryField);
+        // Create the info panel and add the buttons and fields to it
+        infoPanel = new JPanel(new GridLayout(5, 2));
+        titleLabel = new JLabel("Title of Point of Interest:");
+        titleField = new JTextField(20);
+        xLabel = new JLabel("X location:");
+        xField = new JTextField(5);
+        yLabel = new JLabel("Y location:");
+        yField = new JTextField(5);
+        infoLabel = new JLabel("Information:");
+        infoField = new JTextField(20);
+        titleButton = new JButton("Enter Title");
+        xButton = new JButton("Enter X");
+        yButton = new JButton("Enter Y");
+        saveButton = new JButton("Save Point of Interest");
+        cancelButton = new JButton("Cancel");
+        titleButton.addActionListener(this);
+        xButton.addActionListener(this);
+        yButton.addActionListener(this);
+        saveButton.addActionListener(this);
+        cancelButton.addActionListener(this);
+        infoPanel.add(titleLabel);
+        infoPanel.add(titleField);
+        infoPanel.add(xLabel);
+        infoPanel.add(xField);
+        infoPanel.add(yLabel);
+        infoPanel.add(yField);
+        infoPanel.add(infoLabel);
+        infoPanel.add(infoField);
+        infoPanel.add(cancelButton);
+        infoPanel.add(saveButton);
+        infoPanel.setVisible(false);
+        add(infoPanel, BorderLayout.CENTER);
 
-        JLabel descriptionLabel = new JLabel("Description: ");
-        add(descriptionLabel);
-        descriptionField = new JTextField();
-        add(descriptionField);
-
-        // JLabel idLabel = new JLabel("POI ID: ");
-        // add(idLabel);
-        // idField = new JTextField();
-        // add(idField);
-
-        JLabel favoriteLabel = new JLabel("Favorite: ");
-        add(favoriteLabel);
-        favoriteCheckBox = new JCheckBox();
-        add(favoriteCheckBox);
-
-        JLabel floorLabel = new JLabel("Floor Number: ");
-        add(floorLabel);
-        floorField = new JTextField();
-        add(floorField);
-
-        JButton submitButton = new JButton("Submit");
-        submitButton.addActionListener(event -> {
-            // Save the information here
-            String poiName = nameLabel.getText();
-            String poiCategory = categoryLabel.getText();
-            String poiDescription = descriptionLabel.getText();
-            // String labelID = idLabel.getText();
-            // int poiID = Integer.parseInt(labelID);
-            String poiFloor = floorLabel.getText();
-
-
-            POI newPOI = new POI(poiName, poiDescription, poiCategory, 1);
-            User.userPOIList.add(newPOI);
-        
-            dispose(); // Close the frame
-        });
-        add(submitButton);
-
-        JButton cancelButton = new JButton("Cancel");
-        cancelButton.addActionListener(event -> {
-            User.setCancel(true);
-            dispose(); // Close the frame
-        });
-        add(cancelButton);
+        // Set the JFrame to be visible
         setVisible(true);
+    }
+    
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == createButton) {
+            createPanel.setVisible(false);
+            infoPanel.setVisible(true);
+        } else if (e.getSource() == saveButton) {
+            // Code to save all the information entered by the user
+            String title = titleField.getText();
+            int x = Integer.parseInt(xField.getText());
+            int y = Integer.parseInt(yField.getText());
+            String info = infoField.getText();
+            
+            // Code to save the point of interest with the above information
+            // ...
+            
+            // Reset the input fields
+            titleField.setText("");
+            xField.setText("");
+            yField.setText("");
+            infoField.setText("");
+            
+            infoPanel.setVisible(false);
+            createPanel.setVisible(true);
+        } else if (e.getSource() == cancelButton) {
+            infoPanel.setVisible(false);
+            createPanel.setVisible(true);
+        }
+    }
+
+    public static void main(String[] args) {
+        new CreatePOIScreen();
     }
 }

@@ -6,6 +6,7 @@ public class User {
     public static List<POI> userPOIList;
     public static List<POI> favouritePOIList;
     public static boolean isCreating = false;
+    public static boolean isCreating = false;
     public static boolean cancelled;
 
     public User(boolean adminStatus) {
@@ -45,14 +46,6 @@ public class User {
 
     public static boolean getIsCreating () {
         return isCreating;
-    }
-
-    public static void setCancel(boolean set) {
-        cancelled = set; 
-    }
-
-    public static boolean getCancel () {
-        return cancelled;
     }
 }
 

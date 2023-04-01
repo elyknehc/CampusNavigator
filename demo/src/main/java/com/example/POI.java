@@ -7,21 +7,29 @@ public class POI {
     private String name, description, category;
     private int ID;
     private boolean isFavourite, isUser;
+    private int x, y, roomNum, floor;
+
+
+    //LOCATION OBJECT
 
     public static void main(String[] args) {
-        POI x = new POI("hey", "yo", "what", 5, true, true);
+        POI x = new POI("hey", "yo", "what", 5, 20, 30, 31, 1, true, true);
         System.out.println(POI.toPOI(x.stringify()));
     }
     
     
 
-    public POI(String name, String description, String category, int ID, boolean isFavourite, boolean isUser) {
+    public POI(String name, String description, String category, int ID, int x, int y, int roomNum, int floor, boolean isFavourite, boolean isUser) {
         this.name = name;
         this.description = description;
         this.category = category;
         this.ID = ID;
         this.isFavourite = isFavourite;
         this.isUser = isUser;
+        this.x = x;
+        this.y = y;
+        this.roomNum = roomNum;
+        this.floor = floor;
     }
 
     @Override
@@ -38,8 +46,7 @@ public class POI {
     public static POI toPOI(String json) {
         JSONObject tempJson = new JSONObject(json);
         System.out.println(tempJson.get("name"));
-        return new POI((String) tempJson.get("name"), (String) tempJson.get("description"), (String) tempJson.get("category"), (int) tempJson.get("ID"), (boolean) tempJson.get("isFavourite"), (boolean) tempJson.get("isUser"));
-        // POI temp = new POI();
+        return new POI((String) tempJson.get("name"), (String) tempJson.get("description"), (String) tempJson.get("category"), (int) tempJson.get("ID"), (int) tempJson.get("x"), (int) tempJson.get("y"), (int) tempJson.get("roomNum"), (int) tempJson.get("floor"), (boolean) tempJson.get("isFavourite"), (boolean) tempJson.get("isUser"));
     }
     
 
@@ -89,6 +96,38 @@ public class POI {
 
     public void setIsUser(boolean isFavourite) {
         this.isFavourite = isFavourite;
+    }
+
+        public int getX() {
+        return this.x;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public int getY() {
+        return this.y;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
+    public int getRoomNum() {
+        return this.roomNum;
+    }
+
+    public void setRoomNum(int roomNum) {
+        this.roomNum = roomNum;
+    }
+
+    public int getFloor() {
+        return this.floor;
+    }
+
+    public void setFloor(int floor) {
+        this.floor = floor;
     }
 
 }

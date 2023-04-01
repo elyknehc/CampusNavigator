@@ -10,6 +10,7 @@ class Json {
       String data = readFile();
       System.out.println(data);
       writeFile(data);
+      parseJsonToLocalData(stringifyAllPOIData());
    }
 
    public static String readFile() {
@@ -42,7 +43,15 @@ class Json {
       for (POI poi : poiData) {
          tempArray.put(poi.stringify());
       }
-
       return tempArray.toString();
+   }
+   private static void parseJsonToLocalData(String json) {
+      JSONArray tempArray = new JSONArray(json);
+      for (Object str : tempArray) {
+         String cur = (String) str;
+         POI poi = POI.toPOI(cur);
+         User.addToAllPOI(poi);
+      }
+      System.out.println(User.getAllPOI());
    }
 }

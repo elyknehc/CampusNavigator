@@ -54,18 +54,29 @@ public class mapExplorePanel extends JPanel {
       // create checkboxes for POI Layers and set properties
       washrooms = new JCheckBox("Washrooms");
       washrooms.setBounds(50, 150, 200, 25);
+      washrooms.setSelected(true);
+      washrooms.setEnabled(false);
+      
       classrooms = new JCheckBox("Classrooms");
       classrooms.setBounds(50, 175, 200, 25);
+      
       genLabs = new JCheckBox("GenLabs");
       genLabs.setBounds(50, 200, 200, 25);
+      
       stairwells = new JCheckBox("Stairwells");
       stairwells.setBounds(50, 225, 200, 25);
+      
       entryExits = new JCheckBox("Entry/Exits");
       entryExits.setBounds(50, 250, 200, 25);
+      
       elevators = new JCheckBox("Elevators");
       elevators.setBounds(50, 275, 200, 25);
+      elevators.setSelected(true);
+      elevators.setEnabled(false);
+      
       userCreatedPOIs = new JCheckBox("User-created POIs");
       userCreatedPOIs.setBounds(50, 300, 200, 25);
+      
       favourites = new JCheckBox("Favourites");
       favourites.setBounds(50, 325, 200, 25);
 

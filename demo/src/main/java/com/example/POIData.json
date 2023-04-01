@@ -1,0 +1,15 @@
+[{
+        "description": "Men's washroom located on the first floor of Middlesex College. Accessible by wheelchair.",
+        "Location": {
+            "x": 5,
+            "y": 10,
+            "rmNum": 136,
+            "building": "Middlesex College",
+            "floor": 1
+        },
+        "id": 1,
+        "Name": "Men's washroom",
+        "POICategory": "Washroom",
+        "favourite": true,
+        "userCreated": false
+    }]

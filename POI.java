@@ -1,3 +1,5 @@
+import org.json.JSONObject;
+
 public class POI {
     private String name, description, category;
     private int ID;
@@ -15,8 +17,12 @@ public class POI {
         return "POI Info:\n name: " + name + "\n" + " description: " + description + "\n" + " category: " + category
                 + "\n" + " favourite: " + favourite + "\n" + " id: " + ID;
     }
-    
 
+    public static void main (String[] args) {
+        JSONObject jo = new JSONObject("{ \"abc\" : \"def\" }");
+        System.out.println(jo.toString());
+    }
+    
     public String getName() {
         return this.name;
     }

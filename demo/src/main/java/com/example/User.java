@@ -4,12 +4,21 @@ import java.util.*;
 public class User {
 
     private boolean isAdmin;
+    private static List<POI> allPOI = new ArrayList<POI>() {
+        {
+            add(new POI("hey", "yo", "what", 5, true, true));
+            add(new POI("other", "other", "what", 5, true, true));
+}};
     private static List<POI> userPOIList;
     private static List<POI> favouritePOIList;
     private static boolean isEditing;
     private static String curBuilding;
     private static String curFloor;
     private static String curPoi;
+
+    public static List<POI> getAllPOI() {
+        return allPOI;
+    }
 
     public boolean getIsAdmin() {
         return this.isAdmin;

@@ -32,7 +32,6 @@ public class POI {
 
     public String stringify() {
         JSONObject temp = new JSONObject(this);
-        System.out.println(temp);
         return temp.toString();
     }
 

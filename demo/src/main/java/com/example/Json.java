@@ -7,7 +7,7 @@ import java.util.*;
 class Json {
    public static void main(String[] args) {
       System.out.println("hello");
-
+      stringifyAllPOIData();
       /* 
       JSONObject jo = new JSONObject();
       jo.put("name", "jon doe");
@@ -49,5 +49,15 @@ class Json {
       JSONTokener tokener = new JSONTokener(is);
       JSONObject object = new JSONObject(tokener);
       System.out.println(object.toString());
+   }
+
+   private static String stringifyAllPOIData() {
+      List<POI> poiData = User.getAllPOI();
+      JSONArray tempArray = new JSONArray();
+      for (POI poi : poiData) {
+         tempArray.put(poi.stringify());
+      }
+
+      return tempArray.toString();
    }
 }

@@ -21,7 +21,7 @@ public class MapScrollPanel extends JPanel {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 for (Oval oval : ovals) {
-                    g.setColor(Color.RED);
+                    g.setColor(Color.black);
                     g.drawOval(oval.x - ovalSize / 2, oval.y - ovalSize / 2, ovalSize, ovalSize);
                 }
             }
@@ -32,20 +32,20 @@ public class MapScrollPanel extends JPanel {
         // Add a mouse listener to the image label
         imageLabel.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
+            
+            if (User.getIsCreating() == true) {
                 Point viewPosition = scrollPane.getViewport().getViewPosition();
                 int x = e.getX() + viewPosition.x;
                 int y = e.getY() + viewPosition.y;
                 ovals.add(new Oval(x, y));
                 imageLabel.repaint();
+                new CreatePOIScreen();
+            }
+        
+                
             }
         });
 
-        // Disable the ability to drag the mouse
-        imageLabel.addMouseMotionListener(new MouseAdapter() {
-            public void mouseDragged(MouseEvent e) {
-                // Do nothing
-            }
-        });
 
         // Add a listener to the scroll pane to update the oval's position when scrolling
         scrollPane.getViewport().addChangeListener(new ChangeListener() {

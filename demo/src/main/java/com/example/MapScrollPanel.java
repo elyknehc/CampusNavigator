@@ -74,5 +74,8 @@ public class MapScrollPanel extends JPanel {
         // Sets up the panel
         setLayout(new BorderLayout());
         add(scrollPane, BorderLayout.CENTER);
+
+        //Create a POI function
+        
     }
 }

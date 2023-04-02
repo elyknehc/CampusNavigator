@@ -37,6 +37,10 @@ public class CreatePOIScreen extends JFrame {
         descriptionField = new JTextField();
         add(descriptionField);
 
+        String[] buildings = {"MC", "HSB", "UC"};
+        final JComboBox<String> buildingsDropdown = new JComboBox<>(buildings);
+        add(buildingsDropdown);
+
         JLabel roomNumberLabel = new JLabel("Room Number: ");
         add(roomNumberLabel);
         roomNumberField = new JTextField();
@@ -65,6 +69,7 @@ public class CreatePOIScreen extends JFrame {
             String poiName = nameField.getText();
             String poiCategory = categoryField.getText();
             String poiDescription = descriptionField.getText();
+            String poiBuilding = buildingsDropdown.getSelectedItem().toString();
             int poiRoomNumber = Integer.parseInt(roomNumberField.getText());
             // String labelID = idLabel.getText();
             // int poiID = Integer.parseInt(labelID);
@@ -72,7 +77,7 @@ public class CreatePOIScreen extends JFrame {
             boolean poiFavorite = favoriteCheckBox.isSelected();
 
             User currentSessionData = new User();
-            POI newPOI = new POI(poiName, poiDescription, poiCategory, 1, coordinateX, coordinateY, poiRoomNumber, poiFloor, poiFavorite, !currentSessionData.getIsAdmin());
+            POI newPOI = new POI(poiName, poiDescription, poiCategory, poiBuilding, 1, coordinateX, coordinateY, poiRoomNumber, poiFloor, poiFavorite, !currentSessionData.getIsAdmin());
             User.addToAllPOI(newPOI);
         
             dispose(); // Close the frame

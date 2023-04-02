@@ -138,7 +138,7 @@ public class Main {
         }
 
         public static void setAdmin(boolean set) {
-            if (currUser.getAdmin()) {
+            if (User.getAdmin()) {
                 adminEdit.setVisible(true);
             } else {
                 adminEdit.setVisible(false);

@@ -37,11 +37,11 @@ public class User {
         allPOI.add(poi);
     }
 
-    public static boolean getIsAdmin() {
+    public static boolean getAdmin() {
         return isAdmin;
     }
 
-    public static void setIsAdmin(boolean newIsAdmin) {
+    public static void setAdmin(boolean newIsAdmin) {
         isAdmin = newIsAdmin;
     }
 

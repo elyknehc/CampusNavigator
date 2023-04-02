@@ -14,7 +14,7 @@ public class MapScrollPanel extends JPanel {
     private JScrollPane scrollPane;
 
     // public MapScrollPanel(String building, int floor) {
-        public MapScrollPanel() {
+    public MapScrollPanel() {
         String building = "HSB";
         String floor = "1";
         

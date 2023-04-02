@@ -4,7 +4,7 @@ import org.json.JSONObject;
 
 
 public class POI {
-    private String name, description, category;
+    private String name, description, category, building;
     private int ID;
     private boolean isFavourite, isUser;
     private int x, y, roomNum, floor;
@@ -13,16 +13,17 @@ public class POI {
     //LOCATION OBJECT
 
     public static void main(String[] args) {
-        POI x = new POI("hey", "yo", "what", 5, 20, 30, 31, 1, true, true);
+        POI x = new POI("hey", "yo", "what", "lol", 5, 20, 30, 31, 1, true, true);
         System.out.println(POI.toPOI(x.stringify()));
     }
     
     
 
-    public POI(String name, String description, String category, int ID, int x, int y, int roomNum, int floor, boolean isFavourite, boolean isUser) {
+    public POI(String name, String description, String category, String building, int ID, int x, int y, int roomNum, int floor, boolean isFavourite, boolean isUser) {
         this.name = name;
         this.description = description;
         this.category = category;
+        this.building = building;
         this.ID = ID;
         this.isFavourite = isFavourite;
         this.isUser = isUser;
@@ -34,8 +35,9 @@ public class POI {
 
     @Override
     public String toString() {
-        return "POI Info:\n name: " + name + "\n" + " description: " + description + "\n" + " category: " + category
-                + "\n" + " isFavourite: " + isFavourite + "\n" + " isUser: " + isUser + "\n" + " id: " + ID;
+        return "{\n name: " + name + "\n" + " description: " + description + "\n" + " category: " + category
+                + "\n" + " building: " + building + "\n" + " ID: " + ID + "\n" + " x: " + x + "\n" + " y: " + y + "\n" 
+                + " roomNum: " + roomNum + "\n" + " floor: " + floor + "\n" + " isFavourite: " + isFavourite + "\n" + " isUser: " + isUser + "\n}";
     }
 
     public String stringify() {
@@ -46,7 +48,7 @@ public class POI {
     public static POI toPOI(String json) {
         JSONObject tempJson = new JSONObject(json);
         System.out.println(tempJson.get("name"));
-        return new POI((String) tempJson.get("name"), (String) tempJson.get("description"), (String) tempJson.get("category"), (int) tempJson.get("ID"), (int) tempJson.get("x"), (int) tempJson.get("y"), (int) tempJson.get("roomNum"), (int) tempJson.get("floor"), (boolean) tempJson.get("isFavourite"), (boolean) tempJson.get("isUser"));
+        return new POI((String) tempJson.get("name"), (String) tempJson.get("description"), (String) tempJson.get("category"), (String) tempJson.get("building"), (int) tempJson.get("ID"), (int) tempJson.get("x"), (int) tempJson.get("y"), (int) tempJson.get("roomNum"), (int) tempJson.get("floor"), (boolean) tempJson.get("isFavourite"), (boolean) tempJson.get("isUser"));
     }
     
 
@@ -72,6 +74,14 @@ public class POI {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public String getBuilding() {
+        return this.building;
+    }
+
+    public void setBuilding(String building) {
+        this.building = building;
     }
 
     public int getID() {

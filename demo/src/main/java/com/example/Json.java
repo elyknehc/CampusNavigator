@@ -7,24 +7,31 @@ import java.util.*;
 
 class Json {
    public static void main(String[] args) {
-      String data = readFile();
+      /*String data = readFile();
       System.out.println(data);
       writeFile(data);
       parseJsonToLocalData(stringifyAllPOIData());
+      */
+      //readFile();
+      parseJsonToLocalData(stringifyAllPOIData());
+
    }
 
-   public static String readFile() {
+   public static void readFile() {
       String data = "";
-         try{
-            data = new String(Files.readAllBytes(Paths.get("../././POIData.json")));
-         } catch (Exception e) {
-            System.out.println("File does not exist");
-         }
-         return data;
+      try{
+         data = new String(Files.readAllBytes(Paths.get("/Users/michaelgao/group51/demo/src/main/java/com/example/POIData.json")));
+         System.out.println(data);
+      } catch (Exception e) {
+         System.out.println("File does not exist");
+      }
+      
+      parseJsonToLocalData(data);
    }
 
    public static void writeFile(String data) {
       try{
+      
          File file = new File("../././POIData.json");
  
          FileWriter fw = new FileWriter(file.getAbsoluteFile());

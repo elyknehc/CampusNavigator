@@ -50,7 +50,7 @@ public class MapScrollPanel extends JPanel {
         favourites.setSize(mapHolder.getPreferredSize());
 
         // TEST CODE
-        MapPOI pin = new MapPOI(300, 120, new POI("testPOI", "testDesrip", "test", 10));
+        MapPOI pin = new MapPOI(300, 120, new POI("testPOI", "testDesrip", "test", 1, 100, 100, 201, 2, false, false));
         classrooms.addPOItoMap(pin);
 
         // Set up container for layers and add all layers
@@ -74,5 +74,8 @@ public class MapScrollPanel extends JPanel {
         // Sets up the panel
         setLayout(new BorderLayout());
         add(scrollPane, BorderLayout.CENTER);
+
+        //Create a POI function
+        
     }
 }

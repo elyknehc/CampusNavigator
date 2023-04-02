@@ -15,10 +15,10 @@ public class mapExplorePanel extends JPanel {
 
       // create JTextField for search bar and set properties
       JLabel title = new JLabel("Map Explore Panel");
-      title.setBounds(50, 20, 340, 60);
+      title.setBounds(100, 10, 340, 60);
       title.setFont(new Font("Balsamiq", Font.PLAIN, 20));
       searchBar = new JTextField("Search");
-      searchBar.setBounds(50, 70, 200, 25);
+      searchBar.setBounds(100, 50, 200, 25);
       // Function to setup default text to dissappear or reappear
       searchBar.addFocusListener(new FocusListener() {
          public void focusGained(FocusEvent e) {
@@ -33,7 +33,7 @@ public class mapExplorePanel extends JPanel {
       
       // create search button and set properties
       JButton searchButton = new JButton();
-      searchButton.setBounds(253, 70, 22, 22);
+      searchButton.setBounds(303, 50, 22, 22);
       ImageIcon search = new ImageIcon("./images/searchButton.jpg");
       Image searchImage = search.getImage().getScaledInstance(searchButton.getWidth(), searchButton.getHeight(), Image.SCALE_SMOOTH);
         search = new ImageIcon(searchImage);
@@ -49,34 +49,43 @@ public class mapExplorePanel extends JPanel {
       // create JLabel for POI Layers subheading and set properties
       JLabel poiLabel = new JLabel("POI Layers");
       poiLabel.setFont(new Font("Arial", Font.BOLD, 16));
-      poiLabel.setBounds(50, 100, 200, 25);
+      poiLabel.setBounds(100, 75, 200, 25);
 
       // create checkboxes for POI Layers and set properties
       washrooms = new JCheckBox("Washrooms");
-      washrooms.setBounds(50, 150, 200, 25);
+      washrooms.setBounds(100, 90, 200, 25);
+      washrooms.setSelected(true);
+      washrooms.setEnabled(false);
       classrooms = new JCheckBox("Classrooms");
-      classrooms.setBounds(50, 175, 200, 25);
+      classrooms.setBounds(100, 105, 200, 25);
       genLabs = new JCheckBox("GenLabs");
-      genLabs.setBounds(50, 200, 200, 25);
+      genLabs.setBounds(100, 120, 200, 25);
       stairwells = new JCheckBox("Stairwells");
-      stairwells.setBounds(50, 225, 200, 25);
+      stairwells.setBounds(100, 135, 200, 25);
       entryExits = new JCheckBox("Entry/Exits");
-      entryExits.setBounds(50, 250, 200, 25);
+      entryExits.setBounds(100, 150, 200, 25);
       elevators = new JCheckBox("Elevators");
-      elevators.setBounds(50, 275, 200, 25);
+      elevators.setBounds(100, 175, 200, 25);
+      elevators.setSelected(true);
+      elevators.setEnabled(false);
+      
       userCreatedPOIs = new JCheckBox("User-created POIs");
-      userCreatedPOIs.setBounds(50, 300, 200, 25);
+      userCreatedPOIs.setBounds(100, 190, 200, 25);
+      
       favourites = new JCheckBox("Favourites");
-      favourites.setBounds(50, 325, 200, 25);
+      favourites.setBounds(100, 205, 200, 25);
 
       // create dropdown menu for floors and set properties
       String[] floors = {"Floor 1", "Floor 2", "Floor 3"};
+      String[] builtin = {"1","2","3","4","5"};
       JComboBox<String> floorDropdown = new JComboBox<>(floors);
-      floorDropdown.setBounds(50, 375, 200, 25);
+      floorDropdown.setBounds(100, 250, 200, 25);
+      JComboBox<String> builtinPOIDrop = new JComboBox<>(builtin);
+      builtinPOIDrop.setBounds(100, 290, 200, 25);
 
       // create JButton for adding POIs and set properties
       JButton addPOIButton = new JButton("Add POI");
-      addPOIButton.setBounds(50, 425, 200, 25);
+      addPOIButton.setBounds(100, 330, 200, 25);
 
       // add components to left panel
       add(searchBar);
@@ -91,6 +100,7 @@ public class mapExplorePanel extends JPanel {
       add(userCreatedPOIs);
       add(favourites);
       add(floorDropdown);
+      add(builtinPOIDrop);
       add(addPOIButton);
       add(title);
    }

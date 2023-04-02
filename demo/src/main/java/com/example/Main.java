@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 import java.awt.Color;
 
 public class Main {
-    public static User currUser = new User(false);
+    public static User currUser = new User();
     static JButton adminEdit;
         public static void main(String[] args) {
             new Main().createGUI();

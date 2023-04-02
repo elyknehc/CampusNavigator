@@ -16,6 +16,18 @@ public class User {
     private static String curFloor;
     private static String curPoi;
 
+// CHANGED CONSTRUCTOR -- NO BOOLEAN PARAMETER 
+    // public User(boolean adminStatus) {
+    //     this.isAdmin = adminStatus;
+    //     userPOIList = new ArrayList<POI>();
+    //     favouritePOIList = new ArrayList<POI>();
+    // }
+
+    public User() {
+        userPOIList = new ArrayList<POI>();
+        favouritePOIList = new ArrayList<POI>();
+    }
+
     public static List<POI> getAllPOI() {
         System.out.println("ok");
         return allPOI;
@@ -63,13 +75,6 @@ public class User {
 
     public void setEditing(boolean isEditing) {
         this.isEditing = isEditing;
-    }
-    
-
-    public User(boolean adminStatus) {
-        this.isAdmin = adminStatus;
-        userPOIList = new ArrayList<POI>();
-        favouritePOIList = new ArrayList<POI>();
     }
     
     public void addUserPOI(POI input) {

@@ -32,10 +32,10 @@ public class CreatePOIScreen extends JFrame {
         descriptionField = new JTextField();
         add(descriptionField);
 
-        JLabel idLabel = new JLabel("POI ID: ");
-        add(idLabel);
-        idField = new JTextField();
-        add(idField);
+        // JLabel idLabel = new JLabel("POI ID: ");
+        // add(idLabel);
+        // idField = new JTextField();
+        // add(idField);
 
         JLabel favoriteLabel = new JLabel("Favorite: ");
         add(favoriteLabel);
@@ -53,11 +53,12 @@ public class CreatePOIScreen extends JFrame {
             String poiName = nameLabel.getText();
             String poiCategory = categoryLabel.getText();
             String poiDescription = descriptionLabel.getText();
-            int poiID = Integer.parseInt(idLabel.getText());
+            // String labelID = idLabel.getText();
+            // int poiID = Integer.parseInt(labelID);
             String poiFloor = floorLabel.getText();
 
 
-            POI newPOI = new POI(poiName, poiDescription, poiCategory, poiID);
+            POI newPOI = new POI(poiName, poiDescription, poiCategory, 1);
             User.userPOIList.add(newPOI);
         
             dispose(); // Close the frame
@@ -71,9 +72,5 @@ public class CreatePOIScreen extends JFrame {
         });
         add(cancelButton);
         setVisible(true);
-    }
-
-    public static void main(String[] args) {
-        new CreatePOIScreen();
     }
 }

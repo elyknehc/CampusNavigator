@@ -7,7 +7,9 @@ import java.awt.event.ActionListener;
 import java.awt.Color;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-
+/**
+ * @authors Kevin Chau, Andy Hwang, Kyle Chen, Arsalaan Ali, Michael Gao
+ */
 public class Main {
     public static User currUser = new User();
     static JButton adminEdit;
@@ -19,7 +21,7 @@ public class Main {
 
     public void createGUI() {
 
-            String   panelBackground1 = "#a012ff";
+            String  panelBackground1 = "#a012ff";
             JPanel footerPanel = new JPanel();
             footerPanel.setBounds(0, 0, 1384, 72);
             footerPanel.setBackground(Color.decode(panelBackground1));
@@ -50,7 +52,7 @@ public class Main {
             rightContainer.setBounds(445, 71, 939, 590);
             rightContainer.setLayout(new CardLayout());
 
-            final MapSelection selection = new MapSelection();
+            final MapSelectionPanel selection = new MapSelectionPanel();
             rightContainer.add(selection);
 
             // Added scrollable

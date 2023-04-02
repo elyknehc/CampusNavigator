@@ -78,15 +78,24 @@ public class mapExplorePanel extends JPanel {
 
       // create dropdown menu for floors and set properties
       String[] floors = {"Floor 1", "Floor 2", "Floor 3"};
-      String[] builtin = {"1","2","3","4","5"};
+      String[] builtin = {"1","2","3","4","5", "6", "7", "8", "9", "10"};
+      String[] users = {"1","2","3","4","5", "6", "7", "8", "9", "10"};
       JComboBox<String> floorDropdown = new JComboBox<>(floors);
       floorDropdown.setBounds(100, 250, 200, 25);
-      JComboBox<String> builtinPOIDrop = new JComboBox<>(builtin);
-      builtinPOIDrop.setBounds(100, 290, 200, 25);
-
+      JList<String> builtinPOIDrop = new JList<>(builtin);
+      JLabel BuiltInList = new JLabel("Built-In POI's");
+      BuiltInList.setBounds(100, 280, 100, 20);
+      JScrollPane scrollPane = new JScrollPane(builtinPOIDrop);
+      scrollPane.setBounds(100, 300, 200, 75);
       // create JButton for adding POIs and set properties
       JButton addPOIButton = new JButton("Add POI");
-      addPOIButton.setBounds(100, 330, 200, 25);
+      addPOIButton.setBounds(100, 480, 200, 25);
+      JList<String> usersList = new JList<>(users);
+      JLabel usersListTitle = new JLabel("User POI");
+      usersListTitle.setBounds(100, 380, 100, 20);
+      JScrollPane userScroll = new JScrollPane(usersList);
+      userScroll.setBounds(100, 400, 200, 75);
+
 
       // add components to left panel
       add(searchBar);
@@ -101,7 +110,10 @@ public class mapExplorePanel extends JPanel {
       add(userCreatedPOIs);
       add(favourites);
       add(floorDropdown);
-      add(builtinPOIDrop);
+      add(BuiltInList);
+      add(scrollPane);
+      add(usersListTitle);
+      add(userScroll);
       add(addPOIButton);
       add(title);
    }

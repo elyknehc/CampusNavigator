@@ -15,6 +15,7 @@ public class User {
     private static String curBuilding;
     private static String curFloor;
     private static String curPoi;
+    private static boolean isCreating = true;
 
 // CHANGED CONSTRUCTOR -- NO BOOLEAN PARAMETER 
     // public User(boolean adminStatus) {
@@ -26,6 +27,14 @@ public class User {
     public User() {
         userPOIList = new ArrayList<POI>();
         favouritePOIList = new ArrayList<POI>();
+    }
+    
+    public static boolean getIsCreating() {
+        return isCreating;
+    }
+
+    public static void setCreating(boolean set) {
+        isCreating = set;
     }
 
     public static List<POI> getAllPOI() {

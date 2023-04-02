@@ -13,8 +13,8 @@ public class User {
     private static List<POI> favouritePOIList;
     private static boolean isEditing;
     private static String curBuilding;
-    private static String curFloor;
-    private static String curPoi;
+    private static int curFloor;
+    private static POI curPoi;
     private static boolean isCreating = true;
 
 // CHANGED CONSTRUCTOR -- NO BOOLEAN PARAMETER 
@@ -62,19 +62,19 @@ public class User {
         curBuilding = newCurBuilding;
     }
 
-    public static String getCurFloor() {
+    public static int getCurFloor() {
         return curFloor;
     }
 
-    public static void setCurFloor(String newCurFloor) {
+    public static void setCurFloor(int newCurFloor) {
         curFloor = newCurFloor;
     }
 
-    public static String getCurPoi() {
+    public static POI getCurPoi() {
         return curPoi;
     }
 
-    public static void setCurPoi(String newCurPoi) {
+    public static void setCurPoi(POI newCurPoi) {
         curPoi = newCurPoi;
     }
 
@@ -86,6 +86,10 @@ public class User {
         isEditing = newIsEditing;
     }
     
+    public static void addNewPOI(POI input) {
+        allPOI.add(input);
+    }
+
     public static void addUserPOI(POI input) {
         userPOIList.add(input);
     }

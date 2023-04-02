@@ -25,7 +25,6 @@ public class MapScrollPanel extends JPanel {
     private Layers userCreated;
     private Layers favourites;
     private JScrollPane scrollPane;
-    private List<Oval> ovals = new ArrayList<>();
     private int ovalSize = 20;
 
     // public MapScrollPanel(String building, int floor) {
@@ -38,9 +37,9 @@ public class MapScrollPanel extends JPanel {
         mapHolder = new JLabel() {
         protected void paintComponent(Graphics g) {
             super.paintComponent(g);
-            for (Oval oval : ovals) {
+            for (POI poi : User.getAllPOI()) {
                 g.setColor(Color.black);
-                g.drawOval(oval.x - ovalSize / 2, oval.y - ovalSize / 2, ovalSize, ovalSize);
+                g.drawOval(poi.getX() - ovalSize / 2, poi.getY() - ovalSize / 2, ovalSize, ovalSize);
             }
         }
     };
@@ -52,11 +51,12 @@ public class MapScrollPanel extends JPanel {
                 Point viewPosition = scrollPane.getViewport().getViewPosition();
                 int x = e.getX() + viewPosition.x;
                 int y = e.getY() + viewPosition.y;
-                ovals.add(new Oval(x, y));
+                POI curPOI = new POI("Name", "Description", "Category", User.getCurBuilding(), 1, x, y, 1, User.getCurFloor(), false, false);
+                User.setCurPoi(curPOI);
+                User.addNewPOI(curPOI);
                 mapHolder.repaint();
-                new CreatePOIScreen(x, y);     
-            }
-   
+                new CreatePOIScreen(x, y);
+                }
             }
         });
 

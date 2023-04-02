@@ -76,7 +76,7 @@ public class CreatePOIScreen extends JFrame {
             int poiFloor = Integer.parseInt(floorField.getText());
             boolean poiFavorite = favoriteCheckBox.isSelected();
 
-            User currentSessionData = new User();
+                User currentSessionData = new User();
             POI newPOI = new POI(poiName, poiDescription, poiCategory, poiBuilding, 1, coordinateX, coordinateY, poiRoomNumber, poiFloor, poiFavorite, !currentSessionData.getIsAdmin());
             User.addToAllPOI(newPOI);
         

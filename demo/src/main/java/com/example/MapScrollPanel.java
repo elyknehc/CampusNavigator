@@ -1,9 +1,12 @@
 package com.example;
 import java.awt.*;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
 public class MapScrollPanel extends JPanel {
-    private JLabel mapHolder;
+    private JLabel mapHolder = new JLabel();
     private Layers classrooms;
     private Layers genLabs;
     private Layers stairwells;
@@ -13,17 +16,12 @@ public class MapScrollPanel extends JPanel {
     
     private JScrollPane scrollPane;
 
-    // public MapScrollPanel(String building, int floor) {
+    private String currentMap = "";
+    private ImageIcon map;
+    private final String NOMAPSELECTED = "./images/noMapAvailable.jpg";
+
     public MapScrollPanel() {
-        String building = "HSB";
-        String floor = "1";
-        
-        // Get map and insert image into label
-        ImageIcon map = new ImageIcon("images/" + building + "-BF/" + building + "-BF-" + floor+ ".jpg");
-        mapHolder = new JLabel();
-        mapHolder.setIcon(map);
-        mapHolder.setSize(new Dimension(map.getIconWidth(), map.getIconHeight()));
-        mapHolder.setLocation(0,0);
+        loadMap();
 
         // Set Classrooms Layer  
         classrooms = new Layers();
@@ -52,6 +50,12 @@ public class MapScrollPanel extends JPanel {
         // TEST CODE
         MapPOI pin = new MapPOI(300, 120, new POI("testPOI", "testDesrip", "test", "testBuilding", 1, 100, 100, 201, 2, false, false));
         classrooms.addPOItoMap(pin);
+        if (currentMap.equals(NOMAPSELECTED)) {
+            classrooms.setVisible(false);
+        } else {
+            classrooms.setVisible(true);
+        }
+
 
         // Set up container for layers and add all layers
         JLayeredPane layersContainer = new JLayeredPane();
@@ -75,7 +79,24 @@ public class MapScrollPanel extends JPanel {
         setLayout(new BorderLayout());
         add(scrollPane, BorderLayout.CENTER);
 
-        //Create a POI function
+    }
+
+    public void loadMap() {
+        // NEED TO ADD CURRENT FLOOR
+        String currentUserSelection = "./images/" + User.getCurBuilding() + "-BF/" + User.getCurBuilding() + "-BF-" + "1" + ".jpg";
         
+        if (currentMap.equals("")) {
+            map = new ImageIcon(NOMAPSELECTED);
+            currentMap = NOMAPSELECTED;
+        } else if (!currentMap.equals(currentUserSelection) && (User.getCurBuilding() != null)){
+            map = new ImageIcon(currentUserSelection);
+            currentMap = currentUserSelection;
+        }
+
+        System.out.println(currentMap);
+        
+        mapHolder.setIcon(map);
+        mapHolder.setSize(new Dimension(map.getIconWidth(), map.getIconHeight()));
+        mapHolder.setLocation(0,0);
     }
 }

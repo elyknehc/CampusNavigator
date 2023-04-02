@@ -79,6 +79,7 @@ public class Main {
                    rightContainer.repaint();
                    rightContainer.revalidate();
                    rightContainer.add(mapScroll);
+                   mapScroll.loadMap();
                 }
             });
             footerPanel.add(mapExplore);

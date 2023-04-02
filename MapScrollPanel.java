@@ -4,14 +4,24 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.event.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MapScrollPanel extends JPanel {
     private JLabel imageLabel;
     private ImageIcon imageIcon;
     private List<Oval> ovals = new ArrayList<>();
     private int ovalSize = 20;
+    private JLabel imageLabel;
+    private ImageIcon imageIcon;
+    private List<Oval> ovals = new ArrayList<>();
+    private int ovalSize = 20;
 
     public MapScrollPanel() {
+        // Set the panel's layout to BorderLayout
         // Set the panel's layout to BorderLayout
         setLayout(new BorderLayout());
 

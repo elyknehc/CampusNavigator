@@ -11,7 +11,7 @@ public class POIInfo extends JFrame {
 	// Create a new frame and pass in a new POI object through it
     POIInfo(POI current) {
 		// Create the labels and get information from current 
-		JLabel title = new JLabel(current.getName());
+		JLabel title = new JLabel("Point of Interest Information");
 		title.setBounds(50, 20, 340, 60);
 		JLabel poiName = new JLabel("Name: Example");
 		poiName.setBounds(50, 70, 340, 60);

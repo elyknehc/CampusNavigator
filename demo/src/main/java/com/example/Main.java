@@ -28,28 +28,28 @@ public class Main {
             logoLabel.setIcon(westernLogo);
             footerPanel.add(logoLabel);
 
-            JPanel panelSwitch = new JPanel();
+            final JPanel panelSwitch = new JPanel();
             panelSwitch.setBounds(0, 73, 446, 590);
             panelSwitch.setLayout(new CardLayout());
 
-            LoginPanel first = new LoginPanel();
+            final LoginPanel first = new LoginPanel();
             first.setBackground(Color.white);
             panelSwitch.add(first);
 
-            mapExplorePanel second = new mapExplorePanel();
+            final mapExplorePanel second = new mapExplorePanel();
             second.setBackground(Color.white);
             panelSwitch.add(second);
 
             // Added a container to hold the map on the right side
-            JPanel rightContainer = new JPanel();
+            final JPanel rightContainer = new JPanel();
             rightContainer.setBounds(445, 71, 939, 590);
             rightContainer.setLayout(new CardLayout());
 
-            MapSelection selection = new MapSelection();
+            final MapSelection selection = new MapSelection();
             rightContainer.add(selection);
 
             // Added scrollable
-            MapScrollPanel mapScroll = new MapScrollPanel();
+            final MapScrollPanel mapScroll = new MapScrollPanel();
             rightContainer.add(mapScroll);
 
             JButton mapSelect = new JButton("Map Select");

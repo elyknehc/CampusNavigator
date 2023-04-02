@@ -1,8 +1,22 @@
 package com.example;
 import java.awt.*;
 import javax.swing.*;
+import javax.swing.event.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MapScrollPanel extends JPanel {
+        private static class Oval {
+        int x;
+        int y;
+
+        public Oval(int x, int y) {
+            this.x = x;
+            this.y = y;
+        }
+    }
     private JLabel mapHolder;
     private Layers classrooms;
     private Layers genLabs;
@@ -10,8 +24,9 @@ public class MapScrollPanel extends JPanel {
     private Layers entry_exits;
     private Layers userCreated;
     private Layers favourites;
-    
     private JScrollPane scrollPane;
+    private List<Oval> ovals = new ArrayList<>();
+    private int ovalSize = 20;
 
     // public MapScrollPanel(String building, int floor) {
     public MapScrollPanel() {
@@ -20,7 +35,32 @@ public class MapScrollPanel extends JPanel {
         
         // Get map and insert image into label
         ImageIcon map = new ImageIcon("images/" + building + "-BF/" + building + "-BF-" + floor+ ".jpg");
-        mapHolder = new JLabel();
+        mapHolder = new JLabel() {
+        protected void paintComponent(Graphics g) {
+            super.paintComponent(g);
+            for (Oval oval : ovals) {
+                g.setColor(Color.black);
+                g.drawOval(oval.x - ovalSize / 2, oval.y - ovalSize / 2, ovalSize, ovalSize);
+            }
+        }
+    };
+
+        mapHolder.addMouseListener(new MouseAdapter() {
+            public void mousePressed(MouseEvent e) {
+            
+            if (User.getIsCreating() == true) {
+                Point viewPosition = scrollPane.getViewport().getViewPosition();
+                int x = e.getX() + viewPosition.x;
+                int y = e.getY() + viewPosition.y;
+                ovals.add(new Oval(x, y));
+                mapHolder.repaint();
+                new CreatePOIScreen(x, y);     
+            }
+   
+            }
+        });
+
+        
         mapHolder.setIcon(map);
         mapHolder.setSize(new Dimension(map.getIconWidth(), map.getIconHeight()));
         mapHolder.setLocation(0,0);

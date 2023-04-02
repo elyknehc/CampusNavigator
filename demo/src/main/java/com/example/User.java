@@ -3,7 +3,7 @@ import java.util.*;
 
 public class User {
 
-    private boolean isAdmin;
+    private static boolean isAdmin;
     private static List<POI> allPOI = new ArrayList<POI>() {
         {
             //add(new POI("hey", "yo", "what", "lol", 5, 20, 30, 31, 1, true, true));
@@ -37,51 +37,51 @@ public class User {
         allPOI.add(poi);
     }
 
-    public boolean getIsAdmin() {
-        return this.isAdmin;
+    public static boolean getIsAdmin() {
+        return isAdmin;
     }
 
-    public void setIsAdmin(boolean isAdmin) {
-        this.isAdmin = isAdmin;
+    public static void setIsAdmin(boolean newIsAdmin) {
+        isAdmin = newIsAdmin;
     }
 
-    public String getCurBuilding() {
-        return this.curBuilding;
+    public static String getCurBuilding() {
+        return curBuilding;
     }
 
-    public void setCurBuilding(String curBuilding) {
-        this.curBuilding = curBuilding;
+    public static void setCurBuilding(String newCurBuilding) {
+        curBuilding = newCurBuilding;
     }
 
-    public String getCurFloor() {
-        return this.curFloor;
+    public static String getCurFloor() {
+        return curFloor;
     }
 
-    public void setCurFloor(String curFloor) {
-        this.curFloor = curFloor;
+    public static void setCurFloor(String newCurFloor) {
+        curFloor = newCurFloor;
     }
 
-    public String getCurPoi() {
-        return this.curPoi;
+    public static String getCurPoi() {
+        return curPoi;
     }
 
-    public void setCurPoi(String curPoi) {
-        this.curPoi = curPoi;
+    public static void setCurPoi(String newCurPoi) {
+        curPoi = newCurPoi;
     }
 
-    public boolean getEditing() {
-        return this.isEditing;
+    public static boolean getEditing() {
+        return isEditing;
     }
 
-    public void setEditing(boolean isEditing) {
-        this.isEditing = isEditing;
+    public static void setEditing(boolean newIsEditing) {
+        isEditing = newIsEditing;
     }
     
-    public void addUserPOI(POI input) {
+    public static void addUserPOI(POI input) {
         userPOIList.add(input);
     }
 
-    public void addFavouritePOI(POI input) {
+    public static void addFavouritePOI(POI input) {
         favouritePOIList.add(input);
     }
 
@@ -93,14 +93,6 @@ public class User {
     public void deletePOI(POI input) {
         userPOIList.remove(input);
         favouritePOIList.remove(input);       
-    }
-
-    public boolean getAdmin() {
-        return isAdmin;
-    }
-
-    public void setAdmin(boolean status) {
-        isAdmin = status;
     }
 
 }

@@ -5,14 +5,19 @@ import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.Color;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class Main {
     public static User currUser = new User();
     static JButton adminEdit;
-        public static void main(String[] args) {
-            new Main().createGUI();
-        }
-        public void createGUI() {
+    private JFrame main;
+
+    public static void main(String[] args) {
+        new Main().createGUI();
+    }
+
+    public void createGUI() {
 
             String   panelBackground1 = "#a012ff";
             JPanel footerPanel = new JPanel();
@@ -117,8 +122,10 @@ public class Main {
             footerPanel.add(adminEdit);
 
             // Framing
-            JFrame main = new JFrame();
-            main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            main = new JFrame();
+            FrameListener listener = new FrameListener();
+            main.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+            main.addWindowListener(listener);
             main.setTitle("Western GIS");
             main.getContentPane().setLayout(null);
             main.setResizable(false);
@@ -129,14 +136,21 @@ public class Main {
 
             main.setVisible(true);
         }
-        
-        public static void setAdmin(boolean set){
-            if(currUser.getAdmin()){
+
+        public static void setAdmin(boolean set) {
+            if (currUser.getAdmin()) {
                 adminEdit.setVisible(true);
-            }
-            else{
+            } else {
                 adminEdit.setVisible(false);
             }
         }
-    
+    private class FrameListener extends WindowAdapter {
+        public void windowClosing(WindowEvent e) {
+            System.out.println("WindowListener method called: windowClosed.");
+            main.setVisible(false);
+            System.exit(0);
+        }
+    }
+
 }
+

@@ -6,8 +6,8 @@ public class User {
     private boolean isAdmin;
     private static List<POI> allPOI = new ArrayList<POI>() {
         {
-            add(new POI("hey", "yo", "what", "lol", 5, 20, 30, 31, 1, true, true));
-            add(new POI("test", "icles", "gay", "lmao", 6, 25, 20, 39, 2, false, true));
+            //add(new POI("hey", "yo", "what", "lol", 5, 20, 30, 31, 1, true, true));
+            //add(new POI("test", "icles", "gay", "lmao", 6, 25, 20, 39, 2, false, true));
 }};
     private static List<POI> userPOIList;
     private static List<POI> favouritePOIList;

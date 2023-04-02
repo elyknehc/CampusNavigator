@@ -7,9 +7,9 @@ import java.util.*;
 
 class Json {
    public static void main(String[] args) {
-      readFile();
-      writeFile();
-      //parseJsonToLocalData(stringifyAllPOIData());
+      // readFile();
+      // writeFile();
+      parseJsonToLocalData(stringifyAllPOIData());
 
    }
 

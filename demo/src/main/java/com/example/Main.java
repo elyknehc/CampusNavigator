@@ -12,9 +12,8 @@ import java.awt.event.WindowEvent;
  * @authors Kevin Chau, Andy Hwang, Kyle Chen, Arsalaan Ali, Michael Gao
  */
 public class Main {
-    public static User currUser = new User();
     static JButton adminEdit;
-    private JFrame main;
+    private static JFrame main;
 
     public static void main(String[] args) {
         new Main().createGUI();
@@ -84,6 +83,7 @@ public class Main {
                    rightContainer.repaint();
                    rightContainer.revalidate();
                    rightContainer.add(mapScroll);
+                   mapScroll.loadMap();
                 }
             });
             footerPanel.add(mapExplore);
@@ -150,13 +150,22 @@ public class Main {
                 adminEdit.setVisible(false);
             }
         }
-    private class FrameListener extends WindowAdapter {
-        public void windowClosing(WindowEvent e) {
-            System.out.println("WindowListener method called: windowClosed.");
+
+        private class FrameListener extends WindowAdapter {
+            public void windowClosing(WindowEvent e) {
+                System.out.println("WindowListener method called: windowClosed.");
+                if (true) {
+                    new ExitWarning();
+                } else {
+                    exitProgram();
+                }
+            }
+        }
+    
+        public static void exitProgram() {
             main.setVisible(false);
             System.exit(0);
         }
-    }
-
+    
 }
 

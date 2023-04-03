@@ -4,17 +4,14 @@ import java.util.*;
 public class User {
 
     private static boolean isAdmin;
-    private static List<POI> allPOI = new ArrayList<POI>() {
-        {
-            //add(new POI("hey", "yo", "what", "lol", 5, 20, 30, 31, 1, true, true));
-            //add(new POI("test", "icles", "gay", "lmao", 6, 25, 20, 39, 2, false, true));
-}};
-    private static List<POI> userPOIList;
-    private static List<POI> favouritePOIList;
+    private static List<POI> allPOI = new ArrayList<POI>();
+    private static List<POI> userPOIList = new ArrayList<POI>();
+    private static List<POI> favouritePOIList = new ArrayList<POI>();
     private static boolean isEditing;
     private static String curBuilding;
-    private static String curFloor;
-    private static String curPoi;
+    private static int curFloor;
+    private static POI curPoi;
+    private static boolean isCreating = true;
 
 // CHANGED CONSTRUCTOR -- NO BOOLEAN PARAMETER 
     // public User(boolean adminStatus) {
@@ -27,9 +24,16 @@ public class User {
         userPOIList = new ArrayList<POI>();
         favouritePOIList = new ArrayList<POI>();
     }
+    
+    public static boolean getIsCreating() {
+        return isCreating;
+    }
+
+    public static void setCreating(boolean set) {
+        isCreating = set;
+    }
 
     public static List<POI> getAllPOI() {
-        System.out.println("ok");
         return allPOI;
     }
 
@@ -53,19 +57,19 @@ public class User {
         curBuilding = newCurBuilding;
     }
 
-    public static String getCurFloor() {
+    public static int getCurFloor() {
         return curFloor;
     }
 
-    public static void setCurFloor(String newCurFloor) {
+    public static void setCurFloor(int newCurFloor) {
         curFloor = newCurFloor;
     }
 
-    public static String getCurPoi() {
+    public static POI getCurPoi() {
         return curPoi;
     }
 
-    public static void setCurPoi(String newCurPoi) {
+    public static void setCurPoi(POI newCurPoi) {
         curPoi = newCurPoi;
     }
 
@@ -76,9 +80,17 @@ public class User {
     public static void setEditing(boolean newIsEditing) {
         isEditing = newIsEditing;
     }
-    
+
+    public static List<POI> getUserPOI() {
+        return userPOIList;
+    }
+
     public static void addUserPOI(POI input) {
         userPOIList.add(input);
+    }
+
+    public static List<POI> getFavouritePOI() {
+        return favouritePOIList;
     }
 
     public static void addFavouritePOI(POI input) {
@@ -90,9 +102,28 @@ public class User {
     }
     */
 
-    public void deletePOI(POI input) {
-        userPOIList.remove(input);
-        favouritePOIList.remove(input);       
+    public static void deleteUserPOI(POI input) {
+        try {
+            userPOIList.remove(input);
+        } catch (NullPointerException e) {
+            ;
+        }   
+    }
+
+    public static void deleteFavouritePOI(POI input) {
+        try {
+            favouritePOIList.remove(input);
+        } catch (NullPointerException e) {
+            ;
+        }
+    }
+
+    public static void deleteDefaultPOI(POI input) {
+        try {
+            allPOI.remove(input);
+        } catch (NullPointerException e) {
+            ;
+        }
     }
 
 }

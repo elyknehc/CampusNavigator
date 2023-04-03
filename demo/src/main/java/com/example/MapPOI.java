@@ -6,10 +6,12 @@ import javax.swing.JLabel;
 
 public class MapPOI extends JLabel {
     POI poiData;
-    static ImageIcon pin = new ImageIcon("images/locationPin.png");
+    final static ImageIcon normalPin = new ImageIcon("images/locationPinNormal.png");
+    final static ImageIcon highlightPin = new ImageIcon("images/locationPinHighlight.png");
+
     public MapPOI(POI poiObject) {
         // Set image 
-        setIcon(pin);
+        setIcon(normalPin);
         setSize(this.getPreferredSize());
         setLocation(poiObject.getX(), poiObject.getY());
 
@@ -18,7 +20,9 @@ public class MapPOI extends JLabel {
         addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
                 System.out.println("image clicked");
+                setIcon(highlightPin);
                 new POIInfo(poiData);
+                
             }
         });
     }

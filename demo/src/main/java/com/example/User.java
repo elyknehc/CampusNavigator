@@ -4,11 +4,7 @@ import java.util.*;
 public class User {
 
     private static boolean isAdmin;
-    private static List<POI> allPOI = new ArrayList<POI>() {
-        {
-            //add(new POI("hey", "yo", "what", "lol", 5, 20, 30, 31, 1, true, true));
-            //add(new POI("test", "icles", "gay", "lmao", 6, 25, 20, 39, 2, false, true));
-}};
+    private static List<POI> allPOI = new ArrayList<POI>();
     private static List<POI> userPOIList = new ArrayList<POI>();
     private static List<POI> favouritePOIList = new ArrayList<POI>();
     private static boolean isEditing;
@@ -38,7 +34,6 @@ public class User {
     }
 
     public static List<POI> getAllPOI() {
-        System.out.println("ok");
         return allPOI;
     }
 

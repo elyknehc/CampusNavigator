@@ -6,18 +6,11 @@ import java.nio.file.*;
 import java.util.*;
 
 class Json {
-   public static void main(String[] args) {
-      readFile();
-      writeFile();
-      // parseJsonToLocalData(stringifyAllPOIData());
-
-   }
 
    public static void readFile() {
       String data = "";
       try{
          data = new String(Files.readAllBytes(Paths.get("./demo/src/main/java/com/example/POIData.json")));
-         System.out.println(data);
          parseJsonToLocalData(data);
       } catch (Exception e) {
          System.out.println("File does not exist");
@@ -56,6 +49,5 @@ class Json {
          POI poi = POI.toPOI(cur);
          User.addToAllPOI(poi);
       }
-      System.out.println(User.getAllPOI());
    }
 }

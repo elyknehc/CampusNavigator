@@ -12,13 +12,6 @@ public class POI {
 
     //LOCATION OBJECT
 
-    public static void main(String[] args) {
-        POI x = new POI("hey", "yo", "what", "lol", 5, 20, 30, 31, 1, true, true);
-        System.out.println(POI.toPOI(x.stringify()));
-    }
-    
-    
-
     public POI(String name, String description, String category, String building, int ID, int x, int y, int roomNum, int floor, boolean isFavourite, boolean isUser) {
         this.name = name;
         this.description = description;
@@ -42,14 +35,11 @@ public class POI {
 
     public String stringify() {
         JSONObject temp = new JSONObject(this);
-        System.out.println("LOL");
-        System.out.println(temp);
         return temp.toString();
     }
 
     public static POI toPOI(String json) {
         JSONObject tempJson = new JSONObject(json);
-        System.out.println(tempJson.get("name"));
         return new POI((String) tempJson.get("name"), (String) tempJson.get("description"), (String) tempJson.get("category"), (String) tempJson.get("building"), (int) tempJson.get("ID"), (int) tempJson.get("x"), (int) tempJson.get("y"), (int) tempJson.get("roomNum"), (int) tempJson.get("floor"), (boolean) tempJson.get("isFavourite"), (boolean) tempJson.get("isUser"));
     }
     

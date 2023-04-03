@@ -4,8 +4,13 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.*;
-
+/**
+ * This class is responsible for allowing a user to select which map they want to be displayed.
+ * @author Kyle Chen, Andy Hwang
+ */
 public class MapSelection extends JPanel {
+
+    //Initialize variables for buttons
     final String MIDDLESEX = "MC";
     final String HEALTHSCIENCE = "HSB";
     final String UCOLLEGE = "UC";
@@ -50,6 +55,7 @@ public class MapSelection extends JPanel {
     }
 
     private void setButtonColors() {
+        //Change button colors on click
         if (User.getCurBuilding().equals(MIDDLESEX)) {
             middlesexButton.setBackground(Color.BLACK);
             middlesexButton.setForeground(Color.WHITE);

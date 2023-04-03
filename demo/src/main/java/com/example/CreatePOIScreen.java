@@ -12,12 +12,14 @@ public class CreatePOIScreen extends JFrame {
     private JTextField idField;
     private JCheckBox favoriteCheckBox;
     private JTextField floorField;
+    private boolean invalid = false;
+    private JLabel unfinished;
 
     public CreatePOIScreen(int x, int y) {
         setTitle("CreatePOIScreen");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLayout(new GridLayout(7, 2));
-        setSize(400, 250);
+        setSize(400, 350);
 
         final int coordinateX = x;
         final int coordinateY = y;
@@ -25,6 +27,7 @@ public class CreatePOIScreen extends JFrame {
         JLabel nameLabel = new JLabel("Name of POI: ");
         add(nameLabel);
         nameField = new JTextField();
+        nameField.setSize(50, 20);
         add(nameField);
 
         JLabel categoryLabel = new JLabel("Category: ");
@@ -38,8 +41,6 @@ public class CreatePOIScreen extends JFrame {
         add(descriptionField);
 
         String[] buildings = {"MC", "HSB", "UC"};
-        final JComboBox<String> buildingsDropdown = new JComboBox<>(buildings);
-        add(buildingsDropdown);
 
         JLabel roomNumberLabel = new JLabel("Room Number: ");
         add(roomNumberLabel);
@@ -61,37 +62,51 @@ public class CreatePOIScreen extends JFrame {
         floorField = new JTextField();
         add(floorField);
 
+        unfinished = new JLabel("Invalid Response");
+        unfinished.setForeground(Color.RED);
+
         JButton submitButton = new JButton("Submit");
         submitButton.addActionListener(new ActionListener() {
             
             public void actionPerformed(ActionEvent e) {
-                            // Save the information here
-            String poiName = nameField.getText();
-            String poiCategory = categoryField.getText();
-            String poiDescription = descriptionField.getText();
-            String poiBuilding = buildingsDropdown.getSelectedItem().toString();
-            int poiRoomNumber = Integer.parseInt(roomNumberField.getText());
-            // String labelID = idLabel.getText();
-            // int poiID = Integer.parseInt(labelID);
-            int poiFloor = Integer.parseInt(floorField.getText());
-            boolean poiFavorite = favoriteCheckBox.isSelected();
+                // Save the information here
+            try{
+                String poiName = nameField.getText();
+                String poiCategory = categoryField.getText();
+                String poiDescription = descriptionField.getText();
+                String poiBuilding = User.getCurBuilding();
+                    int poiRoomNumber = Integer.parseInt(roomNumberField.getText());
+                    int poiFloor = User.getCurFloor();
+                // String labelID = idLabel.getText();
+                // int poiID = Integer.parseInt(labelID);
+                boolean poiFavorite = favoriteCheckBox.isSelected();
+                
+                    if (poiName.length() == 0 || poiCategory.length() == 0 || poiDescription.length() == 0
+                            || poiDescription.length() == 0) {
+                        invalid = true;
+                        add(unfinished);
+                        repaint();
+                        return;
+                }
 
-            User currentSessionData = new User();
-            POI newPOI = new POI(poiName, poiDescription, poiCategory, poiBuilding, 1, coordinateX, coordinateY, poiRoomNumber, poiFloor, poiFavorite, !currentSessionData.getAdmin());
-            User.addToAllPOI(newPOI);
-            POI changeCurrentPOI = User.getCurPoi();
-            changeCurrentPOI.setName(poiName);
-            changeCurrentPOI.setCategory(poiCategory);
-            changeCurrentPOI.setBuilding(poiBuilding);
-            changeCurrentPOI.setDescription(poiDescription);
-            changeCurrentPOI.setRoomNum(poiRoomNumber);
-            changeCurrentPOI.setFloor(poiFloor);
-            changeCurrentPOI.setIsFavourite(poiFavorite);
+                POI changeCurrentPOI = User.getCurPoi();
+                changeCurrentPOI.setName(poiName);
+                changeCurrentPOI.setCategory(poiCategory);
+                changeCurrentPOI.setBuilding(poiBuilding);
+                changeCurrentPOI.setDescription(poiDescription);
+                changeCurrentPOI.setRoomNum(poiRoomNumber);
+                changeCurrentPOI.setFloor(poiFloor);
+                changeCurrentPOI.setIsFavourite(poiFavorite);
+            
+                dispose(); // Close the frame
+            }
+                catch (Exception exp) {
+                    System.out.println(exp);
+                    invalid = true;
+                    add(unfinished);
+                    repaint();
 
-            // POI newPOI = new POI(poiName, poiDescription, poiCategory, poiBuilding, 1, coordinateX, coordinateY, poiRoomNumber, poiFloor, poiFavorite, User.getAdmin());
-            // User.addToAllPOI(newPOI);
-        
-            dispose(); // Close the frame
+            }
             }
 
         });

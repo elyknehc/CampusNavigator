@@ -20,10 +20,6 @@ public class User {
     //     favouritePOIList = new ArrayList<POI>();
     // }
 
-    public User() {
-        userPOIList = new ArrayList<POI>();
-        favouritePOIList = new ArrayList<POI>();
-    }
     
     public static boolean getIsCreating() {
         return isCreating;
@@ -39,6 +35,7 @@ public class User {
 
     public static void addToAllPOI(POI poi) {
         allPOI.add(poi);
+        MapScrollPanel.repaintMapPOI();
     }
 
     public static boolean getAdmin() {

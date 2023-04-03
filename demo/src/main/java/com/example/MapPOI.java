@@ -7,11 +7,11 @@ import javax.swing.JLabel;
 public class MapPOI extends JLabel {
     POI poiData;
     static ImageIcon pin = new ImageIcon("images/locationPin.png");
-    public MapPOI(int x, int y, POI poiObject) {
+    public MapPOI(POI poiObject) {
         // Set image 
         setIcon(pin);
         setSize(this.getPreferredSize());
-        setLocation(x, y);
+        setLocation(poiObject.getX(), poiObject.getY());
 
         poiData = poiObject;
 

@@ -76,11 +76,9 @@ public class CreatePOIScreen extends JFrame {
             int poiFloor = Integer.parseInt(floorField.getText());
             boolean poiFavorite = favoriteCheckBox.isSelected();
 
-<<<<<<< HEAD
             User currentSessionData = new User();
             POI newPOI = new POI(poiName, poiDescription, poiCategory, poiBuilding, 1, coordinateX, coordinateY, poiRoomNumber, poiFloor, poiFavorite, !currentSessionData.getAdmin());
             User.addToAllPOI(newPOI);
-=======
             POI changeCurrentPOI = User.getCurPoi();
             changeCurrentPOI.setName(poiName);
             changeCurrentPOI.setCategory(poiCategory);
@@ -92,7 +90,6 @@ public class CreatePOIScreen extends JFrame {
 
             // POI newPOI = new POI(poiName, poiDescription, poiCategory, poiBuilding, 1, coordinateX, coordinateY, poiRoomNumber, poiFloor, poiFavorite, User.getAdmin());
             // User.addToAllPOI(newPOI);
->>>>>>> bb9d6fcfe4230bcad975e04d48e3ef806529b96d
         
             dispose(); // Close the frame
             }

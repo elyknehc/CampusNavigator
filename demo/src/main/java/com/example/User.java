@@ -9,8 +9,8 @@ public class User {
             //add(new POI("hey", "yo", "what", "lol", 5, 20, 30, 31, 1, true, true));
             //add(new POI("test", "icles", "gay", "lmao", 6, 25, 20, 39, 2, false, true));
 }};
-    private static List<POI> userPOIList;
-    private static List<POI> favouritePOIList;
+    private static List<POI> userPOIList = new ArrayList<POI>();
+    private static List<POI> favouritePOIList = new ArrayList<POI>();
     private static boolean isEditing;
     private static String curBuilding;
     private static int curFloor;
@@ -107,16 +107,28 @@ public class User {
     }
     */
 
-    public void deleteUserPOI(POI input) {
-        userPOIList.remove(input);   
+    public static void deleteUserPOI(POI input) {
+        try {
+            userPOIList.remove(input);
+        } catch (NullPointerException e) {
+            ;
+        }   
     }
 
-    public void deleteFavouritePOI(POI input) {
-        favouritePOIList.remove(input);
+    public static void deleteFavouritePOI(POI input) {
+        try {
+            favouritePOIList.remove(input);
+        } catch (NullPointerException e) {
+            ;
+        }
     }
 
-    public void deleteDefaultPOI(POI input) {
-        allPOI.remove(input);
+    public static void deleteDefaultPOI(POI input) {
+        try {
+            allPOI.remove(input);
+        } catch (NullPointerException e) {
+            ;
+        }
     }
 
 }

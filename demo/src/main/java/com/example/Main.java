@@ -8,6 +8,7 @@ import java.awt.Color;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 /**
+ * This class serves as our main driver that contains the main frame where everything will be working off of
  * @authors Kevin Chau, Andy Hwang, Kyle Chen, Arsalaan Ali, Michael Gao
  */
 public class Main {
@@ -35,6 +36,8 @@ public class Main {
             logoLabel.setIcon(westernLogo);
             footerPanel.add(logoLabel);
 
+            final WeatherPanel weather = new WeatherPanel();
+
             final JPanel panelSwitch = new JPanel();
             panelSwitch.setBounds(0, 73, 446, 590);
             panelSwitch.setLayout(new CardLayout());
@@ -52,7 +55,7 @@ public class Main {
             rightContainer.setBounds(445, 71, 939, 590);
             rightContainer.setLayout(new CardLayout());
 
-            final MapSelectionPanel selection = new MapSelectionPanel();
+            final MapSelection selection = new MapSelection();
             rightContainer.add(selection);
 
             // Added scrollable
@@ -123,6 +126,7 @@ public class Main {
             });
             footerPanel.add(adminEdit);
 
+
             // Framing
             main = new JFrame();
             FrameListener listener = new FrameListener();
@@ -132,10 +136,10 @@ public class Main {
             main.getContentPane().setLayout(null);
             main.setResizable(false);
             main.setSize(1400, 700);
+            main.getContentPane().add(weather);
             main.getContentPane().add(panelSwitch);
             main.getContentPane().add(footerPanel);
             main.getContentPane().add(rightContainer);
-
             main.setVisible(true);
         }
 

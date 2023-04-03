@@ -5,6 +5,9 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
+/**
+ * @author Kevin Chau
+ */
 
 public class AboutScreen extends JFrame {
     AboutScreen(){
@@ -22,7 +25,7 @@ public class AboutScreen extends JFrame {
         JLabel Andy = new JLabel("Andy Hwang");
         JLabel Michael = new JLabel("Michael Gao");
         JLabel Arsalaan = new JLabel("Arsalaan Ali");
-        JLabel questions = new JLabel("Questions? Contact: jane.doe@email.com");
+        JLabel questions = new JLabel("Questions? Contact: kchau57@uwo.ca");
         version.setFont(new Font("Balsamiq", Font.PLAIN, 20));
         version.setBounds(30, 110, 400, 50);
         date.setFont(new Font("Balsamiq", Font.PLAIN, 20));

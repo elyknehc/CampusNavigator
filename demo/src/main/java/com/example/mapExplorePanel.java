@@ -16,8 +16,8 @@ public class mapExplorePanel extends JPanel {
 
       // create JTextField for search bar and set properties
       JLabel title = new JLabel("Map Explore Panel");
-      title.setBounds(100, 10, 340, 60);
-      title.setFont(new Font("Balsamiq", Font.PLAIN, 20));
+      title.setBounds(75, 5, 340, 60);
+      title.setFont(new Font("Balsamiq", Font.PLAIN, 32));
       searchBar = new JTextField("Search");
       searchBar.setBounds(100, 50, 200, 25);
       // Function to setup default text to dissappear or reappear
@@ -46,7 +46,7 @@ public class mapExplorePanel extends JPanel {
             System.out.println("Search text: " + searchText);
         }
     });
-      
+
       // create JLabel for POI Layers subheading and set properties
       JLabel poiLabel = new JLabel("POI Layers");
       poiLabel.setFont(new Font("Arial", Font.BOLD, 16));
@@ -54,48 +54,42 @@ public class mapExplorePanel extends JPanel {
 
       // create checkboxes for POI Layers and set properties
       washrooms = new JCheckBox("Washrooms");
-      washrooms.setBounds(100, 90, 200, 25);
-      washrooms.setSelected(true);
-      washrooms.setEnabled(false);
       classrooms = new JCheckBox("Classrooms");
-      classrooms.setBounds(100, 105, 200, 25);
       genLabs = new JCheckBox("GenLabs");
-      genLabs.setBounds(100, 120, 200, 25);
       stairwells = new JCheckBox("Stairwells");
-      stairwells.setBounds(100, 135, 200, 25);
       entryExits = new JCheckBox("Entry/Exits");
-      entryExits.setBounds(100, 150, 200, 25);
       elevators = new JCheckBox("Elevators");
-      elevators.setBounds(100, 175, 200, 25);
-      elevators.setSelected(true);
-      elevators.setEnabled(false);
-      
       userCreatedPOIs = new JCheckBox("User-created POIs");
-      userCreatedPOIs.setBounds(100, 190, 200, 25);
-      
       favourites = new JCheckBox("Favourites");
-      favourites.setBounds(100, 205, 200, 25);
-
+    
+      washrooms.setBounds(100, 100, 200, 20);
+      classrooms.setBounds(100, 120, 200, 20);
+      genLabs.setBounds(100, 140, 200, 20);
+      stairwells.setBounds(100, 160, 200, 20);
+      entryExits.setBounds(100, 180, 200, 20);
+      elevators.setBounds(100, 200, 200, 20);
+      userCreatedPOIs.setBounds(100, 220, 200, 20);
+      favourites.setBounds(100, 240, 200, 20);
+      
       // create dropdown menu for floors and set properties
       String[] floors = {"Floor 1", "Floor 2", "Floor 3"};
       String[] builtin = {"1","2","3","4","5", "6", "7", "8", "9", "10"};
       String[] users = {"1","2","3","4","5", "6", "7", "8", "9", "10"};
       JComboBox<String> floorDropdown = new JComboBox<>(floors);
-      floorDropdown.setBounds(100, 250, 200, 25);
       JList<String> builtinPOIDrop = new JList<>(builtin);
       JLabel BuiltInList = new JLabel("Built-In POI's");
-      BuiltInList.setBounds(100, 280, 100, 20);
       JScrollPane scrollPane = new JScrollPane(builtinPOIDrop);
-      scrollPane.setBounds(100, 300, 200, 75);
       // create JButton for adding POIs and set properties
       JButton addPOIButton = new JButton("Add POI");
-      addPOIButton.setBounds(100, 480, 200, 25);
       JList<String> usersList = new JList<>(users);
       JLabel usersListTitle = new JLabel("User POI");
-      usersListTitle.setBounds(100, 380, 100, 20);
       JScrollPane userScroll = new JScrollPane(usersList);
-      userScroll.setBounds(100, 400, 200, 75);
 
+      BuiltInList.setBounds(100, 280, 200, 20);
+      scrollPane.setBounds(100, 300, 200, 60);
+      usersListTitle.setBounds(100, 360, 200, 20);
+      userScroll.setBounds(100, 380, 200, 60);
+      addPOIButton.setBounds(100, 460, 200, 20);
 
       // add components to left panel
       add(searchBar);
@@ -117,7 +111,6 @@ public class mapExplorePanel extends JPanel {
       add(addPOIButton);
       add(title);
    }
-
     private boolean[] getFilterValeus() {
         boolean[] filterValues = {washrooms.isSelected(), classrooms.isSelected(), genLabs.isSelected(), stairwells.isSelected(), entryExits.isSelected(), elevators.isSelected(), userCreatedPOIs.isSelected(), favourites.isSelected()};
         return filterValues;

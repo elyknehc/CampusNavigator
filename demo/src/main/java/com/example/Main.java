@@ -42,8 +42,8 @@ public class Main {
             panelSwitch.setLayout(new CardLayout());
 
             final LoginPanel first = new LoginPanel();
-            first.setBackground(Color.white);
             panelSwitch.add(first);
+        
 
             final mapExplorePanel second = new mapExplorePanel();
             second.setBackground(Color.white);
@@ -91,10 +91,7 @@ public class Main {
             JButton poiCreate = new JButton("Create POI");
             poiCreate.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
-                    panelSwitch.removeAll();
-                    panelSwitch.add(second);
-                    panelSwitch.repaint();
-                    panelSwitch.revalidate();
+                    new CreatePOIScreen(0, 0);
                 }
             });
             footerPanel.add(poiCreate);

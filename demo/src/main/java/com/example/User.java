@@ -85,13 +85,17 @@ public class User {
     public static void setEditing(boolean newIsEditing) {
         isEditing = newIsEditing;
     }
-    
-    public static void addNewPOI(POI input) {
-        allPOI.add(input);
+
+    public static List<POI> getUserPOI() {
+        return userPOIList;
     }
 
     public static void addUserPOI(POI input) {
         userPOIList.add(input);
+    }
+
+    public static List<POI> getFavouritePOI() {
+        return favouritePOIList;
     }
 
     public static void addFavouritePOI(POI input) {
@@ -103,9 +107,16 @@ public class User {
     }
     */
 
-    public void deletePOI(POI input) {
-        userPOIList.remove(input);
-        favouritePOIList.remove(input);       
+    public void deleteUserPOI(POI input) {
+        userPOIList.remove(input);   
+    }
+
+    public void deleteFavouritePOI(POI input) {
+        favouritePOIList.remove(input);
+    }
+
+    public void deleteDefaultPOI(POI input) {
+        allPOI.remove(input);
     }
 
 }

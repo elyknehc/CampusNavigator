@@ -16,6 +16,7 @@ public class Main {
     private static JFrame main;
 
     public static void main(String[] args) {
+        Json.readFile();
         new Main().createGUI();
     }
 
@@ -122,7 +123,6 @@ public class Main {
                 }
             });
             footerPanel.add(adminEdit);
-
 
             // Framing
             main = new JFrame();

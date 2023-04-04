@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.util.*;
 
 public class mapExplorePanel extends JPanel {
    JTextField searchBar;
@@ -61,6 +62,23 @@ public class mapExplorePanel extends JPanel {
       elevators = new JCheckBox("Elevators");
       userCreatedPOIs = new JCheckBox("User-created POIs");
       favourites = new JCheckBox("Favourites");
+
+      ActionListener CheckBoxListener = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            sendFilterValues();
+        }
+    };
+
+      washrooms.addActionListener(CheckBoxListener);
+      classrooms.addActionListener(CheckBoxListener);
+      genLabs.addActionListener(CheckBoxListener);
+      stairwells.addActionListener(CheckBoxListener);
+      entryExits.addActionListener(CheckBoxListener);
+      elevators.addActionListener(CheckBoxListener);
+      userCreatedPOIs.addActionListener(CheckBoxListener);
+      favourites.addActionListener(CheckBoxListener);
+
     
       washrooms.setBounds(100, 100, 200, 20);
       classrooms.setBounds(100, 120, 200, 20);
@@ -111,8 +129,36 @@ public class mapExplorePanel extends JPanel {
       add(addPOIButton);
       add(title);
    }
-    private boolean[] getFilterValeus() {
-        boolean[] filterValues = {washrooms.isSelected(), classrooms.isSelected(), genLabs.isSelected(), stairwells.isSelected(), entryExits.isSelected(), elevators.isSelected(), userCreatedPOIs.isSelected(), favourites.isSelected()};
-        return filterValues;
+
+   private void sendFilterValues() {
+        ArrayList<String> temp = new ArrayList<String>();
+        boolean[] filterValues = { washrooms.isSelected(), classrooms.isSelected(), genLabs.isSelected(),
+                stairwells.isSelected(), entryExits.isSelected(), elevators.isSelected(), userCreatedPOIs.isSelected(),
+                favourites.isSelected() };
+        if (washrooms.isSelected()) {
+            temp.add("washroom");
+        }
+        if (classrooms.isSelected()) {
+            temp.add("classrooms");
+        }
+        if (genLabs.isSelected()) {
+            temp.add("genLabs");
+        }
+        if (stairwells.isSelected()) {
+            temp.add("stairwells");
+        }
+        if (entryExits.isSelected()) {
+            temp.add("entryExits");
+        }
+        if (elevators.isSelected()) {
+            temp.add("elevators");
+        }
+        if (userCreatedPOIs.isSelected()) {
+            temp.add("userCreatedPOIs");
+        }
+        if (favourites.isSelected()) {
+            temp.add("favourites");
+        }
+        User.addFilters(temp);
     }
 }

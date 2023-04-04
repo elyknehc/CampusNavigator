@@ -40,8 +40,6 @@ public class CreatePOIScreen extends JFrame {
         descriptionField = new JTextField();
         add(descriptionField);
 
-        String[] buildings = {"MC", "HSB", "UC"};
-
         JLabel roomNumberLabel = new JLabel("Room Number: ");
         add(roomNumberLabel);
         roomNumberField = new JTextField();
@@ -57,10 +55,6 @@ public class CreatePOIScreen extends JFrame {
         favoriteCheckBox = new JCheckBox();
         add(favoriteCheckBox);
 
-        JLabel floorLabel = new JLabel("Floor Number: ");
-        add(floorLabel);
-        floorField = new JTextField();
-        add(floorField);
 
         unfinished = new JLabel("Invalid Response");
         unfinished.setForeground(Color.RED);
@@ -104,6 +98,7 @@ public class CreatePOIScreen extends JFrame {
                     System.out.println(exp);
                     invalid = true;
                     add(unfinished);
+                    revalidate();
                     repaint();
 
             }
@@ -116,11 +111,11 @@ public class CreatePOIScreen extends JFrame {
         cancelButton.addActionListener(new ActionListener() {
             
             public void actionPerformed(ActionEvent e) {
-            //User.setCancel(true);
             dispose(); // Close the frame
             }
         });
         add(cancelButton);
         setVisible(true);
+        setResizable(false);
     }
 }

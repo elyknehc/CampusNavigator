@@ -13,8 +13,10 @@ public class POIInfo extends JFrame{
 
 	// Create a new frame and pass in a new POI object through it
     POIInfo(POI current) {
+
 		final POI curr = current;
-		// Create the labels and get information from current 
+
+		// Create the labels and fill in information about current POI
 		JLabel title = new JLabel("Point of Interest Information");
 		title.setBounds(70, 20, 400, 60);
 		JLabel poiName = new JLabel("Name: " + curr.getName());
@@ -36,11 +38,13 @@ public class POIInfo extends JFrame{
 		JButton edit = new JButton("Edit");
 		edit.setBounds(220, 392, 100, 30);
 
+		// For the admin side if they are an admin
 		if (User.getAdmin() == false) {
 			adminEdit.setVisible(false);
 			edit.setVisible(false);
 		}
 
+		// Lets
 		favouriteToggle.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {

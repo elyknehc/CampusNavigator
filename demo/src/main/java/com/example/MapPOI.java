@@ -22,9 +22,12 @@ public class MapPOI extends JLabel {
                 System.out.println("image clicked");
                 setIcon(highlightPin);
                 new POIInfo(poiData);
-                
+            }
+            public void mouseExited(MouseEvent e) {
+                setIcon(normalPin);
             }
         });
+
     }
     
 }

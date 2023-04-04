@@ -75,7 +75,7 @@ public class MapScrollPanel extends JPanel {
                     POI curPOI = new POI("Name", "Description", "Category", User.getCurBuilding(), 1, x, y, 1,
                             User.getCurFloor(), false, false);
                     User.setCurPoi(curPOI);
-                    User.addUserPOI(curPOI);
+                   // User.addUserPOI(curPOI);
                     User.addToAllPOI(curPOI);
                     scrollPane.repaint();
                     new CreatePOIScreen(x, y);

@@ -76,7 +76,7 @@ public class MapScrollPanel extends JPanel {
                     User.setCurPoi(curPOI);
                     User.addToAllPOI(curPOI);
                     scrollPane.repaint();
-                    new CreatePOIScreen(x, y);
+                    new CreatePOIScreen(x, y, curPOI);
                 }
             }
         });
@@ -84,6 +84,7 @@ public class MapScrollPanel extends JPanel {
     }
     
     public static void repaintMapPOI() {
+        poiLayer.removeAllPOI();
         for (POI poi : User.getFilteredPOI()) {
             MapPOI tempPin = new MapPOI(poi);
             poiLayer.addPOItoMap(tempPin);

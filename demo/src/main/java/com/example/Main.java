@@ -18,7 +18,6 @@ public class Main {
     public static void main(String[] args) {
         Json.readFile();
         new Main().createGUI();
-        System.out.println(User.getAllPOI());
     }
 
     public void createGUI() {
@@ -44,7 +43,7 @@ public class Main {
 
             final LoginPanel first = new LoginPanel();
             panelSwitch.add(first);
-        
+
 
             final mapExplorePanel second = new mapExplorePanel();
             second.setBackground(Color.white);
@@ -80,11 +79,11 @@ public class Main {
                     panelSwitch.add(second);
                     panelSwitch.repaint();
                     panelSwitch.revalidate();
-                   rightContainer.removeAll();
-                   rightContainer.repaint();
-                   rightContainer.revalidate();
-                   rightContainer.add(mapScroll);
-                   mapScroll.loadMap();
+                    rightContainer.removeAll();
+                    rightContainer.repaint();
+                    rightContainer.revalidate();
+                    rightContainer.add(mapScroll);
+                    mapScroll.loadMap();
                 }
             });
             footerPanel.add(mapExplore);
@@ -116,6 +115,8 @@ public class Main {
             });
             footerPanel.add(adminEdit);
 
+            User.initialize();
+
             // Framing
             main = new JFrame();
             FrameListener listener = new FrameListener();
@@ -130,6 +131,8 @@ public class Main {
             main.getContentPane().add(footerPanel);
             main.getContentPane().add(rightContainer);
             main.setVisible(true);
+
+            MapScrollPanel.repaintMapPOI();
         }
 
         public static void setAdmin(boolean set) {

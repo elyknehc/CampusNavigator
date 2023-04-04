@@ -22,7 +22,7 @@ public class POIInfo extends JFrame {
 		poiName.setBounds(70, 70, 400, 60);
 		JLabel building = new JLabel("Building: " + curr.getBuilding());
 		building.setBounds(70, 120, 400, 60);
-		JLabel type = new JLabel("Type: " + curr.getDescription());
+		JLabel type = new JLabel("Type: " + curr.getCategory());
 		type.setBounds(70, 170, 400, 60);
 		JLabel description = new JLabel("Description: " + curr.getDescription());
 		description.setBounds(70, 220, 400, 60);

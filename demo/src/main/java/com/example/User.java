@@ -1,6 +1,8 @@
 package com.example;
 import java.util.*;
 
+import javax.swing.plaf.metal.MetalFileChooserUI.FilterComboBoxRenderer;
+
 public class User {
 
     private static boolean isAdmin;
@@ -20,28 +22,45 @@ public class User {
     // }
 
     
-    public static List<POI> getFilteredPOI() {
+    public static void initialize() {
+        filteredCategories.add("washrooms");
+        filteredCategories.add("elevators");
         
-        if (filteredCategories.size() == 0) {
-            return allPOI;
+    }
+    
+    public static List<POI> getFilteredPOI() {
+        System.out.println("Filter Size " + filteredCategories.size());
+        List<POI> temp = new ArrayList<POI>();
+        if (filteredCategories.size() <= 2) {
+            for (POI poi : allPOI) {
+                if (poi.getBuilding().equals(User.getCurBuilding()) || poi.getFloor() == User.getCurFloor()) {
+                    temp.add(poi);
+                }
+            }
+            if (User.getCurPoi() != null) {
+                temp.add(User.getCurPoi());
+            }
+            return temp;
         }
 
-        List<POI> temp = new ArrayList<POI>();
         for (POI poi : allPOI) {
+            // System.out.println(poi.getBuilding() + " " + poi.getFloor() + " " + poi.getCategory());
             if (poi.getBuilding().equals(User.getCurBuilding()) || poi.getFloor() == User.getCurFloor()) {
                 if (filteredCategories.contains(poi.getCategory())) {
                     temp.add(poi);
                 }
             }
         }
-        System.out.println(temp.toString());
+        if (User.getCurPoi() != null) {
+            temp.add(User.getCurPoi());
+        }
         return temp;
     }
 
     public static void addFilters(List<String> categories) {
         for (String category : categories) {
             if (!filteredCategories.contains(category)) {
-                filteredCategories.add(category);      
+                filteredCategories.add(category);
             }
         }
         MapScrollPanel.repaintMapPOI();
@@ -49,10 +68,9 @@ public class User {
 
     public static void removeFilters(List<String> categories) {
         for (String category : categories) {
-            try{
-                filteredCategories.remove(category);    
-            }
-            catch(Exception e){
+            try {
+                filteredCategories.remove(category);
+            } catch (Exception e) {
                 ;
             }
         }
@@ -74,6 +92,15 @@ public class User {
     public static void addToAllPOI(POI poi) {
         allPOI.add(poi);
         MapScrollPanel.repaintMapPOI();
+    }
+
+    public static void removeFromAllPOI(POI poi) {
+        try {
+            allPOI.remove(poi);
+            MapScrollPanel.repaintMapPOI();
+        } catch (Exception e) {
+            ;
+        }
     }
 
     public static boolean getAdmin() {

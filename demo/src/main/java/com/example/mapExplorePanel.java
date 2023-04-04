@@ -62,6 +62,9 @@ public class mapExplorePanel extends JPanel {
       stairwells = new JCheckBox("Stairwells");
       entryExits = new JCheckBox("Entry/Exits");
       elevators = new JCheckBox("Elevators");
+      restaurants = new JCheckBox("Restaurants");
+      computerLabs = new JCheckBox("Computer Labs");
+      collabRooms = new JCheckBox("Collaboration Rooms");
       elevators.setEnabled(false);
      elevators.setSelected(true);
       userCreatedPOIs = new JCheckBox("User-created POIs");
@@ -82,9 +85,10 @@ public class mapExplorePanel extends JPanel {
       elevators.addActionListener(CheckBoxListener);
       userCreatedPOIs.addActionListener(CheckBoxListener);
       favourites.addActionListener(CheckBoxListener);
-      restaurants = new JCheckBox("Restaurants");
-      computerLabs = new JCheckBox("Computer Labs");
-      collabRooms = new JCheckBox("Collaboration Rooms");//HERE
+      restaurants.addActionListener(CheckBoxListener);
+      computerLabs.addActionListener(CheckBoxListener);
+      collabRooms.addActionListener(CheckBoxListener);
+
 
     
       washrooms.setBounds(100, 100, 200, 20);
@@ -125,34 +129,75 @@ public class mapExplorePanel extends JPanel {
    }
 
    private void sendFilterValues() {
-        ArrayList<String> temp = new ArrayList<String>();
-        boolean[] filterValues = { washrooms.isSelected(), classrooms.isSelected(), genLabs.isSelected(),
-                stairwells.isSelected(), entryExits.isSelected(), elevators.isSelected(), userCreatedPOIs.isSelected(),
-                favourites.isSelected() };
+        ArrayList<String> tempAdd = new ArrayList<String>();
+        ArrayList<String> tempRem = new ArrayList<String>();
         if (washrooms.isSelected()) {
-            temp.add("washroom");
+            tempAdd.add("washrooms");
+        }
+        else {
+            tempRem.add("washrooms");
         }
         if (classrooms.isSelected()) {
-            temp.add("classrooms");
+            tempAdd.add("classrooms");
+        }
+        else {
+            tempRem.add("classrooms");
         }
         if (genLabs.isSelected()) {
-            temp.add("genLabs");
+            tempAdd.add("genLabs");
+        }
+        else {
+            tempRem.add("genLabs");
         }
         if (stairwells.isSelected()) {
-            temp.add("stairwells");
+            tempAdd.add("stairwells");
+        }
+        else {
+            tempRem.add("stairwells");
         }
         if (entryExits.isSelected()) {
-            temp.add("entryExits");
+            tempAdd.add("entryExits");
+        }
+        else {
+            tempRem.add("entryExits");
         }
         if (elevators.isSelected()) {
-            temp.add("elevators");
+            tempAdd.add("elevators");
+        }
+        else {
+            tempRem.add("elevators");
+        }
+        if (restaurants.isSelected()) {
+            tempAdd.add("restaurants");
+        }
+        else {
+            tempRem.add("restaurants");
+        }
+        if (computerLabs.isSelected()) {
+            tempAdd.add("computerLabs");
+        }
+        else {
+            tempRem.add("computerLabs");
+        }
+        if (collabRooms.isSelected()) {
+            tempAdd.add("collabRooms");
+        }
+        else {
+            tempRem.add("collabRooms");
         }
         if (userCreatedPOIs.isSelected()) {
-            temp.add("userCreatedPOIs");
+            tempAdd.add("userCreatedPOIs");
+        }
+        else {
+            tempRem.add("userCreatedPOIs");
         }
         if (favourites.isSelected()) {
-            temp.add("favourites");
+            tempAdd.add("favourites");
         }
-        User.addFilters(temp);
+        else {
+            tempRem.add("favourites");
+        }
+        User.addFilters(tempAdd);
+        User.removeFilters(tempRem);
     }
 }

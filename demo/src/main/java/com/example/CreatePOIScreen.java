@@ -14,8 +14,9 @@ public class CreatePOIScreen extends JFrame {
     private JTextField floorField;
     private boolean invalid = false;
     private JLabel unfinished;
+    private POI currentPOI;
 
-    public CreatePOIScreen(int x, int y) {
+    public CreatePOIScreen(int x, int y, POI curPOI) {
         setTitle("CreatePOIScreen");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLayout(new GridLayout(7, 2));
@@ -23,6 +24,7 @@ public class CreatePOIScreen extends JFrame {
 
         final int coordinateX = x;
         final int coordinateY = y;
+        currentPOI = curPOI;
 
         JLabel nameLabel = new JLabel("Name of POI: ");
         add(nameLabel);
@@ -91,6 +93,9 @@ public class CreatePOIScreen extends JFrame {
                 changeCurrentPOI.setRoomNum(poiRoomNumber);
                 changeCurrentPOI.setFloor(poiFloor);
                 changeCurrentPOI.setIsFavourite(poiFavorite);
+                
+                User.setCurPoi(null);
+                MapScrollPanel.repaintMapPOI();
             
                 dispose(); // Close the frame
             }
@@ -111,7 +116,9 @@ public class CreatePOIScreen extends JFrame {
         cancelButton.addActionListener(new ActionListener() {
             
             public void actionPerformed(ActionEvent e) {
-            dispose(); // Close the frame
+                User.removeFromAllPOI(currentPOI);
+                User.setCurPoi(null);
+                dispose(); // Close the frame
             }
         });
         add(cancelButton);

@@ -10,6 +10,7 @@ public class Layers extends JLabel {
 
     public void addPOItoMap(MapPOI newPOI) {
         add(newPOI);
+        repaint();
     }
 
     public void removePOIFromMap(MapPOI newPOI) {
@@ -18,5 +19,6 @@ public class Layers extends JLabel {
 
     public void removeAllPOI() {
         removeAll();
+        repaint();
     } 
 }

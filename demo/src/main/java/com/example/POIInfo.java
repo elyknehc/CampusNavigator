@@ -1,5 +1,7 @@
 package com.example;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,8 +11,7 @@ import javax.swing.*;
  * @authors Kevin Chau
  */
 
-public class POIInfo extends JFrame{
-
+public class POIInfo extends JFrame {
 	// Create a new frame and pass in a new POI object through it
     POIInfo(POI current) {
 

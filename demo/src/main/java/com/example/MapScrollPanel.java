@@ -8,16 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MapScrollPanel extends JPanel {
-        private static class Oval {
-        int x;
-        int y;
-
-        public Oval(int x, int y) {
-            this.x = x;
-            this.y = y;
-        }
-    }
-
     private JLabel mapHolder;
     private static Layers poiLayer;
     private JScrollPane scrollPane;
@@ -45,6 +35,15 @@ public class MapScrollPanel extends JPanel {
 
         poiLayer = new Layers();
         poiLayer.setSize(mapHolder.getPreferredSize());
+
+
+        // TEST CODE
+        User.addToAllPOI(new POI("testPOI", "testDescrip", "test", "MC", 1, 100, 100, 201, 1, false, false));
+        for (POI poi : User.getFilteredPOI()) {
+            MapPOI tempPin = new MapPOI(poi);
+            poiLayer.addPOItoMap(tempPin);
+        }
+
 
 
         // Set up container for layers and add all layers
@@ -75,7 +74,6 @@ public class MapScrollPanel extends JPanel {
                     POI curPOI = new POI("Name", "Description", "Category", User.getCurBuilding(), 1, x, y, 1,
                             User.getCurFloor(), false, false);
                     User.setCurPoi(curPOI);
-                   // User.addUserPOI(curPOI);
                     User.addToAllPOI(curPOI);
                     scrollPane.repaint();
                     new CreatePOIScreen(x, y);
@@ -86,7 +84,7 @@ public class MapScrollPanel extends JPanel {
     }
     
     public static void repaintMapPOI() {
-        for (POI poi : User.getAllPOI()) {
+        for (POI poi : User.getFilteredPOI()) {
             MapPOI tempPin = new MapPOI(poi);
             poiLayer.addPOItoMap(tempPin);
         }

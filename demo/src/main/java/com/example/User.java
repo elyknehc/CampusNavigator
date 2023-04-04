@@ -5,15 +5,14 @@ public class User {
 
     private static boolean isAdmin;
     private static List<POI> allPOI = new ArrayList<POI>();
-    private static List<POI> userPOIList = new ArrayList<POI>();
-    private static List<POI> favouritePOIList = new ArrayList<POI>();
+    private static List<String> filteredCategories = new ArrayList<String>();
     private static boolean isEditing;
     private static String curBuilding;
     private static int curFloor;
     private static POI curPoi;
     private static boolean isCreating = true;
 
-// CHANGED CONSTRUCTOR -- NO BOOLEAN PARAMETER 
+    // CHANGED CONSTRUCTOR -- NO BOOLEAN PARAMETER 
     // public User(boolean adminStatus) {
     //     this.isAdmin = adminStatus;
     //     userPOIList = new ArrayList<POI>();
@@ -21,6 +20,45 @@ public class User {
     // }
 
     
+    public static List<POI> getFilteredPOI() {
+        
+        if (filteredCategories.size() == 0) {
+            return allPOI;
+        }
+
+        List<POI> temp = new ArrayList<POI>();
+        for (POI poi : allPOI) {
+            if (poi.getBuilding().equals(User.getCurBuilding()) || poi.getFloor() == User.getCurFloor()) {
+                if (filteredCategories.contains(poi.getCategory())) {
+                    temp.add(poi);
+                }
+            }
+        }
+        System.out.println(temp.toString());
+        return temp;
+    }
+
+    public static void addFilters(List<String> categories) {
+        for (String category : categories) {
+            if (!filteredCategories.contains(category)) {
+                filteredCategories.add(category);      
+            }
+        }
+        MapScrollPanel.repaintMapPOI();
+    }
+
+    public static void removeFilters(List<String> categories) {
+        for (String category : categories) {
+            try{
+                filteredCategories.remove(category);    
+            }
+            catch(Exception e){
+                ;
+            }
+        }
+        MapScrollPanel.repaintMapPOI();
+    }
+
     public static boolean getIsCreating() {
         return isCreating;
     }
@@ -77,44 +115,11 @@ public class User {
     public static void setEditing(boolean newIsEditing) {
         isEditing = newIsEditing;
     }
-/* 
-    public static List<POI> getUserPOI() {
-        return userPOIList;
-    }
-
-    public static void addUserPOI(POI input) {
-        userPOIList.add(input);
-    }
-
-    public static List<POI> getFavouritePOI() {
-        return favouritePOIList;
-    }
-
-    public static void addFavouritePOI(POI input) {
-        favouritePOIList.add(input);
-    }*/
 
     // ASK GROUP LATER --> isn't this similar to POI.java toString() method?
     /*public void viewPOIInfo() {
     }
     */
-/* 
-    public static void deleteUserPOI(POI input) {
-        try {
-            userPOIList.remove(input);
-        } catch (NullPointerException e) {
-            ;
-        }   
-    }
-
-    public static void deleteFavouritePOI(POI input) {
-        try {
-            favouritePOIList.remove(input);
-        } catch (NullPointerException e) {
-            ;
-        }
-    }
-*/
     public static void deleteDefaultPOI(POI input) {
         try {
             allPOI.remove(input);

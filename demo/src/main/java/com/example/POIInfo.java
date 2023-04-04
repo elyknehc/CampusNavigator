@@ -17,6 +17,7 @@ public class POIInfo extends JFrame {
 	// Create a new frame and pass in a new POI object through it
 	POIInfo(POI current) {
 
+		final JCheckBox favoriteCheckBox = new JCheckBox();
 		final POI curr = current;
 		// Create the labels and fill in information about current POI
 		final JLabel title = new JLabel("Point of Interest Information");
@@ -27,7 +28,9 @@ public class POIInfo extends JFrame {
 		building.setBounds(70, 120, 400, 60);
 		final JLabel category = new JLabel("category: " + curr.getCategory());
 		category.setBounds(70, 170, 400, 60);
-		final JLabel description = new JLabel("Description: " + curr.getDescription());
+		final JTextArea description = new JTextArea("Description: " + curr.getDescription());
+		description.setLineWrap(true);
+		description.setEditable(false);
 		description.setBounds(70, 220, 400, 60);
 		final JLabel floor = new JLabel("Floor: " + curr.getFloor());
 		floor.setBounds(70, 270, 400, 60);
@@ -79,6 +82,10 @@ public class POIInfo extends JFrame {
 				final JTextField descriptionField = new JTextField(curr.getDescription());
 				descriptionLabel.setBounds(20, 140, 80, 20);
 				descriptionField.setBounds(100, 140, 200, 20);
+
+				JLabel favoriteLabel = new JLabel("Favorite:");
+				favoriteLabel.setBounds(20, 160, 80, 20);
+				favoriteCheckBox.setBounds(90, 160, 200, 20);
 		
 				// Add labels and text fields to the frame
 				editFrame.add(nameLabel);
@@ -89,6 +96,10 @@ public class POIInfo extends JFrame {
 				editFrame.add(categoryComboBox);
 				editFrame.add(descriptionLabel);
 				editFrame.add(descriptionField);
+				editFrame.add(favoriteCheckBox);
+				editFrame.add(favoriteLabel);
+		
+				
 		
 				// Create a save button to save the edited information
 				JButton saveButton = new JButton("Save");
@@ -97,10 +108,18 @@ public class POIInfo extends JFrame {
 				saveButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						// Save the edited information to the POI object
+
+						if (favoriteCheckBox.isSelected()) {
+							curr.setIsFavourite(true);
+						}
+						else {
 						curr.setName(nameField.getText());
 						curr.setBuilding(buildingField.getText());
 						curr.setCategory((String) categoryComboBox.getSelectedItem());
 						curr.setDescription(descriptionField.getText());
+						curr.setIsFavourite(false);
+						}
+						
 	
 						// Update the GUI labels with the edited information
 						poiName.setText("Name: " + curr.getName());
@@ -108,6 +127,7 @@ public class POIInfo extends JFrame {
 						category.setText("Category: " + curr.getCategory());
 						description.setText("Description: " + curr.getDescription());
 						floor.setText("Floor: " + curr.getFloor());
+						favourite.setText("Favorite: " + curr.getIsFavourite());
 						
 						User.addToAllPOI(curr);
 						// Close the edit frame
@@ -117,7 +137,7 @@ public class POIInfo extends JFrame {
 		
 				// Add the save button to the frame
 				editFrame.add(saveButton);
-		
+			
 				// Set the layout and visibility of the edit frame
 				editFrame.setLayout(null);
 				editFrame.setVisible(true);

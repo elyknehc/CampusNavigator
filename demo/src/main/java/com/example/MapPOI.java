@@ -21,7 +21,7 @@ public class MapPOI extends JLabel {
         //Sets the location of the POI
         setIcon(normalPin);
         setSize(this.getPreferredSize());
-        setLocation(poiObject.getX(), poiObject.getY());
+        setLocation(poiObject.getX() - normalPin.getIconWidth()/2, poiObject.getY() - normalPin.getIconHeight());
 
         poiData = poiObject;
         //Adds a mouse listener for the POI to be clickable

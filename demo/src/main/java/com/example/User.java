@@ -37,7 +37,8 @@ public class User {
         List<POI> temp = new ArrayList<POI>();
         if (filteredCategories.size() <= 2) {
             for (POI poi : allPOI) {
-                if (poi.getBuilding().equals(User.getCurBuilding()) || poi.getFloor() == User.getCurFloor()) {
+                System.out.println(poi.getFloor() + " FLOOR " + User.getCurFloor());
+                if (poi.getBuilding().equals(User.getCurBuilding()) && poi.getFloor() == User.getCurFloor()) {
                     temp.add(poi);
                 }
             }
@@ -48,8 +49,8 @@ public class User {
         }
 
         for (POI poi : allPOI) {
-            // System.out.println(poi.getBuilding() + " " + poi.getFloor() + " " + poi.getCategory());
-            if (poi.getBuilding().equals(User.getCurBuilding()) || poi.getFloor() == User.getCurFloor()) {
+            System.out.println(poi.getFloor() + " FLOOR " + User.getCurFloor());
+            if (poi.getBuilding().equals(User.getCurBuilding()) && poi.getFloor() == User.getCurFloor()) {
                 if (filteredCategories.contains(poi.getCategory())) {
                     temp.add(poi);
                 }
@@ -62,6 +63,7 @@ public class User {
     }
 
     public static void addFilters(List<String> categories) {
+        System.out.println("add");
         for (String category : categories) {
             if (!filteredCategories.contains(category)) {
                 filteredCategories.add(category);
@@ -71,6 +73,7 @@ public class User {
     }
 
     public static void removeFilters(List<String> categories) {
+        System.out.println("remove");
         for (String category : categories) {
             try {
                 filteredCategories.remove(category);

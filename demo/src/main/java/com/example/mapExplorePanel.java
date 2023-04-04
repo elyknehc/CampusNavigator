@@ -115,6 +115,31 @@ public class mapExplorePanel extends JPanel {
      elevators.setSelected(true);
       userCreatedPOIs = new JCheckBox("User-created POIs");
       favourites = new JCheckBox("Favourites");
+
+
+    ActionListener CheckBoxListener = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            sendFilterValues();
+        }
+    };
+
+      washrooms.addActionListener(CheckBoxListener);
+      classrooms.addActionListener(CheckBoxListener);
+      genLabs.addActionListener(CheckBoxListener);
+      stairwells.addActionListener(CheckBoxListener);
+      entryExits.addActionListener(CheckBoxListener);
+      elevators.addActionListener(CheckBoxListener);
+      userCreatedPOIs.addActionListener(CheckBoxListener);
+      favourites.addActionListener(CheckBoxListener);
+      restaurants = new JCheckBox("Restaurants");
+      computerLabs = new JCheckBox("Computer Labs");
+      collabRooms = new JCheckBox("Collaboration Rooms");//HERE
+      restaurants.addActionListener(CheckBoxListener);
+      computerLabs.addActionListener(CheckBoxListener);
+      collabRooms.addActionListener(CheckBoxListener);
+
+
     
       washrooms.setBounds(100, 310, 200, 20);
       classrooms.setBounds(100, 330, 200, 20);
@@ -304,6 +329,7 @@ public class mapExplorePanel extends JPanel {
 
                 loadFloors();
                 MapScrollPanel.loadMapSelectedPOI();
+                MapScrollPanel.repaintMapPOI();
             }
         });
 

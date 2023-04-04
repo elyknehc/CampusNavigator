@@ -80,14 +80,14 @@ public class Main {
                     panelSwitch.add(second);
                     panelSwitch.repaint();
                     panelSwitch.revalidate();
-                   rightContainer.removeAll();
-                   rightContainer.repaint();
-                   rightContainer.revalidate();
-                   rightContainer.add(mapScroll);
-                   MapScrollPanel.loadMap();
-                   mapExplorePanel.loadFloors();
-                   mapExplorePanel.updateCurrentPOI();
-                   MapScrollPanel.repaintMapPOI();
+                    rightContainer.removeAll();
+                    rightContainer.repaint();
+                    rightContainer.revalidate();
+                    rightContainer.add(mapScroll);
+                    MapScrollPanel.loadMap();
+                    mapExplorePanel.loadFloors();
+                    mapExplorePanel.updateCurrentPOI();
+                    MapScrollPanel.repaintMapPOI();
                 }
             });
             footerPanel.add(mapExplore);

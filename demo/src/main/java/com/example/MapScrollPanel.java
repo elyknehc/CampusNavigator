@@ -79,7 +79,7 @@ public class MapScrollPanel extends JPanel {
         scrollPane.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
 
-                if (User.getIsCreating() == true) {
+                User.setCreating(true);
                     Point viewPosition = scrollPane.getViewport().getViewPosition();
                     int x = e.getX() + viewPosition.x;
                     int y = e.getY() + viewPosition.y;
@@ -89,7 +89,6 @@ public class MapScrollPanel extends JPanel {
                     User.addToAllPOI(curPOI);
                     scrollPane.repaint();
                     new CreatePOIScreen(x, y, curPOI);
-                }
             }
         });
 

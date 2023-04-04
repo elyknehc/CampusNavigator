@@ -120,6 +120,7 @@ public class CreatePOIScreen extends JFrame {
                 
                 User.setCurPoi(null);
                 MapScrollPanel.repaintMapPOI();
+                User.setCreating(false);
             
                 dispose(); // Close the frame
             }
@@ -142,6 +143,8 @@ public class CreatePOIScreen extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 User.removeFromAllPOI(currentPOI);
                 User.setCurPoi(null);
+                MapScrollPanel.repaintMapPOI();
+                User.setCreating(false);
                 dispose(); // Close the frame
             }
         });

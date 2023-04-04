@@ -16,7 +16,7 @@ public class User {
     private static String curBuilding;
     private static int curFloor;
     private static POI curPoi;
-    private static boolean isCreating = true;
+    private static boolean isCreating;
 
     // CHANGED CONSTRUCTOR -- NO BOOLEAN PARAMETER 
     // public User(boolean adminStatus) {

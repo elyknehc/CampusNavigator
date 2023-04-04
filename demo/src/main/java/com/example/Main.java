@@ -147,7 +147,7 @@ public class Main {
         private class FrameListener extends WindowAdapter {
             public void windowClosing(WindowEvent e) {
                 System.out.println("WindowListener method called: windowClosed.");
-                if (true) {
+                if (User.getIsCreating()) {
                     new ExitWarning();
                 } else {
                     exitProgram();

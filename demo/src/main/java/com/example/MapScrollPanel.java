@@ -14,13 +14,6 @@ import java.util.List;
 
 
 public class MapScrollPanel extends JPanel {
-
-        public Oval(int x, int y) {
-            this.x = x;
-            this.y = y;
-        }
-    }
-
     private static JLabel mapHolder;
     private static Layers poiLayer;
     private JScrollPane scrollPane;
@@ -37,17 +30,7 @@ public class MapScrollPanel extends JPanel {
      * Constructor for Map Scroll panel. Sets up the image
      */
     public MapScrollPanel() {
-        mapHolder = new JLabel() {
-            // protected void paintComponent(Graphics g) {
-            //     super.paintComponent(g);
-            //     for (POI poi : User.getAllPOI()) {
-            //         g.setColor(Color.black);
-            //         g.drawOval(poi.getX() - kylesSmallDick / 2, poi.getY() - kylesSmallDick / 2, kylesSmallDick, kylesSmallDick);
-            //     }
-            // }
-        };
-
-        
+        mapHolder = new JLabel();
         loadMap();
 
         poiLayer = new Layers();
@@ -105,7 +88,7 @@ public class MapScrollPanel extends JPanel {
         }
     }
 
-    public void loadMap() {
+    public static void loadMap() {
         // NEED TO ADD CURRENT FLOOR
         String currentUserSelection = "./images/" + User.getCurBuilding() + "-BF/" + User.getCurBuilding() + "-BF-" + Integer.toString(User.getCurFloor()) + ".jpg";
         

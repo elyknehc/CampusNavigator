@@ -6,12 +6,12 @@ import java.awt.event.ActionListener;
 
 public class CreatePOIScreen extends JFrame {
     private JTextField nameField;
-    private JTextField categoryField;
     private JTextField descriptionField;
     private JTextField roomNumberField;
     private JTextField idField;
     private JCheckBox favoriteCheckBox;
     private JTextField floorField;
+    private JComboBox<String> categoryComboBox;
     private boolean invalid = false;
     private JLabel unfinished;
 
@@ -31,9 +31,11 @@ public class CreatePOIScreen extends JFrame {
         add(nameField);
 
         JLabel categoryLabel = new JLabel("Category: ");
+        String[] categories = {"washrooms", "classrooms", "genLabs", "sports", "entryExits", "elevators", "userCreatedPOIs", "favourites", "restaurants", "computerLabs", "collabRooms"};
+        categoryComboBox = new JComboBox<>(categories);
         add(categoryLabel);
-        categoryField = new JTextField();
-        add(categoryField);
+        add(categoryComboBox);
+
 
         JLabel descriptionLabel = new JLabel("Description: ");
         add(descriptionLabel);
@@ -66,16 +68,17 @@ public class CreatePOIScreen extends JFrame {
                 // Save the information here
             try{
                 String poiName = nameField.getText();
-                String poiCategory = categoryField.getText();
                 String poiDescription = descriptionField.getText();
                 String poiBuilding = User.getCurBuilding();
-                    int poiRoomNumber = Integer.parseInt(roomNumberField.getText());
-                    int poiFloor = User.getCurFloor();
+                int poiRoomNumber = Integer.parseInt(roomNumberField.getText());
+                int poiFloor = User.getCurFloor();
+                String poiCategory = (String) categoryComboBox.getSelectedItem();
+
                 // String labelID = idLabel.getText();
                 // int poiID = Integer.parseInt(labelID);
                 boolean poiFavorite = favoriteCheckBox.isSelected();
                 
-                    if (poiName.length() == 0 || poiCategory.length() == 0 || poiDescription.length() == 0
+                    if (poiName.length() == 0 || poiDescription.length() == 0
                             || poiDescription.length() == 0) {
                         invalid = true;
                         add(unfinished);
@@ -85,12 +88,12 @@ public class CreatePOIScreen extends JFrame {
 
                 POI changeCurrentPOI = User.getCurPoi();
                 changeCurrentPOI.setName(poiName);
-                changeCurrentPOI.setCategory(poiCategory);
                 changeCurrentPOI.setBuilding(poiBuilding);
                 changeCurrentPOI.setDescription(poiDescription);
                 changeCurrentPOI.setRoomNum(poiRoomNumber);
                 changeCurrentPOI.setFloor(poiFloor);
                 changeCurrentPOI.setIsFavourite(poiFavorite);
+                changeCurrentPOI.setCategory(poiCategory);
             
                 dispose(); // Close the frame
             }

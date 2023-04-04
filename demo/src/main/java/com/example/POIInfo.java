@@ -3,8 +3,6 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.Color;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.*;
 /**
  * This class is responsible for showing information aout the current POI and offering admins to chance to edit them
@@ -24,7 +22,7 @@ public class POIInfo extends JFrame {
 		poiName.setBounds(70, 70, 400, 60);
 		JLabel building = new JLabel("Building: " + curr.getBuilding());
 		building.setBounds(70, 120, 400, 60);
-		JLabel type = new JLabel("Type: " + curr.getDescription());
+		JLabel type = new JLabel("Type: " + curr.getCategory());
 		type.setBounds(70, 170, 400, 60);
 		JLabel description = new JLabel("Description: " + curr.getDescription());
 		description.setBounds(70, 220, 400, 60);
@@ -32,8 +30,6 @@ public class POIInfo extends JFrame {
 		floor.setBounds(70, 270, 400, 60);
 		JLabel favourite = new JLabel("Favourite: " + curr.getIsFavourite());
 		favourite.setBounds(70, 320, 200, 60);
-		JToggleButton favouriteToggle = new JToggleButton("Favourite");
-		favouriteToggle.setBounds(220, 340, 100, 30);
 		JLabel adminEdit = new JLabel("Admin Edit");
 		adminEdit.setBounds(70, 390, 150, 30);
 		JButton edit = new JButton("Edit");
@@ -45,13 +41,6 @@ public class POIInfo extends JFrame {
 			edit.setVisible(false);
 		}
 
-		// Lets
-		favouriteToggle.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				curr.setIsFavourite(true);
-			}
-		});
 
 		// Set the font for each label
 		title.setFont(new Font("Balsamiq", Font.PLAIN, 20));
@@ -77,7 +66,6 @@ public class POIInfo extends JFrame {
 		this.add(description);
 		this.add(floor);
 		this.add(favourite);
-		this.add(favouriteToggle);
 		this.add(adminEdit);
 		this.add(edit);
 		this.setVisible(true);

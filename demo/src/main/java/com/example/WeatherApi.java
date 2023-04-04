@@ -8,12 +8,6 @@ import org.json.*;
 public class WeatherApi {
     private static String weatherApiURL = "https://api.open-meteo.com/v1/forecast?latitude=43.0083&longitude=-81.27&current_weather=true&timeformat=unixtime&timezone=auto";
 
-    // public static void main(String[] args) throws Exception {
-    //     float[] weather = getWeather();
-    //     System.out.println(weather[0]);
-    //     System.out.println(translateWeatherCode(weather[1]));
-    // }
-
     public static float[] getWeather() {
         float[] weatherReturn = new float[2];
         try {

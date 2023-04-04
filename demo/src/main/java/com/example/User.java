@@ -27,7 +27,7 @@ public class User {
     }
     
     /**
-     * Class that retireves the list of category filters
+     * Class that retrieves the list of POIs that matches with the filter restrictions
      */
     public static List<POI> getFilteredPOI() {
         List<POI> temp = new ArrayList<POI>();
@@ -70,7 +70,7 @@ public class User {
     }
 
     /**
-     * Method adds a new filter to check for into the list
+     * Method adds a new filter to check for into the list and updates the GUI
      * @param categories new updated list of filters
      */
     public static void addFilters(List<String> categories) {
@@ -83,7 +83,7 @@ public class User {
     }
 
     /**
-     * Method removes a filter to check for from the list
+     * Method removes a filter to check for from the list and updates the GUI
      * @param categoties new updated list of filters
      */
     public static void removeFilters(List<String> categories) {

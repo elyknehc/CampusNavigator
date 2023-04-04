@@ -34,18 +34,18 @@ public class mapExplorePanel extends JPanel {
    static JScrollPane allCurrentScroll;
 
    // Initializing for Favourite POI scrollpane
-   final DefaultListModel<POI> favouritePOIs = new DefaultListModel<POI>();
-   ArrayList<POI> favouritePOIPulled;
-   JList<POI> favouriteList;
-   JLabel favouriteListTitle;
-   JScrollPane favouriteScroll;
+   final static DefaultListModel<POI> favouritePOIs = new DefaultListModel<POI>();
+   static ArrayList<POI> favouritePOIPulled;
+   static JList<POI> favouriteList;
+   static JLabel favouriteListTitle;
+   static JScrollPane favouriteScroll;
 
    // Initializing for User POI Scrollpane
-   final DefaultListModel<POI> users = new DefaultListModel<POI>();
-   ArrayList<POI> userPOIPulled;
-   JList<POI> userList;
-   JLabel userListTitle;
-   JScrollPane userScroll;
+   final static DefaultListModel<POI> users = new DefaultListModel<POI>();
+   static ArrayList<POI> userPOIPulled;
+   static JList<POI> userList;
+   static JLabel userListTitle;
+   static JScrollPane userScroll;
 
    public mapExplorePanel() {
       // create JPanel for left panel and set properties
@@ -247,7 +247,7 @@ public class mapExplorePanel extends JPanel {
 }
 
 
-private void updateUserPOI() {
+public static void updateUserPOI() {
     userPOIPulled = (ArrayList<POI>) User.getAllPOI();
     users.clear();
     for (int i = 0; i < userPOIPulled.size(); i++ ) {
@@ -283,7 +283,7 @@ private void updateUserPOI() {
 }
 
 
-private void updateFavouritePOI() {
+public static void updateFavouritePOI() {
     favouritePOIPulled = (ArrayList<POI>) User.getAllPOI();
     favouritePOIs.clear();
     for (int i = 0; i < favouritePOIPulled.size(); i++ ) {

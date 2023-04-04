@@ -87,6 +87,8 @@ public class Main {
                     MapScrollPanel.loadMap();
                     mapExplorePanel.loadFloors();
                     mapExplorePanel.updateCurrentPOI();
+                    mapExplorePanel.updateFavouritePOI();
+                    mapExplorePanel.updateUserPOI();
                     MapScrollPanel.repaintMapPOI();
                 }
             });

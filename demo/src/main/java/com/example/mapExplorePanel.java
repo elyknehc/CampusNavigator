@@ -28,11 +28,11 @@ public class mapExplorePanel extends JPanel {
    ArrayList<POI> allPOI = new ArrayList<POI>();
 
    // Initializing for Current Map POI scrollpane
-   final DefaultListModel<POI> allCurrentPOI = new DefaultListModel<POI>();
-   ArrayList<POI> filteredPOI;
-   JList<POI> allCurrentPOIList;
-   JLabel allCurrentPOITitle;
-   JScrollPane allCurrentScroll;
+   final static DefaultListModel<POI> allCurrentPOI = new DefaultListModel<POI>();
+   static ArrayList<POI> filteredPOI;
+   static JList<POI> allCurrentPOIList;
+   static JLabel allCurrentPOITitle;
+   static JScrollPane allCurrentScroll;
 
    // Initializing for Favourite POI scrollpane
    final DefaultListModel<POI> favouritePOIs = new DefaultListModel<POI>();
@@ -294,6 +294,7 @@ private void updateUserPOI() {
     userList = new JList<POI>(users);
     userListTitle = new JLabel("User Points of Interest");
     userScroll = new JScrollPane(userList);
+    userScroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 
     userScroll.setBounds(100, 760, 200, 75);
     container.add(userScroll);
@@ -311,13 +312,14 @@ private void updateFavouritePOI() {
     favouriteList = new JList<POI>(favouritePOIs);
     favouriteListTitle = new JLabel("Favourite Points of Interest");
     favouriteScroll = new JScrollPane(favouriteList);
+    favouriteScroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 
     favouriteScroll.setBounds(100, 660, 200, 75);
     container.add(favouriteScroll);
 }
 
 
-private void updateCurrentPOI() {
+public static void updateCurrentPOI() {
     filteredPOI = (ArrayList<POI>) User.getFilteredPOI();
       for (int i = 0; i < filteredPOI.size() ; i++) {
          allCurrentPOI.addElement(filteredPOI.get(i));
@@ -325,6 +327,7 @@ private void updateCurrentPOI() {
     allCurrentPOIList = new JList<POI>(allCurrentPOI);
     allCurrentPOITitle = new JLabel("Current Points of Interest");
     allCurrentScroll = new JScrollPane(allCurrentPOIList);
+    allCurrentScroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 
     allCurrentScroll.setBounds(100, 560, 200, 75);
     container.add(allCurrentScroll);

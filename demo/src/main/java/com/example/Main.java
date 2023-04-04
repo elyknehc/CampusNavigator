@@ -18,10 +18,10 @@ public class Main {
     public static void main(String[] args) {
         Json.readFile();
         new Main().createGUI();
+        System.out.println(User.getAllPOI());
     }
 
     public void createGUI() {
-
             String  panelBackground1 = "#a012ff";
             JPanel footerPanel = new JPanel();
             footerPanel.setBounds(0, 0, 1384, 72);
@@ -88,14 +88,6 @@ public class Main {
                 }
             });
             footerPanel.add(mapExplore);
-
-            JButton poiCreate = new JButton("Create POI");
-            poiCreate.addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent e) {
-                    new CreatePOIScreen(0, 0);
-                }
-            });
-            footerPanel.add(poiCreate);
 
             JButton helpButton = new JButton("Help Button");
             helpButton.addActionListener(new ActionListener() {

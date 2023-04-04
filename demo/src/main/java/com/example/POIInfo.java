@@ -27,7 +27,9 @@ public class POIInfo extends JFrame {
 		building.setBounds(70, 120, 400, 60);
 		final JLabel category = new JLabel("category: " + curr.getCategory());
 		category.setBounds(70, 170, 400, 60);
-		final JLabel description = new JLabel("Description: " + curr.getDescription());
+		final JTextArea description = new JTextArea("Description: " + curr.getDescription());
+		description.setLineWrap(true);
+		description.setEditable(false);
 		description.setBounds(70, 220, 400, 60);
 		final JLabel floor = new JLabel("Floor: " + curr.getFloor());
 		floor.setBounds(70, 270, 400, 60);

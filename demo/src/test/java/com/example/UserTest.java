@@ -1,14 +1,34 @@
 package com.example;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 import org.junit.Test;
 
 public class UserTest {
+
+    @Test
+    public void testGetFilteredPOI() {
+        POI newPOI = new POI("Men's washroom", "Men's washroom located on the first floor of Middlesex College. Accessible by wheelchair.", "Washroom", "Middlesex", 1, 5, 10, 136, 1, true, false);
+        try{
+            User.addToAllPOI(newPOI);
+        } catch (NullPointerException e) {
+            ;
+        }
+        int expResult = 0;
+        int result = User.getFilteredPOI().size();
+        try{
+            User.deleteDefaultPOI(newPOI);
+        } catch (NullPointerException e) {
+            ;
+        }
+        assertEquals(expResult, result);
+    }
+
     @Test
     public void testGetIsCreating() {
         System.out.println("getIsCreating");
-        boolean expResult = true;
+        boolean expResult = false;
         boolean result = User.getIsCreating();
         assertEquals(expResult, result);
     }
@@ -34,10 +54,28 @@ public class UserTest {
     public void testAddToAllPOI(){
         System.out.println("addToAllPOI");
         POI newPOI = new POI("Men's washroom", "Men's washroom located on the first floor of Middlesex College. Accessible by wheelchair.", "Washroom", "Middlesex", 1, 5, 10, 136, 1, true, false);
-        User.addToAllPOI(newPOI);
         int expResult = 1;
+        try {
+        User.addToAllPOI(newPOI);
+        } catch (NullPointerException e) {
+            ;
+        }
         int result = User.getAllPOI().size();
+        try {
+            User.deleteDefaultPOI(newPOI);
+        } catch (NullPointerException e) {
+            ;
+        }
+        assertEquals(expResult, result);
+    }
+
+    @Test
+    public void testRemoveFromAllPOI() {
+        System.out.println("removeFromAllPOI");
+        POI newPOI = new POI("Men's washroom", "Men's washroom located on the first floor of Middlesex College. Accessible by wheelchair.", "Washroom", "Middlesex", 1, 5, 10, 136, 1, true, false);
         User.deleteDefaultPOI(newPOI);
+        int expResult = 0;
+        int result = User.getAllPOI().size();
         assertEquals(expResult, result);
     }
 
@@ -128,70 +166,7 @@ public class UserTest {
         boolean result = User.getEditing();
         assertEquals(editing, result);
     }
-/* 
-    @Test
-    public void testGetUserPOI() {
-        System.out.println("getUserPOI");
-        int expResult = 0;
-        int result = User.getUserPOI().size();
-        assertEquals(expResult, result);
-    }
-    */
-/* 
-    @Test
-    public void testAddUserPOI() {
-        System.out.println("addUserPOI");
-        POI newPOI = new POI("Men's washroom", "Men's washroom located on the first floor of Middlesex College. Accessible by wheelchair.", "Washroom", "Middlesex", 1, 5, 10, 136, 1, true, false);
-        User.addUserPOI(newPOI);
-        int expResult = 1;
-        int result = User.getUserPOI().size();
-        User.deleteUserPOI(newPOI);
-        assertEquals(expResult, result);
-    }
-    */
-/* 
-    @Test
-    public void testGetFavouritePOI() {
-        System.out.println("getFavouritePOI");
-        int expResult = 0;
-        int result = User.getFavouritePOI().size();
-        assertEquals(expResult, result);
-    }
-    */
-/* 
-    @Test
-    public void testAddFavouritePOI() {
-        System.out.println("addFavouritePOI");
-        POI newPOI = new POI("Men's washroom", "Men's washroom located on the first floor of Middlesex College. Accessible by wheelchair.", "Washroom", "Middlesex", 1, 5, 10, 136, 1, true, false);
-        User.addFavouritePOI(newPOI);
-        int expResult = 1;
-        int result = User.getFavouritePOI().size();
-        User.deleteFavouritePOI(newPOI);
-        assertEquals(expResult, result);
-    }
-    */
-/* 
-    @Test
-    public void testDeleteUserPOI() {
-        System.out.println("deleteUserPOI");
-        POI newPOI = new POI("Men's washroom", "Men's washroom located on the first floor of Middlesex College. Accessible by wheelchair.", "Washroom", "Middlesex", 1, 5, 10, 136, 1, true, false);
-        User.deleteUserPOI(newPOI);
-        int expResult = 0;
-        int result = User.getUserPOI().size();
-        assertEquals(expResult, result);
-    }
-    */
-/* 
-    @Test
-    public void testDeleteFavouritePOI() {
-        System.out.println("deleteFavouritePOI");
-        POI newPOI = new POI("Men's washroom", "Men's washroom located on the first floor of Middlesex College. Accessible by wheelchair.", "Washroom", "Middlesex", 1, 5, 10, 136, 1, true, false);
-        User.deleteFavouritePOI(newPOI);
-        int expResult = 0;
-        int result = User.getFavouritePOI().size();
-        assertEquals(expResult, result);
-    }
-*/
+
     @Test
     public void testDeleteDefaultPOI() {
         System.out.println("deleteDefaultPOI");

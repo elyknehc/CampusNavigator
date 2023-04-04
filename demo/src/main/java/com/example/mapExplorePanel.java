@@ -262,6 +262,9 @@ public static void updateUserPOI() {
 
     userScroll.setBounds(100, 760, 200, 75);
     container.add(userScroll);
+    userScroll.revalidate();
+    userScroll.repaint();
+    
 
     userList.addMouseListener(new MouseAdapter() {
         public void mouseClicked(MouseEvent e) {

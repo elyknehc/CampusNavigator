@@ -210,6 +210,8 @@ public class POIInfo extends JFrame {
 		public void windowClosing(WindowEvent e) {
 			User.setCurPoi(null);
 			MapScrollPanel.repaintMapPOI();
+			mapExplorePanel.updateFavouritePOI();
+			mapExplorePanel.updateUserPOI();
         }
     }
 

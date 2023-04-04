@@ -47,16 +47,6 @@ public class MapScrollPanel extends JPanel {
         poiLayer.setSize(mapHolder.getPreferredSize());
 
 
-        // TEST CODE
-
-        User.addToAllPOI(new POI("testPOI", "testDesrip", "test", "MC", 1, 100, 100, 201, 1, false, false));
-        for (POI poi : User.getAllPOI()) {
-            MapPOI tempPin = new MapPOI(poi);
-            poiLayer.addPOItoMap(tempPin);
-        }
-
-
-
         // Set up container for layers and add all layers
         JLayeredPane layersContainer = new JLayeredPane();
         layersContainer.add(mapHolder, Integer.valueOf(0));

@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 /**
  * This class is responsible for showing information aout the current POI and offering admins to chance to edit them
- * @authors Kevin CHau
+ * @authors Kevin Chau
  */
 
 public class POIInfo extends JFrame{
@@ -36,13 +36,17 @@ public class POIInfo extends JFrame{
 		JButton edit = new JButton("Edit");
 		edit.setBounds(220, 392, 100, 30);
 
+		if (User.getAdmin() == false) {
+			adminEdit.setVisible(false);
+			edit.setVisible(false);
+		}
+
 		favouriteToggle.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				curr.setIsFavourite(true);
 			}
 		});
-
 
 		// Set the font for each label
 		title.setFont(new Font("Balsamiq", Font.PLAIN, 20));

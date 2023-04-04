@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 /**
+ * This class serves as the about screen telling the users about our group
  * @author Kevin Chau
  */
 
@@ -44,7 +45,6 @@ public class AboutScreen extends JFrame {
         Arsalaan.setBounds(30, 350, 400, 50);
         questions.setFont(new Font("Balsamiq", Font.PLAIN, 20));
         questions.setBounds(30, 410, 500, 50);
-
 
         // Return to App Button
 

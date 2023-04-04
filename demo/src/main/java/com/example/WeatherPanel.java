@@ -13,7 +13,7 @@ public class WeatherPanel extends JPanel {
     public WeatherPanel() {
         String  panelBackground1 = "#a012ff";
         setBackground(Color.decode(panelBackground1));
-        setBounds(1190, 0, 220, 72);
+        setBounds(1100, 0, 220, 72);
         float[] values = WeatherApi.getWeather();
         float temperature = 0;
         String conditions = WeatherApi.translateWeatherCode(values[1]);

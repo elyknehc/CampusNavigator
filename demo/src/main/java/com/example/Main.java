@@ -18,6 +18,7 @@ public class Main {
     public static void main(String[] args) {
         Json.readFile();
         new Main().createGUI();
+        System.out.println(User.getAllPOI());
     }
 
     public void createGUI() {
@@ -88,14 +89,6 @@ public class Main {
                 }
             });
             footerPanel.add(mapExplore);
-
-            JButton poiCreate = new JButton("Create POI");
-            poiCreate.addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent e) {
-                    new CreatePOIScreen(0, 0);
-                }
-            });
-            footerPanel.add(poiCreate);
 
             JButton helpButton = new JButton("Help Button");
             helpButton.addActionListener(new ActionListener() {

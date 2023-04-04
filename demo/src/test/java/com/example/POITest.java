@@ -235,6 +235,10 @@ public class POITest {
 
     @Test
     public void testToString() {
-
+        System.out.println("toString");
+        POI instance = new POI("Men's washroom", "Men's washroom located on the first floor of Middlesex College. Accessible by wheelchair.", "Washroom", "Middlesex", 1, 5, 10, 136, 1, true, false);
+        String expResult = "{\n name: Men's washroom\n description: Men's washroom located on the first floor of Middlesex College. Accessible by wheelchair.\n category: Washroom\n building: Middlesex\n ID: 1\n x: 5\n y: 10\n roomNum: 136\n floor: 1\n isFavourite: true\n isUser: false\n}";
+        String result = instance.toString();
+        assertEquals(expResult, result);
     }
 }

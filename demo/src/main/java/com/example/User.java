@@ -120,7 +120,6 @@ public class User {
     /*public void viewPOIInfo() {
     }
     */
-
     public static void deleteDefaultPOI(POI input) {
         try {
             allPOI.remove(input);

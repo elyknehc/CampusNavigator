@@ -4,6 +4,12 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * This class is for the login panel and allowing users to become admin
+ * @authors Kevin Chau 
+ * @
+ */
+
 public class LoginPanel extends JPanel{
     private JButton enterButton;
     private JTextField passwordField;
@@ -11,27 +17,22 @@ public class LoginPanel extends JPanel{
     public static boolean pressed = false;
     
     LoginPanel() {
-        // create JPanel for left panel and set properties
-        setBounds(0, 0, 333, 523);
+        String background = "#a37cf0";
         setLayout(null);
-        System.out.println(pressed);
 
-        // LEFT PANEL
         // create JLabels for password prompt and set properties
-        JLabel passwordLabel1 = new JLabel("Enter a password for admin access,");
-        passwordLabel1.setBounds(70, 200, 400, 50);
+        JLabel passwordLabel1 = new JLabel("Enter Admin Password");
         passwordLabel1.setFont(new Font("Balsamiq", Font.PLAIN,20));
-        JLabel passwordLabel2 = new JLabel("or leave blank for general access:");
-        passwordLabel2.setBounds(70, 230, 400, 50);
-        passwordLabel2.setFont(new Font("Balsamiq", Font.PLAIN, 20));
 
         // create JTextField for password input and set properties
         passwordField = new JTextField();
-        passwordField.setBounds(75, 265, 200, 25);
+
+                // create JLabel for title
+                JLabel titleLabel = new JLabel("Welcome Back");
+                titleLabel.setFont(new Font("Balsamiq", Font.PLAIN, 40));
 
         // create JButton for entering password and set properties
         enterButton = new JButton("Enter");
-        enterButton.setBounds(75, 280, 200, 25);
         enterButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if (e.getSource()==enterButton) {
@@ -46,20 +47,21 @@ public class LoginPanel extends JPanel{
                     }
                 }
                 System.out.println(password); //Filler
-                System.out.println(pressed);
             }
         });
 
-        // create JLabel for title
-        JLabel titleLabel = new JLabel("Western University GIS");
-        titleLabel.setBounds(50, 20, 340, 60);
-        titleLabel.setFont(new Font("Balsamiq", Font.PLAIN, 20));
+        titleLabel.setBounds(85, 220, 300, 40);
+        passwordLabel1.setBounds(100, 280, 300, 20);
+        passwordField.setBounds(100, 300, 200, 25);
+        enterButton.setBounds(100,340, 200, 20);
+
         // add components to left panel
         add(passwordLabel1);
-        add(passwordLabel2);
         add(passwordField);
         add(enterButton);
         add(titleLabel);
+        setBackground(Color.decode(background));
+
     }
 
 }

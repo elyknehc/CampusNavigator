@@ -16,7 +16,9 @@ public class Main {
     private static JFrame main;
 
     public static void main(String[] args) {
+        Json.readFile();
         new Main().createGUI();
+        System.out.println(User.getAllPOI());
     }
 
     public void createGUI() {
@@ -41,8 +43,8 @@ public class Main {
             panelSwitch.setLayout(new CardLayout());
 
             final LoginPanel first = new LoginPanel();
-            first.setBackground(Color.white);
             panelSwitch.add(first);
+        
 
             final mapExplorePanel second = new mapExplorePanel();
             second.setBackground(Color.white);
@@ -87,17 +89,6 @@ public class Main {
             });
             footerPanel.add(mapExplore);
 
-            JButton poiCreate = new JButton("Create POI");
-            poiCreate.addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent e) {
-                    panelSwitch.removeAll();
-                    panelSwitch.add(second);
-                    panelSwitch.repaint();
-                    panelSwitch.revalidate();
-                }
-            });
-            footerPanel.add(poiCreate);
-
             JButton helpButton = new JButton("Help Button");
             helpButton.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
@@ -124,7 +115,6 @@ public class Main {
                 }
             });
             footerPanel.add(adminEdit);
-
 
             // Framing
             main = new JFrame();

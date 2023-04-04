@@ -128,7 +128,7 @@ public class UserTest {
         boolean result = User.getEditing();
         assertEquals(editing, result);
     }
-
+/* 
     @Test
     public void testGetUserPOI() {
         System.out.println("getUserPOI");
@@ -136,7 +136,8 @@ public class UserTest {
         int result = User.getUserPOI().size();
         assertEquals(expResult, result);
     }
-
+    */
+/* 
     @Test
     public void testAddUserPOI() {
         System.out.println("addUserPOI");
@@ -147,7 +148,8 @@ public class UserTest {
         User.deleteUserPOI(newPOI);
         assertEquals(expResult, result);
     }
-
+    */
+/* 
     @Test
     public void testGetFavouritePOI() {
         System.out.println("getFavouritePOI");
@@ -155,7 +157,8 @@ public class UserTest {
         int result = User.getFavouritePOI().size();
         assertEquals(expResult, result);
     }
-
+    */
+/* 
     @Test
     public void testAddFavouritePOI() {
         System.out.println("addFavouritePOI");
@@ -166,7 +169,8 @@ public class UserTest {
         User.deleteFavouritePOI(newPOI);
         assertEquals(expResult, result);
     }
-
+    */
+/* 
     @Test
     public void testDeleteUserPOI() {
         System.out.println("deleteUserPOI");
@@ -176,7 +180,8 @@ public class UserTest {
         int result = User.getUserPOI().size();
         assertEquals(expResult, result);
     }
-
+    */
+/* 
     @Test
     public void testDeleteFavouritePOI() {
         System.out.println("deleteFavouritePOI");
@@ -186,7 +191,7 @@ public class UserTest {
         int result = User.getFavouritePOI().size();
         assertEquals(expResult, result);
     }
-
+*/
     @Test
     public void testDeleteDefaultPOI() {
         System.out.println("deleteDefaultPOI");

@@ -9,7 +9,7 @@ import java.util.*;
 
 public class mapExplorePanel extends JPanel {
    JTextField searchBar;
-   JCheckBox washrooms, classrooms, genLabs, stairwells, entryExits, elevators, userCreatedPOIs, favourites;
+   JCheckBox washrooms, classrooms, genLabs, stairwells, entryExits, elevators, userCreatedPOIs, favourites, restaurants, computerLabs, collabRooms;
    
    public mapExplorePanel() {
       // create JPanel for left panel and set properties
@@ -55,11 +55,15 @@ public class mapExplorePanel extends JPanel {
 
       // create checkboxes for POI Layers and set properties
       washrooms = new JCheckBox("Washrooms");
+      washrooms.setSelected(true);
+      washrooms.setEnabled(false);
       classrooms = new JCheckBox("Classrooms");
       genLabs = new JCheckBox("GenLabs");
       stairwells = new JCheckBox("Stairwells");
       entryExits = new JCheckBox("Entry/Exits");
       elevators = new JCheckBox("Elevators");
+      elevators.setEnabled(false);
+     elevators.setSelected(true);
       userCreatedPOIs = new JCheckBox("User-created POIs");
       favourites = new JCheckBox("Favourites");
 
@@ -78,6 +82,9 @@ public class mapExplorePanel extends JPanel {
       elevators.addActionListener(CheckBoxListener);
       userCreatedPOIs.addActionListener(CheckBoxListener);
       favourites.addActionListener(CheckBoxListener);
+      restaurants = new JCheckBox("Restaurants");
+      computerLabs = new JCheckBox("Computer Labs");
+      collabRooms = new JCheckBox("Collaboration Rooms");//HERE
 
     
       washrooms.setBounds(100, 100, 200, 20);
@@ -88,25 +95,14 @@ public class mapExplorePanel extends JPanel {
       elevators.setBounds(100, 200, 200, 20);
       userCreatedPOIs.setBounds(100, 220, 200, 20);
       favourites.setBounds(100, 240, 200, 20);
+      restaurants.setBounds(100, 260, 200, 20);
+      computerLabs.setBounds(100, 280, 200, 20);
+      collabRooms.setBounds(100, 300, 200, 20);
+
       
       // create dropdown menu for floors and set properties
-      String[] floors = {"Floor 1", "Floor 2", "Floor 3"};
-      String[] builtin = {"1","2","3","4","5", "6", "7", "8", "9", "10"};
-      String[] users = {"1","2","3","4","5", "6", "7", "8", "9", "10"};
-      JComboBox<String> floorDropdown = new JComboBox<>(floors);
-      JList<String> builtinPOIDrop = new JList<>(builtin);
-      JLabel BuiltInList = new JLabel("Built-In POI's");
-      JScrollPane scrollPane = new JScrollPane(builtinPOIDrop);
-      // create JButton for adding POIs and set properties
       JButton addPOIButton = new JButton("Add POI");
-      JList<String> usersList = new JList<>(users);
-      JLabel usersListTitle = new JLabel("User POI");
-      JScrollPane userScroll = new JScrollPane(usersList);
 
-      BuiltInList.setBounds(100, 280, 200, 20);
-      scrollPane.setBounds(100, 300, 200, 60);
-      usersListTitle.setBounds(100, 360, 200, 20);
-      userScroll.setBounds(100, 380, 200, 60);
       addPOIButton.setBounds(100, 460, 200, 20);
 
       // add components to left panel
@@ -121,13 +117,11 @@ public class mapExplorePanel extends JPanel {
       add(elevators);
       add(userCreatedPOIs);
       add(favourites);
-      add(floorDropdown);
-      add(BuiltInList);
-      add(scrollPane);
-      add(usersListTitle);
-      add(userScroll);
       add(addPOIButton);
       add(title);
+      add(computerLabs);
+      add(collabRooms);
+      add(restaurants);
    }
 
    private void sendFilterValues() {

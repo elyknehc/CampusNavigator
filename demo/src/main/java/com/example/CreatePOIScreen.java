@@ -110,6 +110,8 @@ public class CreatePOIScreen extends JFrame {
                 changeCurrentPOI.setCategory(poiCategory);
                 
                 User.setCurPoi(null);
+                mapExplorePanel.updateFavouritePOI();
+				mapExplorePanel.updateUserPOI();
                 MapScrollPanel.repaintMapPOI();
                 User.setCreating(false);
             

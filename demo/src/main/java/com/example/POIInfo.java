@@ -155,6 +155,8 @@ public class POIInfo extends JFrame {
 						
 						User.addToAllPOI(curr);
 						User.setCreating(false);
+						mapExplorePanel.updateFavouritePOI();
+						mapExplorePanel.updateUserPOI();
 						// Close the edit frame
 						editFrame.dispose();
 					}
@@ -173,6 +175,8 @@ public class POIInfo extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				User.deleteDefaultPOI(curr);
 				setVisible(false);
+				mapExplorePanel.updateFavouritePOI();
+				mapExplorePanel.updateUserPOI();
 		}
 		});
 		move.addActionListener(new ActionListener() {

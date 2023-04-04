@@ -5,7 +5,12 @@ import java.math.BigDecimal;
 
 import org.json.*;
 
+/**
+ * This class is used to retrieve information for the Weather API
+ * @author Group 51
+ */
 public class WeatherApi {
+    //Set up connection to API
     private static String weatherApiURL = "https://api.open-meteo.com/v1/forecast?latitude=43.0083&longitude=-81.27&current_weather=true&timeformat=unixtime&timezone=auto";
 
     // public static void main(String[] args) throws Exception {
@@ -14,9 +19,15 @@ public class WeatherApi {
     //     System.out.println(translateWeatherCode(weather[1]));
     // }
 
+    /**
+     * Get Weather returns the current weather of the API
+     * @return
+     */
     public static float[] getWeather() {
         float[] weatherReturn = new float[2];
         try {
+
+            //Sets the information of the weather with an API request, returns two floats for the user
             URL requestURL = new URL(weatherApiURL);
             URLConnection yc = requestURL.openConnection();
             BufferedReader in = new BufferedReader(
@@ -37,6 +48,11 @@ public class WeatherApi {
         return weatherReturn;
     }
 
+    /**
+     * Returns the  number from the API that can be interpreted.
+     * @param code
+     * @return returns a string for the user that can be interpreted.
+     */
     public static String translateWeatherCode(float code) {
         if (code <= 0) {
             return "Clear";

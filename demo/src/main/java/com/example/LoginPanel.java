@@ -5,18 +5,20 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * This class is for the login panel and allowing users to become admin
- * @authors Kevin Chau 
- * @
+ * @author Group 51
+ * Login panel represents a user logging into admin select
  */
-
 public class LoginPanel extends JPanel{
+    //Declare constants
     private JButton enterButton;
     private JTextField passwordField;
     private String password;
     public static boolean pressed = false;
     
     LoginPanel() {
+        /**
+         * Constructor for creating a login panel
+         */
         String background = "#a37cf0";
         setLayout(null);
 

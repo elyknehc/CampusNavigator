@@ -5,7 +5,7 @@ import javax.swing.*;
 import java.awt.event.*;
 /**
  * This class is responsible for showing an exit warning if the user closes without changes saved
- * @author 
+ * @author Group51
  */
 
 public class ExitWarning extends JFrame {
@@ -30,7 +30,7 @@ public class ExitWarning extends JFrame {
         Prompt1.setFont(new Font("Balsamiq", Font.BOLD, 32));
         Prompt2.setFont(new Font("Balsamiq", Font.BOLD, 32));
 
-        // 
+        // Add frames
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setTitle("Exit Warning");
         this.setResizable(false);
@@ -45,19 +45,26 @@ public class ExitWarning extends JFrame {
     }
 
     private class ExitListener implements ActionListener {
-
+        //Listener for closing the button
         public void actionPerformed(ActionEvent e) {
             Main.exitProgram();
             System.exit(0);
         }
     }
-
+    //Keep going on. Returns to the program.
     private class ContinueListener implements ActionListener {
         private JFrame ExitFrame;
 
+        /**
+         * @param ExitFrame, leave the panel
+         */
         public ContinueListener(JFrame ExitFrame) {
             this.ExitFrame = ExitFrame;
         }
+
+        /**
+         * Exit the frame
+         */
         public void actionPerformed(ActionEvent e) {
             ExitFrame.setVisible(false);
         }

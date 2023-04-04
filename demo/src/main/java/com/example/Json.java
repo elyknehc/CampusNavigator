@@ -1,12 +1,18 @@
 package com.example;
-
 import org.json.*;
 import java.io.*;
 import java.nio.file.*;
 import java.util.*;
 
 class Json {
+   /**
+    * @author Group 51
+    *This class is responsible for setting JSON information for built in POIs
+    */
 
+    /**
+     * Read file reads from the POI data json and parses the information, handles any exceptions if file not found
+     */
    public static void readFile() {
       String data = "";
       try{
@@ -17,8 +23,13 @@ class Json {
       }
    }
 
+   /**
+    * Function that writes files to the JSON, creates a new bufferred reader for the program
+    */
    public static void writeFile() {
       try{
+
+         //Writes to the JSON with a buffered reader
 
          String data = stringifyAllPOIData();
       
@@ -32,7 +43,10 @@ class Json {
          e.printStackTrace();
      }
    }
-   
+   /**
+    * Stringifys all of the information from the JSON file to make it readable for a user
+    * @return Returns a temporary array to string.
+    */
    private static String stringifyAllPOIData() {
       List<POI> poiData = User.getAllPOI();
       JSONArray tempArray = new JSONArray();
@@ -41,6 +55,11 @@ class Json {
       }
       return tempArray.toString();
    } 
+
+   /**
+    * Parses the JSON into local information
+    * @param json - the information being passed to the local data
+    */
 
    private static void parseJsonToLocalData(String json) {
       JSONArray tempArray = new JSONArray(json);

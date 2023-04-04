@@ -6,8 +6,15 @@ import java.awt.event.ActionListener;
 import java.awt.Font;   
 import javax.swing.*;
 
+/**
+ * @author Group 51
+ * This class represents a frame for the user that is popped up when the user clicks for help
+ * It displays information for how the program works.
+ */
+
 public class HelpScreen extends JFrame{
     HelpScreen() {
+
         String panelBackground1 = "#a012ff";
         
         // Title Label
@@ -16,7 +23,7 @@ public class HelpScreen extends JFrame{
         title.setFont(new Font("Balsamiq", Font.BOLD, 55));
         title.setBounds(140, 40, 400, 50);
 
-        // Instructions Label
+        // Instructions Label   
 
         JLabel instructionsTag = new JLabel("Instructions:");
         JTextArea instructions = new JTextArea();

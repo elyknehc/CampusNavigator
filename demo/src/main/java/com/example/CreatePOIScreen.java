@@ -48,7 +48,7 @@ public class CreatePOIScreen extends JFrame {
         add(nameField);
 
         JLabel categoryLabel = new JLabel("Category: ");
-        String[] categories = {"washrooms", "classrooms", "genLabs", "sports", "entryExits", "elevators", "userCreatedPOIs", "favourites", "restaurants", "computerLabs", "collabRooms"};
+        String[] categories = {"washrooms", "classrooms", "genLabs", "entryExits", "elevators", "userCreatedPOIs", "favourites", "restaurants", "computerLabs", "collabRooms"};
         categoryComboBox = new JComboBox<>(categories);
         add(categoryLabel);
         add(categoryComboBox);
@@ -96,11 +96,10 @@ public class CreatePOIScreen extends JFrame {
                 int poiRoomNumber = Integer.parseInt(roomNumberField.getText());
                 int poiFloor = User.getCurFloor();
                 String poiCategory = (String) categoryComboBox.getSelectedItem();
-
                 // String labelID = idLabel.getText();
                 // int poiID = Integer.parseInt(labelID);
                 boolean poiFavorite = favoriteCheckBox.isSelected();
-                
+            
                     if (poiName.length() == 0 || poiDescription.length() == 0
                             || poiDescription.length() == 0) {
                         invalid = true;

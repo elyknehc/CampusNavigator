@@ -8,6 +8,7 @@ import java.awt.event.*;
  */
 
 public class WeatherPanel extends JPanel {
+    // Call a new WeatherApi object
     public static WeatherApi weather = new WeatherApi();
 
     public WeatherPanel() {

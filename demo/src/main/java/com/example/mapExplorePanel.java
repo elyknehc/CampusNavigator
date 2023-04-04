@@ -27,6 +27,26 @@ public class mapExplorePanel extends JPanel {
    final DefaultListModel<POI> preResultsList = new DefaultListModel<POI>();
    ArrayList<POI> allPOI = new ArrayList<POI>();
 
+   // Initializing for Current Map POI scrollpane
+   final DefaultListModel<POI> allCurrentPOI = new DefaultListModel<POI>();
+   ArrayList<POI> filteredPOI;
+   JList<POI> allCurrentPOIList;
+   JLabel allCurrentPOITitle;
+   JScrollPane allCurrentScroll;
+
+   // Initializing for Favourite POI scrollpane
+   final DefaultListModel<POI> favouritePOIs = new DefaultListModel<POI>();
+   ArrayList<POI> favouritePOIPulled;
+   JList<POI> favouriteList;
+   JLabel favouriteListTitle;
+   JScrollPane favouriteScroll;
+
+   // Initializing for User POI Scrollpane
+   final DefaultListModel<POI> users = new DefaultListModel<POI>();
+   ArrayList<POI> userPOIPulled;
+   JList<POI> userList;
+   JLabel userListTitle;
+   JScrollPane userScroll;
 
    public mapExplorePanel() {
       // create JPanel for left panel and set properties
@@ -157,23 +177,52 @@ public class mapExplorePanel extends JPanel {
       // Floors dropdown to edit the floor map displayed
      
       loadFloors();
-
       JLabel floorTitle = new JLabel("Floors");
-      
-      String[] allCurrentPOI = {"1","2","3","4","5", "6", "7", "8", "9", "10"};
-      JList<String> allCurrentPOIList = new JList<>(allCurrentPOI);
-      JLabel allCurrentPOITitle = new JLabel("Current Points of Interest");
-      JScrollPane allCurrentScroll = new JScrollPane(allCurrentPOIList);
-      
-      String[] favouritePOIs = {"1","2","3","4","5", "6", "7", "8", "9", "10"};
-      JList<String> favouriteList = new JList<>(favouritePOIs);
-      JLabel favouriteListTitle = new JLabel("Favourite Points of Interest");
-      JScrollPane favouriteScroll = new JScrollPane(favouriteList);
 
-      String[] users = {"1","2","3","4","5", "6", "7", "8", "9", "10"};
-      JList<String> userList = new JList<>(users);
-      JLabel userListTitle = new JLabel("User Points of Interest");
-      JScrollPane userScroll = new JScrollPane(userList);
+      // Sets the current map POI scrollpane
+      updateCurrentPOI();
+      allCurrentPOIList.addMouseListener(new MouseAdapter() {
+        public void mouseClicked(MouseEvent e) {
+            POI selected = resultList.getSelectedValue();
+
+            User.setCurBuilding(selected.getBuilding());
+            User.setCurFloor(selected.getFloor());
+            User.setCurPoi(selected);
+
+            MapScrollPanel.loadMapSelectedPOI();
+            new POIInfo(selected);
+        }
+     });
+
+      // Sets the favourite POI Scrollpane
+      updateFavouritePOI();
+      favouriteList.addMouseListener(new MouseAdapter() {
+        public void mouseClicked(MouseEvent e) {
+            POI selected = resultList.getSelectedValue();
+
+            User.setCurBuilding(selected.getBuilding());
+            User.setCurFloor(selected.getFloor());
+            User.setCurPoi(selected);
+
+            MapScrollPanel.loadMapSelectedPOI();
+            new POIInfo(selected);
+        }
+      });
+
+      // Sets the user POI Scrollpane
+      updateUserPOI();
+      userList.addMouseListener(new MouseAdapter() {
+        public void mouseClicked(MouseEvent e) {
+            POI selected = resultList.getSelectedValue();
+
+            User.setCurBuilding(selected.getBuilding());
+            User.setCurFloor(selected.getFloor());
+            User.setCurPoi(selected);
+
+            MapScrollPanel.loadMapSelectedPOI();
+            new POIInfo(selected);
+        }
+      });
       
 
       // create JButton for adding POIs and set properties
@@ -231,9 +280,57 @@ public class mapExplorePanel extends JPanel {
       exploreScroll.setWheelScrollingEnabled(true);
       exploreScroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
       add(exploreScroll, BorderLayout.CENTER);
-   }
+}
 
-   private void sendFilterValues() {
+
+private void updateUserPOI() {
+    userPOIPulled = (ArrayList<POI>) User.getAllPOI();
+
+    for (int i = 0; i < userPOIPulled.size(); i++ ) {
+        if (userPOIPulled.get(i).getIsUser()) {
+            users.addElement(userPOIPulled.get(i));
+        }
+    }
+    userList = new JList<POI>(users);
+    userListTitle = new JLabel("User Points of Interest");
+    userScroll = new JScrollPane(userList);
+
+    userScroll.setBounds(100, 760, 200, 75);
+    container.add(userScroll);
+}
+
+
+private void updateFavouritePOI() {
+    favouritePOIPulled = (ArrayList<POI>) User.getAllPOI();
+
+    for (int i = 0; i < favouritePOIPulled.size(); i++ ) {
+        if (favouritePOIPulled.get(i).getIsFavourite()) {
+            favouritePOIs.addElement(favouritePOIPulled.get(i));
+        }
+    }
+    favouriteList = new JList<POI>(favouritePOIs);
+    favouriteListTitle = new JLabel("Favourite Points of Interest");
+    favouriteScroll = new JScrollPane(favouriteList);
+
+    favouriteScroll.setBounds(100, 660, 200, 75);
+    container.add(favouriteScroll);
+}
+
+
+private void updateCurrentPOI() {
+    filteredPOI = (ArrayList<POI>) User.getFilteredPOI();
+      for (int i = 0; i < filteredPOI.size() ; i++) {
+         allCurrentPOI.addElement(filteredPOI.get(i));
+      }
+    allCurrentPOIList = new JList<POI>(allCurrentPOI);
+    allCurrentPOITitle = new JLabel("Current Points of Interest");
+    allCurrentScroll = new JScrollPane(allCurrentPOIList);
+
+    allCurrentScroll.setBounds(100, 560, 200, 75);
+    container.add(allCurrentScroll);
+}
+
+private void sendFilterValues() {
         ArrayList<String> tempAdd = new ArrayList<String>();
         ArrayList<String> tempRem = new ArrayList<String>();
         if (washrooms.isSelected()) {

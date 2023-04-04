@@ -85,12 +85,12 @@ public class mapExplorePanel extends JPanel {
      resultList.addMouseListener(new MouseAdapter() {
         public void mouseClicked(MouseEvent e) {
             POI selected = resultList.getSelectedValue();
-
+            
             User.setCurBuilding(selected.getBuilding());
             User.setCurFloor(selected.getFloor());
             User.setCurPoi(selected);
-
             MapScrollPanel.loadMapSelectedPOI();
+            MapScrollPanel.repaintMapPOI();
             new POIInfo(selected);
         }
      });

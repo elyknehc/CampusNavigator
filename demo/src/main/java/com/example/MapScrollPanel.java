@@ -85,6 +85,9 @@ public class MapScrollPanel extends JPanel {
         poiLayer.removeAllPOI();
         for (POI poi : User.getFilteredPOI()) {
             MapPOI tempPin = new MapPOI(poi);
+            if (poi == User.getCurPoi()) {
+                tempPin.highlight();
+            }
             poiLayer.addPOItoMap(tempPin);
         }
     }

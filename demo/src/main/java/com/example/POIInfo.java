@@ -4,17 +4,20 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.Color;
 import javax.swing.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
 /**
  * This class is responsible for showing information aout the current POI and offering admins to chance to edit them
  * @authors Kevin Chau
  */
 
 public class POIInfo extends JFrame {
+	private POI currentPOI;
 	// Create a new frame and pass in a new POI object through it
-    POIInfo(POI current) {
+	POIInfo(POI current) {
 
 		final POI curr = current;
-
 		// Create the labels and fill in information about current POI
 		final JLabel title = new JLabel("Point of Interest Information");
 		title.setBounds(70, 20, 400, 60);
@@ -44,6 +47,11 @@ public class POIInfo extends JFrame {
 			delete.setVisible(false);
 		}
 
+		// Set the font for each label
+		title.setFont(new Font("Balsamiq", Font.PLAIN, 20));
+		description.setFont(new Font("Balsamiq", Font.PLAIN, 10));
+		building.setFont(new Font("Balsamiq", Font.PLAIN, 10));
+		poiName.setFont(new Font("Balsamiq", Font.BOLD, 20));
 		edit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// Create a new JFrame for editing the POI information
@@ -131,7 +139,7 @@ public class POIInfo extends JFrame {
 				curr.setCategory("");
 				curr.setDescription("");
 				curr.setFloor(0);
-				User.deleteUserPOI(curr);
+				User.deleteDefaultPOI(curr);
 		}
 	});
 
@@ -147,13 +155,16 @@ public class POIInfo extends JFrame {
 		favourite.setFont(new Font("Balsamiq", Font.PLAIN, 10));
 		adminEdit.setFont(new Font("Balsamiq", Font.PLAIN, 10));
 
+		FrameListener listener = new FrameListener();
+
 		//Add properties to the frame
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        this.setTitle("POI Information Screen");
-        this.setResizable(false);
-        this.setLayout(null);
-        this.setSize(500,500);
-        this.getContentPane().setBackground(Color.white);
+		this.addWindowListener(listener);
+		this.setTitle("POI Information Screen");
+		this.setResizable(false);
+		this.setLayout(null);
+		this.setSize(500, 500);
+		this.getContentPane().setBackground(Color.white);
 		this.add(title);
 		this.add(poiName);
 		this.add(building);
@@ -165,5 +176,13 @@ public class POIInfo extends JFrame {
 		this.add(edit);
 		this.add(delete);
 		this.setVisible(true);
+	}
+	private class FrameListener extends WindowAdapter {
+		public void windowClosing(WindowEvent e) {
+			System.out.println("WORKING");
+			User.setCurPoi(null);
+			MapScrollPanel.repaintMapPOI();
+        }
     }
+
 }

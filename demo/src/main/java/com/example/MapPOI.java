@@ -41,6 +41,14 @@ public class MapPOI extends JLabel {
         });
     }
 
+    public void highlight() {
+        setIcon(highlightPin);
+    }
+
+    public void unhighlight() {
+        setIcon(normalPin);
+    }
+
     public POI getPoi() {
         return poiData;
     }

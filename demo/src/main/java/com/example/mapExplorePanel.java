@@ -262,6 +262,9 @@ public static void updateUserPOI() {
 
     userScroll.setBounds(100, 760, 200, 75);
     container.add(userScroll);
+    userScroll.revalidate();
+    userScroll.repaint();
+    
 
     userList.addMouseListener(new MouseAdapter() {
         public void mouseClicked(MouseEvent e) {
@@ -351,23 +354,6 @@ public static void updateCurrentPOI() {
         }
      });
 
-     // KEEP THIS CODE BLOCK JUST IN CASE
-    // allCurrentPOIList.addMouseListener(new MouseAdapter() {
-    //     public void mouseClicked(MouseEvent e) {
-    //         POI selected = allCurrentPOIList.getSelectedValue();
-
-    //         System.out.println("HELLWOR");
-    //         System.out.println(selected);
-
-    //         User.setCurBuilding(selected.getBuilding());
-    //         User.setCurFloor(selected.getFloor());
-    //         User.setCurPoi(selected);
-
-    //         MapScrollPanel.loadMapSelectedPOI();
-    //         MapScrollPanel.repaintMapPOI();
-    //         new POIInfo(selected);
-    //     }
-    //  });
 }
 
 private void sendFilterValues() {
@@ -465,8 +451,6 @@ private void sendFilterValues() {
                 }
 
                 User.setCurFloor(Integer.parseInt(selectedFloor));
-
-                System.out.println(User.getCurFloor());
 
                 loadFloors();
                 MapScrollPanel.loadMapSelectedPOI();

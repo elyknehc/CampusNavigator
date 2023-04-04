@@ -124,7 +124,6 @@ public class CreatePOIScreen extends JFrame {
                 dispose(); // Close the frame
             }
                 catch (Exception exp) {
-                    System.out.println(exp);
                     invalid = true;
                     add(unfinished);
                     revalidate();

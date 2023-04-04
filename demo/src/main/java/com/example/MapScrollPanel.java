@@ -18,7 +18,7 @@ public class MapScrollPanel extends JPanel {
     private static Layers poiLayer;
     private JScrollPane scrollPane;
 
-    private int kylesSmallDick = 20;
+    private int kylesSmallD1ck = 3;
     
     private static String currentMap = "";
     private static ImageIcon map;
@@ -63,7 +63,6 @@ public class MapScrollPanel extends JPanel {
 
         scrollPane.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
-                System.out.println(User.getAdmin());
 
                 User.setCreating(true);
                     Point viewPosition = scrollPane.getViewport().getViewPosition();
@@ -102,7 +101,6 @@ public class MapScrollPanel extends JPanel {
             currentMap = currentUserSelection;
         }   
 
-        System.out.println(currentMap);
         
         mapHolder.setIcon(map);
         mapHolder.setSize(new Dimension(map.getIconWidth(), map.getIconHeight()));

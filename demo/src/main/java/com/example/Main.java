@@ -13,6 +13,7 @@ import java.awt.event.WindowEvent;
  */
 public class Main {
 
+    //Declare instance variables
     static JButton adminEdit;
     private static JFrame main;
 
@@ -22,6 +23,7 @@ public class Main {
     }
 
     public void createGUI() {
+        //Creating the GUI, setting up panels
             String  panelBackground1 = "#a012ff";
             JPanel footerPanel = new JPanel();
             footerPanel.setBounds(0, 0, 1384, 72);
@@ -73,6 +75,7 @@ public class Main {
             });
             footerPanel.add(mapSelect);
 
+            //Adding the map explore screen as a frame
             JButton mapExplore = new JButton("Map Explore Screen");
             mapExplore.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
@@ -94,6 +97,7 @@ public class Main {
             });
             footerPanel.add(mapExplore);
 
+            //Adding the help button as a button
             JButton helpButton = new JButton("Help Button");
             helpButton.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
@@ -102,6 +106,7 @@ public class Main {
             });
             footerPanel.add(helpButton);
 
+            //Adding about button
             JButton aboutButton = new JButton("About");
             aboutButton.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
@@ -149,9 +154,10 @@ public class Main {
             }
         }
 
+        //When window gets closed
+
         private class FrameListener extends WindowAdapter {
             public void windowClosing(WindowEvent e) {
-                System.out.println("WindowListener method called: windowClosed.");
                 if (User.getIsCreating()) {
                     new ExitWarning();
                 } else {
@@ -160,6 +166,9 @@ public class Main {
             }
         }
     
+        /**
+         * Writes to JSON and closes the program.
+         */
         public static void exitProgram() {
             Json.writeFile();
             main.setVisible(false);

@@ -14,14 +14,12 @@ class Json {
      * Read file reads from the POI data json and parses the information, handles any exceptions if file not found
      */
     public static void readFile() {
-      System.out.println(System.getProperty("user.dir"));
       String data = "";
       try{
          data = new String(Files.readAllBytes(Paths.get("./demo/src/main/java/com/example/POIData.json")));
          parseJsonToLocalData(data);
       } catch (Exception e) {
          e.printStackTrace();
-         System.out.println("File does not exist");
       }
    }
 

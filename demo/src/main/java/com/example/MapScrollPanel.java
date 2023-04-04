@@ -18,7 +18,7 @@ public class MapScrollPanel extends JPanel {
     private static Layers poiLayer;
     private JScrollPane scrollPane;
 
-    private int kylesSmallDick = 20;
+    private int kylesSmallD1ck = 20;
     
     private static String currentMap = "";
     private static ImageIcon map;

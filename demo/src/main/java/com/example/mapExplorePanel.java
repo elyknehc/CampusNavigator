@@ -190,6 +190,7 @@ public class mapExplorePanel extends JPanel {
             User.setCurPoi(selected);
 
             MapScrollPanel.loadMapSelectedPOI();
+            MapScrollPanel.repaintMapPOI();
             new POIInfo(selected);
         }
      });
@@ -205,6 +206,7 @@ public class mapExplorePanel extends JPanel {
             User.setCurPoi(selected);
 
             MapScrollPanel.loadMapSelectedPOI();
+            MapScrollPanel.repaintMapPOI();
             new POIInfo(selected);
         }
       });
@@ -220,6 +222,7 @@ public class mapExplorePanel extends JPanel {
             User.setCurPoi(selected);
 
             MapScrollPanel.loadMapSelectedPOI();
+            MapScrollPanel.repaintMapPOI();
             new POIInfo(selected);
         }
       });

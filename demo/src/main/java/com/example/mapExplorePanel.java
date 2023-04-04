@@ -184,7 +184,7 @@ public class mapExplorePanel extends JPanel {
       updateCurrentPOI();
       allCurrentPOIList.addMouseListener(new MouseAdapter() {
         public void mouseClicked(MouseEvent e) {
-            POI selected = resultList.getSelectedValue();
+            POI selected = allCurrentPOIList.getSelectedValue();
 
             User.setCurBuilding(selected.getBuilding());
             User.setCurFloor(selected.getFloor());
@@ -200,7 +200,7 @@ public class mapExplorePanel extends JPanel {
       updateFavouritePOI();
       favouriteList.addMouseListener(new MouseAdapter() {
         public void mouseClicked(MouseEvent e) {
-            POI selected = resultList.getSelectedValue();
+            POI selected = favouriteList.getSelectedValue();
 
             User.setCurBuilding(selected.getBuilding());
             User.setCurFloor(selected.getFloor());
@@ -217,7 +217,7 @@ public class mapExplorePanel extends JPanel {
       updateUserPOI();
       userList.addMouseListener(new MouseAdapter() {
         public void mouseClicked(MouseEvent e) {
-            POI selected = resultList.getSelectedValue();
+            POI selected = userList.getSelectedValue();
 
             User.setCurBuilding(selected.getBuilding());
             User.setCurFloor(selected.getFloor());

@@ -8,7 +8,6 @@ import java.awt.event.FocusListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.*;
-import java.util.*;
 
 /**
  * This class represents a panel for uses to choose which properties they want to view on a map
@@ -182,53 +181,12 @@ public class mapExplorePanel extends JPanel {
 
       // Sets the current map POI scrollpane
       updateCurrentPOI();
-      allCurrentPOIList.addMouseListener(new MouseAdapter() {
-        public void mouseClicked(MouseEvent e) {
-            POI selected = allCurrentPOIList.getSelectedValue();
-
-            User.setCurBuilding(selected.getBuilding());
-            User.setCurFloor(selected.getFloor());
-            User.setCurPoi(selected);
-
-            MapScrollPanel.loadMapSelectedPOI();
-            MapScrollPanel.repaintMapPOI();
-            new POIInfo(selected);
-        }
-     });
 
       // Sets the favourite POI Scrollpane
       updateFavouritePOI();
-      favouriteList.addMouseListener(new MouseAdapter() {
-        public void mouseClicked(MouseEvent e) {
-            POI selected = favouriteList.getSelectedValue();
-
-            User.setCurBuilding(selected.getBuilding());
-            User.setCurFloor(selected.getFloor());
-            User.setCurPoi(selected);
-
-            MapScrollPanel.loadMapSelectedPOI();
-            updateCurrentPOI();
-            MapScrollPanel.repaintMapPOI();
-            new POIInfo(selected);
-        }
-      });
 
       // Sets the user POI Scrollpane
       updateUserPOI();
-      userList.addMouseListener(new MouseAdapter() {
-        public void mouseClicked(MouseEvent e) {
-            POI selected = userList.getSelectedValue();
-
-            User.setCurBuilding(selected.getBuilding());
-            User.setCurFloor(selected.getFloor());
-            User.setCurPoi(selected);
-
-            MapScrollPanel.loadMapSelectedPOI();
-            updateCurrentPOI();
-            MapScrollPanel.repaintMapPOI();
-            new POIInfo(selected);
-        }
-      });
       
 
       // create JButton for adding POIs and set properties
@@ -304,6 +262,24 @@ private void updateUserPOI() {
 
     userScroll.setBounds(100, 760, 200, 75);
     container.add(userScroll);
+
+    userList.addMouseListener(new MouseAdapter() {
+        public void mouseClicked(MouseEvent e) {
+            JList theList = (JList) e.getSource();
+            int index = theList.locationToIndex(e.getPoint());
+
+            POI selected = (POI) theList.getModel().getElementAt(index);
+            
+            User.setCurBuilding(selected.getBuilding());
+            User.setCurFloor(selected.getFloor());
+            User.setCurPoi(selected);
+
+            MapScrollPanel.loadMapSelectedPOI();
+            updateCurrentPOI();
+            MapScrollPanel.repaintMapPOI();
+            new POIInfo(selected);
+        }
+      });
 }
 
 
@@ -322,6 +298,24 @@ private void updateFavouritePOI() {
 
     favouriteScroll.setBounds(100, 660, 200, 75);
     container.add(favouriteScroll);
+
+    favouriteList.addMouseListener(new MouseAdapter() {
+        public void mouseClicked(MouseEvent e) {
+            JList theList = (JList) e.getSource();
+            int index = theList.locationToIndex(e.getPoint());
+
+            POI selected = (POI) theList.getModel().getElementAt(index);
+
+            User.setCurBuilding(selected.getBuilding());
+            User.setCurFloor(selected.getFloor());
+            User.setCurPoi(selected);
+
+            MapScrollPanel.loadMapSelectedPOI();
+            updateCurrentPOI();
+            MapScrollPanel.repaintMapPOI();
+            new POIInfo(selected);
+        }
+      });
 }
 
 
@@ -338,6 +332,42 @@ public static void updateCurrentPOI() {
 
     allCurrentScroll.setBounds(100, 560, 200, 75);
     container.add(allCurrentScroll);
+
+
+    allCurrentPOIList.addMouseListener(new MouseAdapter() {
+        public void mouseClicked(MouseEvent e) {
+            JList theList = (JList) e.getSource();
+            int index = theList.locationToIndex(e.getPoint());
+
+            POI selected = (POI) theList.getModel().getElementAt(index);
+
+            User.setCurBuilding(selected.getBuilding());
+            User.setCurFloor(selected.getFloor());
+            User.setCurPoi(selected);
+
+            MapScrollPanel.loadMapSelectedPOI();
+            MapScrollPanel.repaintMapPOI();
+            new POIInfo(selected);
+        }
+     });
+
+     // KEEP THIS CODE BLOCK JUST IN CASE
+    // allCurrentPOIList.addMouseListener(new MouseAdapter() {
+    //     public void mouseClicked(MouseEvent e) {
+    //         POI selected = allCurrentPOIList.getSelectedValue();
+
+    //         System.out.println("HELLWOR");
+    //         System.out.println(selected);
+
+    //         User.setCurBuilding(selected.getBuilding());
+    //         User.setCurFloor(selected.getFloor());
+    //         User.setCurPoi(selected);
+
+    //         MapScrollPanel.loadMapSelectedPOI();
+    //         MapScrollPanel.repaintMapPOI();
+    //         new POIInfo(selected);
+    //     }
+    //  });
 }
 
 private void sendFilterValues() {

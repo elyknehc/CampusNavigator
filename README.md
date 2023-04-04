@@ -50,6 +50,8 @@ When logging in, the user is able to select which building they would like to vi
 
 **Points of Interest:** The user can make a new point of interest by clicking on the map. It will prompt them to enter new information regarding the point of information and then will be saved. They can also create the point of information as a favorite point of information. The user can edit or delete the point of information later if desired. User created point of information is persistent data, meaning that it will be saved even when the application is closed - allowing the user to access their created POIs when the application is reopened.
 
+**Clicking on POIs** Click on the POIs that have been created to edit them, display information or delete them. 
+
 **Built-in-POIs:** There will be built in point of informations that have been loaded in with a JSON file. 
 
 **Navigation:** The user is able to view all different floors of the building by selecting the floor they would like to browse. The POIs will dynamically render and change depend on what floor and building that they are on.
@@ -65,5 +67,7 @@ Password for admin edit mode: adminpassword
 
 # Editor Mode
 
-Editor mode can be accessed with the Admin Login panel. It allows the user to edit and change metadata of built in POIs, which will be parsed into a JSON so that it is saved even when the application is closed.
+Users are able to edit their own POIs by clicking on their POIs and change it accordingly. 
+
+For admins: Editor mode can be accessed with the Admin Login panel. It allows the user to edit and change metadata of built in POIs, which will be parsed into a JSON so that it is saved even when the application is closed.
 

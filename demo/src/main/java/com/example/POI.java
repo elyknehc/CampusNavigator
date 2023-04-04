@@ -50,6 +50,7 @@ public class POI {
 
     /**
      * ToString method for the object. Prints the information of the POI.
+     * @return string representation of the POI
      */
     public String toString() {
         return name + "                                                                " + description + " " + category + " " + building + " " + roomNum + " " + floor;
@@ -59,7 +60,6 @@ public class POI {
      * Stringifies a JSON object
      * @return Returns JSON
      */
-
     public String stringify() {
         JSONObject temp = new JSONObject(this);
         return temp.toString();
@@ -70,7 +70,6 @@ public class POI {
      * @param json of a POI
      * @return Returns the POI as a string instead of JSON
      */
-
     public static POI toPOI(String json) {
         JSONObject tempJson = new JSONObject(json);
         return new POI((String) tempJson.get("name"), (String) tempJson.get("description"), (String) tempJson.get("category"), (String) tempJson.get("building"), (int) tempJson.get("ID"), (int) tempJson.get("x"), (int) tempJson.get("y"), (int) tempJson.get("roomNum"), (int) tempJson.get("floor"), (boolean) tempJson.get("isFavourite"), (boolean) tempJson.get("isUser"));
@@ -86,7 +85,7 @@ public class POI {
 
     /**
      * Setter method for setting the name
-     * @param name of POI
+     * @param name name of POI
      */
     public void setName(String name) {
         this.name = name;
@@ -102,9 +101,8 @@ public class POI {
 
     /**
      * Setter method for description of POI
-     * @param description of POI
+     * @param description description of POI
      */
-
     public void setDescription(String description) {
         this.description = description;
     }
@@ -113,16 +111,14 @@ public class POI {
      * Getter method of the POI category
      * @return Category of the POI
      */
-
     public String getCategory() {
         return this.category;
     }
 
     /**
      * Setter method of category 
-     * @param category
+     * @param category categoty of POI
      */
-
     public void setCategory(String category) {
         this.category = category;
     }
@@ -131,7 +127,6 @@ public class POI {
      * Getter method of the building that the user is on
      * @return building that the user is on
      */
-
     public String getBuilding() {
         return this.building;
     }
@@ -139,14 +134,13 @@ public class POI {
      * Setter method for the users building
      * @param building - building of POI
      */
-
     public void setBuilding(String building) {
         this.building = building;
     }
 
     /**
      * Getter method for getting POI id
-     * @return ID - ID of POI
+     * @return ID of POI
      */
     public int getID() {
         return this.ID;
@@ -154,7 +148,7 @@ public class POI {
 
     /**
      * Setter method for setting a POis ID
-     * @param ID - id of POI
+     * @param ID - ID of POI
      */
     public void setID(int ID) {
         this.ID = ID;
@@ -162,7 +156,7 @@ public class POI {
 
     /**
      * Getter method for if the POI is favorite
-     * @return favorite - if the POI is favorite
+     * @return if the POI is favorite or not
      */
     public boolean getIsFavourite() {
         return this.isFavourite;
@@ -170,7 +164,7 @@ public class POI {
 
     /**
      * Setter method for setting a POI being favorite
-     * @param isFavourite
+     * @param isFavourite boolean representing whether the POI is favourited or not
      */
     public void setIsFavourite(boolean isFavourite) {
         this.isFavourite = isFavourite;
@@ -237,7 +231,6 @@ public class POI {
      * Setting the room number of the POI that it is in 
      * @param roomNum - Room number of POI
      */
-
     public void setRoomNum(int roomNum) {
         this.roomNum = roomNum;
     }
@@ -254,7 +247,6 @@ public class POI {
      * Setting the floor of the POI
      * @param floor - Sets floor 
      */
-
     public void setFloor(int floor) {
         this.floor = floor;
     }

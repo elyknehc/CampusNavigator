@@ -204,6 +204,9 @@ public class mapExplorePanel extends JPanel {
       container.add(elevators);
       container.add(userCreatedPOIs);
       container.add(favourites);
+      container.add(restaurants);
+      container.add(collabRooms);
+      container.add(computerLabs);
 
       container.add(allCurrentScroll);
       container.add(favouriteScroll);
@@ -334,7 +337,7 @@ public class mapExplorePanel extends JPanel {
             }
         });
 
-          floorDropdown.setBounds(100, 800, 200, 50);
+          floorDropdown.setBounds(100, 860, 200, 50);
           container.add(floorDropdown);
     }
 }

@@ -48,7 +48,7 @@ public class CreatePOIScreen extends JFrame {
         add(nameField);
 
         JLabel categoryLabel = new JLabel("Category: ");
-        String[] categories = {"washrooms", "classrooms", "genLabs", "entryExits", "elevators", "userCreatedPOIs", "favourites", "restaurants", "computerLabs", "collabRooms"};
+        String[] categories = {"washrooms", "classrooms", "stairwells", "genLabs", "sports", "entryExits", "elevators", "restaurants", "computerLabs", "collabRooms"};
         categoryComboBox = new JComboBox<>(categories);
         add(categoryLabel);
         add(categoryComboBox);

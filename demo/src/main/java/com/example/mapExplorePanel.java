@@ -28,11 +28,11 @@ public class mapExplorePanel extends JPanel {
    ArrayList<POI> allPOI = new ArrayList<POI>();
 
    // Initializing for Current Map POI scrollpane
-   final DefaultListModel<POI> allCurrentPOI = new DefaultListModel<POI>();
-   ArrayList<POI> filteredPOI;
-   JList<POI> allCurrentPOIList;
-   JLabel allCurrentPOITitle;
-   JScrollPane allCurrentScroll;
+   final static DefaultListModel<POI> allCurrentPOI = new DefaultListModel<POI>();
+   static ArrayList<POI> filteredPOI;
+   static JList<POI> allCurrentPOIList;
+   static JLabel allCurrentPOITitle;
+   static JScrollPane allCurrentScroll;
 
    // Initializing for Favourite POI scrollpane
    final DefaultListModel<POI> favouritePOIs = new DefaultListModel<POI>();
@@ -105,12 +105,13 @@ public class mapExplorePanel extends JPanel {
      resultList.addMouseListener(new MouseAdapter() {
         public void mouseClicked(MouseEvent e) {
             POI selected = resultList.getSelectedValue();
-
+            
             User.setCurBuilding(selected.getBuilding());
             User.setCurFloor(selected.getFloor());
             User.setCurPoi(selected);
-
             MapScrollPanel.loadMapSelectedPOI();
+            updateCurrentPOI();
+            MapScrollPanel.repaintMapPOI();
             new POIInfo(selected);
         }
      });
@@ -190,6 +191,7 @@ public class mapExplorePanel extends JPanel {
             User.setCurPoi(selected);
 
             MapScrollPanel.loadMapSelectedPOI();
+            MapScrollPanel.repaintMapPOI();
             new POIInfo(selected);
         }
      });
@@ -205,6 +207,8 @@ public class mapExplorePanel extends JPanel {
             User.setCurPoi(selected);
 
             MapScrollPanel.loadMapSelectedPOI();
+            updateCurrentPOI();
+            MapScrollPanel.repaintMapPOI();
             new POIInfo(selected);
         }
       });
@@ -220,6 +224,8 @@ public class mapExplorePanel extends JPanel {
             User.setCurPoi(selected);
 
             MapScrollPanel.loadMapSelectedPOI();
+            updateCurrentPOI();
+            MapScrollPanel.repaintMapPOI();
             new POIInfo(selected);
         }
       });
@@ -285,7 +291,7 @@ public class mapExplorePanel extends JPanel {
 
 private void updateUserPOI() {
     userPOIPulled = (ArrayList<POI>) User.getAllPOI();
-
+    users.clear();
     for (int i = 0; i < userPOIPulled.size(); i++ ) {
         if (userPOIPulled.get(i).getIsUser()) {
             users.addElement(userPOIPulled.get(i));
@@ -294,6 +300,7 @@ private void updateUserPOI() {
     userList = new JList<POI>(users);
     userListTitle = new JLabel("User Points of Interest");
     userScroll = new JScrollPane(userList);
+    userScroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 
     userScroll.setBounds(100, 760, 200, 75);
     container.add(userScroll);
@@ -302,7 +309,7 @@ private void updateUserPOI() {
 
 private void updateFavouritePOI() {
     favouritePOIPulled = (ArrayList<POI>) User.getAllPOI();
-
+    favouritePOIs.clear();
     for (int i = 0; i < favouritePOIPulled.size(); i++ ) {
         if (favouritePOIPulled.get(i).getIsFavourite()) {
             favouritePOIs.addElement(favouritePOIPulled.get(i));
@@ -311,13 +318,15 @@ private void updateFavouritePOI() {
     favouriteList = new JList<POI>(favouritePOIs);
     favouriteListTitle = new JLabel("Favourite Points of Interest");
     favouriteScroll = new JScrollPane(favouriteList);
+    favouriteScroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 
     favouriteScroll.setBounds(100, 660, 200, 75);
     container.add(favouriteScroll);
 }
 
 
-private void updateCurrentPOI() {
+public static void updateCurrentPOI() {
+    allCurrentPOI.clear();
     filteredPOI = (ArrayList<POI>) User.getFilteredPOI();
       for (int i = 0; i < filteredPOI.size() ; i++) {
          allCurrentPOI.addElement(filteredPOI.get(i));
@@ -325,6 +334,7 @@ private void updateCurrentPOI() {
     allCurrentPOIList = new JList<POI>(allCurrentPOI);
     allCurrentPOITitle = new JLabel("Current Points of Interest");
     allCurrentScroll = new JScrollPane(allCurrentPOIList);
+    allCurrentScroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 
     allCurrentScroll.setBounds(100, 560, 200, 75);
     container.add(allCurrentScroll);
@@ -430,6 +440,7 @@ private void sendFilterValues() {
 
                 loadFloors();
                 MapScrollPanel.loadMapSelectedPOI();
+                updateCurrentPOI();
                 MapScrollPanel.repaintMapPOI();
             }
         });

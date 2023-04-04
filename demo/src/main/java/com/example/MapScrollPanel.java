@@ -85,12 +85,14 @@ public class MapScrollPanel extends JPanel {
         poiLayer.removeAllPOI();
         for (POI poi : User.getFilteredPOI()) {
             MapPOI tempPin = new MapPOI(poi);
+            if (poi == User.getCurPoi()) {
+                tempPin.highlight();
+            }
             poiLayer.addPOItoMap(tempPin);
         }
     }
 
     public static void loadMap() {
-        // NEED TO ADD CURRENT FLOOR
         String currentUserSelection = "./images/" + User.getCurBuilding() + "-BF/" + User.getCurBuilding() + "-BF-" + Integer.toString(User.getCurFloor()) + ".jpg";
         
         if (currentMap.equals("")) {
@@ -110,7 +112,5 @@ public class MapScrollPanel extends JPanel {
 
     public static void loadMapSelectedPOI() {
         loadMap();
-
-        // ADD CODE TO HIGHLIGHT SELECTED POI
     }
 }

@@ -10,11 +10,11 @@ import java.awt.event.ActionListener;
  */
 public class LoginPanel extends JPanel{
     //Declare constants
+    private JLabel IncorrectPassword;
     private JButton enterButton;
     private JTextField passwordField;
     private String password;
-    public static boolean pressed = false;
-    
+
     LoginPanel() {
         /**
          * Constructor for creating a login panel
@@ -24,38 +24,44 @@ public class LoginPanel extends JPanel{
 
         // create JLabels for password prompt and set properties
         JLabel passwordLabel1 = new JLabel("Enter Admin Password");
-        passwordLabel1.setFont(new Font("Balsamiq", Font.PLAIN,20));
+        passwordLabel1.setFont(new Font("Balsamiq", Font.PLAIN, 20));
 
         // create JTextField for password input and set properties
         passwordField = new JTextField();
 
-                // create JLabel for title
-                JLabel titleLabel = new JLabel("Welcome Back");
-                titleLabel.setFont(new Font("Balsamiq", Font.PLAIN, 40));
+        // create JLabel for title
+        JLabel titleLabel = new JLabel("Welcome Back");
+        titleLabel.setFont(new Font("Balsamiq", Font.PLAIN, 40));
+
+        IncorrectPassword = new JLabel("Incorrect Password");
+        IncorrectPassword.setFont(new Font("Balsamiq", Font.BOLD, 20));
+        IncorrectPassword.setForeground(Color.RED);
 
         // create JButton for entering password and set properties
         enterButton = new JButton("Enter");
         enterButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                if (e.getSource()==enterButton) {
+                if (e.getSource() == enterButton) {
                     password = passwordField.getText();
-                    if (password.equals("adminPassword")){
+                    if (password.equals("adminPassword")) {
                         System.out.println("Correct password");
                         User.setAdmin(true);
-                        pressed = true;
                     } else {
-                        User.setAdmin(false);
-                        pressed = true;
+                        System.out.println("hello?");
+                        add(IncorrectPassword);
+                        addIncorrect();
+                        repaint();
                     }
                 }
-                System.out.println(password); //Filler
             }
         });
 
         titleLabel.setBounds(85, 220, 300, 40);
         passwordLabel1.setBounds(100, 280, 300, 20);
         passwordField.setBounds(100, 300, 200, 25);
-        enterButton.setBounds(100,340, 200, 20);
+        enterButton.setBounds(100, 340, 200, 20);
+        IncorrectPassword.setBounds(90, 380, 600, 50);
+
 
         // add components to left panel
         add(passwordLabel1);
@@ -64,6 +70,12 @@ public class LoginPanel extends JPanel{
         add(titleLabel);
         setBackground(Color.decode(background));
 
+    }
+
+    private void addIncorrect() {
+        add(IncorrectPassword);
+        revalidate();
+        repaint();
     }
 
 }

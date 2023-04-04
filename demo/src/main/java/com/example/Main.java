@@ -80,11 +80,12 @@ public class Main {
                     panelSwitch.add(second);
                     panelSwitch.repaint();
                     panelSwitch.revalidate();
-                    rightContainer.removeAll();
-                    rightContainer.repaint();
-                    rightContainer.revalidate();
-                    rightContainer.add(mapScroll);
-                    mapScroll.loadMap();
+                   rightContainer.removeAll();
+                   rightContainer.repaint();
+                   rightContainer.revalidate();
+                   rightContainer.add(mapScroll);
+                   MapScrollPanel.loadMap();
+                   mapExplorePanel.loadFloors();
                 }
             });
             footerPanel.add(mapExplore);

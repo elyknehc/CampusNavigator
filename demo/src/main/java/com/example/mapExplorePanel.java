@@ -94,6 +94,10 @@ public class mapExplorePanel extends JPanel {
                     preResultsList.addElement(allPOI.get(i));
                 }
             }
+
+            if (preResultsList.isEmpty()) {
+                preResultsList.addElement(new POI("No results found", "", "", "", 0, 0, -1, -1, 0, false, false));
+            }
         }
     });
 

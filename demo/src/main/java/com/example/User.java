@@ -77,7 +77,7 @@ public class User {
     public static void setEditing(boolean newIsEditing) {
         isEditing = newIsEditing;
     }
-
+/* 
     public static List<POI> getUserPOI() {
         return userPOIList;
     }
@@ -92,13 +92,13 @@ public class User {
 
     public static void addFavouritePOI(POI input) {
         favouritePOIList.add(input);
-    }
+    }*/
 
     // ASK GROUP LATER --> isn't this similar to POI.java toString() method?
     /*public void viewPOIInfo() {
     }
     */
-
+/* 
     public static void deleteUserPOI(POI input) {
         try {
             userPOIList.remove(input);
@@ -114,7 +114,7 @@ public class User {
             ;
         }
     }
-
+*/
     public static void deleteDefaultPOI(POI input) {
         try {
             allPOI.remove(input);

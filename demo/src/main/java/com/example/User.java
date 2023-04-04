@@ -53,7 +53,6 @@ public class User {
         }
 
         for (POI poi : allPOI) {
-            System.out.println(poi.getIsUser() + " USER " + filteredCategories.toString());
             if (poi.getBuilding().equals(User.getCurBuilding()) && poi.getFloor() == User.getCurFloor()) {
                 if (filteredCategories.contains("favourites") && poi.getIsFavourite()) {
                     temp.add(poi);
@@ -74,7 +73,6 @@ public class User {
     }
 
     public static void addFilters(List<String> categories) {
-        System.out.println("add");
         for (String category : categories) {
             if (!filteredCategories.contains(category)) {
                 filteredCategories.add(category);
@@ -84,7 +82,6 @@ public class User {
     }
 
     public static void removeFilters(List<String> categories) {
-        System.out.println("remove");
         for (String category : categories) {
             try {
                 filteredCategories.remove(category);
@@ -223,6 +220,7 @@ public class User {
     public static void deleteDefaultPOI(POI input) {
         try {
             allPOI.remove(input);
+            MapScrollPanel.repaintMapPOI();
         } catch (NullPointerException e) {
             ;
         }

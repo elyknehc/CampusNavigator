@@ -37,11 +37,11 @@ public class POIInfo extends JFrame {
 		adminEdit.setBounds(70, 390, 150, 30);
 		final JButton edit = new JButton("Edit");
 		edit.setBounds(220, 392, 100, 30);
-		final JButton delete = new JButton("delete");
+		final JButton delete = new JButton("Delete");
 		delete.setBounds(360, 392, 100, 30);
 
 		// For the admin side if they are an admin
-		if (User.getAdmin() == false) {
+		if (!curr.getIsUser() && !User.getAdmin()) {
 			adminEdit.setVisible(false);
 			edit.setVisible(false);
 			delete.setVisible(false);
@@ -70,7 +70,7 @@ public class POIInfo extends JFrame {
 				buildingField.setBounds(100, 60, 200, 20);
 		
 				JLabel categoryLabel = new JLabel("Category:");
-				String[] categories = {"washrooms", "classrooms", "genLabs", "entryExits", "elevators", "userCreatedPOIs", "favourites", "restaurants", "computerLabs", "collabRooms"};
+				String[] categories = {"washrooms", "classrooms", "genLabs", "entryExits", "elevators", "restaurants", "computerLabs", "collabRooms"};
 				final JComboBox categoryComboBox = new JComboBox<>(categories);
 				categoryLabel.setBounds(20, 100, 80, 20);
 				categoryComboBox.setBounds(100, 100, 200, 20);
@@ -79,11 +79,6 @@ public class POIInfo extends JFrame {
 				final JTextField descriptionField = new JTextField(curr.getDescription());
 				descriptionLabel.setBounds(20, 140, 80, 20);
 				descriptionField.setBounds(100, 140, 200, 20);
-		
-				JLabel floorLabel = new JLabel("Floor:");
-				final JTextField floorField = new JTextField(curr.getFloor());
-				floorLabel.setBounds(20, 180, 80, 20);
-				floorField.setBounds(100, 180, 200, 20);
 		
 				// Add labels and text fields to the frame
 				editFrame.add(nameLabel);
@@ -94,8 +89,6 @@ public class POIInfo extends JFrame {
 				editFrame.add(categoryComboBox);
 				editFrame.add(descriptionLabel);
 				editFrame.add(descriptionField);
-				editFrame.add(floorLabel);
-				editFrame.add(floorField);
 		
 				// Create a save button to save the edited information
 				JButton saveButton = new JButton("Save");
@@ -108,7 +101,6 @@ public class POIInfo extends JFrame {
 						curr.setBuilding(buildingField.getText());
 						curr.setCategory((String) categoryComboBox.getSelectedItem());
 						curr.setDescription(descriptionField.getText());
-						curr.setFloor(Integer.parseInt(floorField.getText()));
 	
 						// Update the GUI labels with the edited information
 						poiName.setText("Name: " + curr.getName());
@@ -134,12 +126,8 @@ public class POIInfo extends JFrame {
 
 		delete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				curr.setName("");
-				curr.setBuilding("");
-				curr.setCategory("");
-				curr.setDescription("");
-				curr.setFloor(0);
 				User.deleteDefaultPOI(curr);
+				setVisible(false);
 		}
 	});
 
@@ -179,7 +167,6 @@ public class POIInfo extends JFrame {
 	}
 	private class FrameListener extends WindowAdapter {
 		public void windowClosing(WindowEvent e) {
-			System.out.println("WORKING");
 			User.setCurPoi(null);
 			MapScrollPanel.repaintMapPOI();
         }

@@ -6,11 +6,12 @@ import java.util.*;
  * @author Group 51
  */
 public class Layers extends JLabel {
+
+    /**
+     * Constructor for a layer
+     * Creates a new layer, sets the location and visibility of the layer
+     */
     public Layers() {
-        /**
-         * Constructor for a layer
-         * Creates a new layer, sets the location and visibility of the layer
-         */
         setLocation(0,0);
         setVisible(true);
     }

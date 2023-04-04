@@ -11,6 +11,9 @@ public class WeatherPanel extends JPanel {
     // Call a new WeatherApi object
     public static WeatherApi weather = new WeatherApi();
 
+    /** 
+     * This methoc creates a weather panel
+     */
     public WeatherPanel() {
         String  panelBackground1 = "#a012ff";
         setBackground(Color.decode(panelBackground1));

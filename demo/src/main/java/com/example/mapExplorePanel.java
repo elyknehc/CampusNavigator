@@ -47,6 +47,9 @@ public class mapExplorePanel extends JPanel {
    static JLabel userListTitle;
    static JScrollPane userScroll;
 
+   /** 
+    * Constructor to create a mapExplorePanel
+    */
    public mapExplorePanel() {
       // create JPanel for left panel and set properties
       container.setLayout(null);
@@ -246,7 +249,9 @@ public class mapExplorePanel extends JPanel {
       add(exploreScroll, BorderLayout.CENTER);
 }
 
-
+/**
+ * Method to update the screen with the User's POIs
+ */
 public static void updateUserPOI() {
     userPOIPulled = (ArrayList<POI>) User.getAllPOI();
     users.clear();
@@ -285,7 +290,9 @@ public static void updateUserPOI() {
       });
 }
 
-
+/**
+ * Method to update the list of favourite POI's
+ */
 public static void updateFavouritePOI() {
     favouritePOIPulled = (ArrayList<POI>) User.getAllPOI();
     favouritePOIs.clear();
@@ -321,7 +328,9 @@ public static void updateFavouritePOI() {
       });
 }
 
-
+/**
+ * Method to update the current POI being tracked
+ */
 public static void updateCurrentPOI() {
     allCurrentPOI.clear();
     filteredPOI = (ArrayList<POI>) User.getFilteredPOI();
@@ -356,9 +365,14 @@ public static void updateCurrentPOI() {
 
 }
 
+/**
+ * Method that sends the POI category filters
+ */
 private void sendFilterValues() {
         ArrayList<String> tempAdd = new ArrayList<String>();
         ArrayList<String> tempRem = new ArrayList<String>();
+        
+        // Checks all of the possible POI categories
         if (washrooms.isSelected()) {
             tempAdd.add("washrooms");
         }
@@ -429,6 +443,9 @@ private void sendFilterValues() {
         User.removeFilters(tempRem);
     }
 
+    /**
+     * Method that loads in each floor of the building
+     */
     public static void loadFloors() {
         String[] floorNums = {"1", "2", "3", "4", "5"};
         if (User.getCurBuilding() == null) {

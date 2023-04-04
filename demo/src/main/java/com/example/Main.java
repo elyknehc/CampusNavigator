@@ -22,6 +22,9 @@ public class Main {
         Json.readFile();
     }
 
+    /**
+     * Method to create the GUI of the application
+     */
     public void createGUI() {
         //Creating the GUI, setting up panels
             String  panelBackground1 = "#a012ff";
@@ -29,6 +32,7 @@ public class Main {
             footerPanel.setBounds(0, 0, 1384, 72);
             footerPanel.setBackground(Color.decode(panelBackground1));
 
+            // Inserts the logo of Western
             JLabel logoLabel = new JLabel();
             logoLabel.setBounds(50, 125, 200, 50);
             ImageIcon westernLogo = new ImageIcon("./images/westernLogo.png");
@@ -46,7 +50,6 @@ public class Main {
 
             final LoginPanel first = new LoginPanel();
             panelSwitch.add(first);
-
 
             final mapExplorePanel second = new mapExplorePanel();
             second.setBackground(Color.white);
@@ -146,6 +149,10 @@ public class Main {
             MapScrollPanel.repaintMapPOI();
         }
 
+        /** 
+         * This method sets the admin status of the user
+         * @param set boolean value representing whether the user is an admin or not
+         */
         public static void setAdmin(boolean set) {
             if (User.getAdmin()) {
                 adminEdit.setVisible(true);

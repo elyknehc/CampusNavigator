@@ -86,7 +86,7 @@ public class MapScrollPanel extends JPanel {
     public static void repaintMapPOI() {
         for (POI poi : User.getFilteredPOI()) {
             MapPOI tempPin = new MapPOI(poi);
-            poiLayer.addPOItoMap(tempPin);
+          //  poiLayer.addPOItoMap(tempPin);
         }
     }
 

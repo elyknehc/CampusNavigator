@@ -13,7 +13,7 @@
 },
 {
     "name" : "MC17",
-    "Description": "Classroom located on the first floor of Middlesex College.",
+    "description": "Classroom located on the first floor of Middlesex College.",
     "category": "Classroom",
     "building": "Middlesex College",
     "ID": 1,
@@ -26,7 +26,7 @@
 },
 {
     "name" : "MC110",
-    "Description": "Classroom located on the first floor of Middlesex College.",
+    "description": "Classroom located on the first floor of Middlesex College.",
     "category": "Classroom",
     "building": "Middlesex College",
     "ID": 1,
@@ -39,7 +39,7 @@
 },
 {
     "name" : "MC105B",
-    "Description": "Classroom located on the first floor of Middlesex College.",
+    "description": "Classroom located on the first floor of Middlesex College.",
     "category": "Classroom",
     "building": "Middlesex College",
     "ID": 1,
@@ -52,7 +52,7 @@
 },
 {
     "name" : "HSB9",
-    "Description": "Classroom located on the first floor of Middlesex College.",
+    "description": "Classroom located on the first floor of Middlesex College.",
     "category": "Classroom",
     "building": "Health Sciences Building",
     "ID": 1,
@@ -65,7 +65,7 @@
 },
 {
     "name" : "HSB11",
-    "Description": "Classroom located on the first floor of Health Sciences Building.",
+    "description": "Classroom located on the first floor of Health Sciences Building.",
     "category": "Classroom",
     "building": "Health Sciences Building",
     "ID": 1,
@@ -78,7 +78,7 @@
 },
 {
     "name" : "HSB35",
-    "Description": "Classroom located on the first floor of Health Sciences Building.",
+    "description": "Classroom located on the first floor of Health Sciences Building.",
     "category": "Classroom",
     "building": "Health Sciences Building",
     "ID": 1,
@@ -91,7 +91,7 @@
 },
 {
     "name" : "HSB40",
-    "Description": "Classroom located on the first floor of Health Sciences Building.",
+    "description": "Classroom located on the first floor of Health Sciences Building.",
     "category": "Classroom",
     "building": "Health Sciences Building",
     "ID": 1,
@@ -104,7 +104,7 @@
 },
 {
     "name" : "HSB236",
-    "Description": "Classroom located on the second floor of Health Sciences Building.",
+    "description": "Classroom located on the second floor of Health Sciences Building.",
     "category": "Classroom",
     "building": "Health Sciences Building",
     "ID": 1,
@@ -117,7 +117,7 @@
 },
 {
     "name" : "HSB240",
-    "Description": "Classroom located on the second floor of Health Sciences Building.",
+    "description": "Classroom located on the second floor of Health Sciences Building.",
     "category": "Classroom",
     "building": "Health Sciences Building",
     "ID": 1,
@@ -130,7 +130,7 @@
 },
 {
     "name" : "UC1105",
-    "Description": "Classroom located on the first floor of University College .",
+    "description": "Classroom located on the first floor of University College .",
     "category": "Classroom",
     "building": "University College ",
     "ID": 1,
@@ -143,7 +143,7 @@
 },
 {
     "name" : "UC1110",
-    "Description": "Classroom located on the first floor of University College .",
+    "description": "Classroom located on the first floor of University College .",
     "category": "Classroom",
     "building": "University College ",
     "ID": 1,
@@ -156,7 +156,7 @@
 },
 {
     "name" : "UC1225",
-    "Description": "Classroom located on the first floor of University College .",
+    "description": "Classroom located on the first floor of University College .",
     "category": "Classroom",
     "building": "University College ",
     "ID": 1,
@@ -169,7 +169,7 @@
 },
 {
     "name" : "UC2105",
-    "Description": "Classroom located on the first floor of University College .",
+    "description": "Classroom located on the first floor of University College .",
     "category": "Classroom",
     "building": "University College ",
     "ID": 1,
@@ -182,7 +182,7 @@
 },
 {
     "name" : "UC2110",
-    "Description": "Classroom located on the first floor of University College .",
+    "description": "Classroom located on the first floor of University College .",
     "category": "Classroom",
     "building": "University College ",
     "ID": 1,
@@ -195,7 +195,7 @@
 },
 {
     "name" : "UC3110",
-    "Description": "Classroom located on the first floor of University College .",
+    "description": "Classroom located on the first floor of University College .",
     "category": "Classroom",
     "building": "University College ",
     "ID": 1,
@@ -208,7 +208,7 @@
 },
 {
     "name" : "UC3220",
-    "Description": "Classroom located on the first floor of University College .",
+    "description": "Classroom located on the first floor of University College .",
     "category": "Classroom",
     "building": "University College ",
     "ID": 1,
@@ -221,7 +221,7 @@
 },
 {
     "name" : "UC3225",
-    "Description": "Classroom located on the first floor of University College .",
+    "description": "Classroom located on the first floor of University College .",
     "category": "Classroom",
     "building": "University College ",
     "ID": 1,

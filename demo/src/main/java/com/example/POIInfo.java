@@ -52,7 +52,7 @@ public class POIInfo extends JFrame {
 		favourite.setFont(new Font("Balsamiq", Font.PLAIN, 10));
 		adminEdit.setFont(new Font("Balsamiq", Font.PLAIN, 10));
 
-		
+		//Add properties to the frame
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setTitle("POI Information Screen");
         this.setResizable(false);

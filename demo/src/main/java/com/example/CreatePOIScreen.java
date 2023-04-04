@@ -4,7 +4,13 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * This class represents a POI creation screen when the user wants to create a new POI, it asks them to enter fields for a new POI being created.
+ * @author Kyle Chen
+ */
 public class CreatePOIScreen extends JFrame {
+    
+    //Declare constants
     private JTextField nameField;
     private JTextField descriptionField;
     private JTextField roomNumberField;
@@ -15,7 +21,14 @@ public class CreatePOIScreen extends JFrame {
     private boolean invalid = false;
     private JLabel unfinished;
 
-    public CreatePOIScreen(int x, int y) {
+    /**
+     * 
+     * @param x: X coordinate
+     * @param y: y coordinate
+     * @param currPOI: currentPOI of user
+     */
+    public CreatePOIScreen(int x, int y, POI currPOI) {
+        
         setTitle("CreatePOIScreen");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLayout(new GridLayout(7, 2));
@@ -24,6 +37,8 @@ public class CreatePOIScreen extends JFrame {
         final int coordinateX = x;
         final int coordinateY = y;
 
+
+        //Add labels and buttons to the POI screen
         JLabel nameLabel = new JLabel("Name of POI: ");
         add(nameLabel);
         nameField = new JTextField();
@@ -42,6 +57,10 @@ public class CreatePOIScreen extends JFrame {
         descriptionField = new JTextField();
         add(descriptionField);
 
+
+        //Building options
+        String[] buildings = {"MC", "HSB", "UC"};
+
         JLabel roomNumberLabel = new JLabel("Room Number: ");
         add(roomNumberLabel);
         roomNumberField = new JTextField();
@@ -58,6 +77,8 @@ public class CreatePOIScreen extends JFrame {
         add(favoriteCheckBox);
 
 
+
+        //If the information is not completely filled
         unfinished = new JLabel("Invalid Response");
         unfinished.setForeground(Color.RED);
 
@@ -85,7 +106,7 @@ public class CreatePOIScreen extends JFrame {
                         repaint();
                         return;
                 }
-
+                //Set the POI info that the user entering
                 POI changeCurrentPOI = User.getCurPoi();
                 changeCurrentPOI.setName(poiName);
                 changeCurrentPOI.setBuilding(poiBuilding);
@@ -109,7 +130,7 @@ public class CreatePOIScreen extends JFrame {
 
         });
         add(submitButton);
-
+        //Cancelling a POI and removing it from the screen
         JButton cancelButton = new JButton("Cancel");
         cancelButton.addActionListener(new ActionListener() {
             

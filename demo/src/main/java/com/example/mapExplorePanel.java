@@ -7,6 +7,10 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.util.*;
 
+/**
+ * This class represents a panel for uses to choose which properties they want to view on a map
+ * @author Group 51
+ */
 public class mapExplorePanel extends JPanel {
    JTextField searchBar;
    JCheckBox washrooms, classrooms, genLabs, stairwells, entryExits, elevators, userCreatedPOIs, favourites, restaurants, computerLabs, collabRooms;

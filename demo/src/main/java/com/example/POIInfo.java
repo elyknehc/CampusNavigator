@@ -34,8 +34,28 @@ public class POIInfo extends JFrame {
 		description.setBounds(70, 220, 400, 60);
 		final JLabel floor = new JLabel("Floor: " + curr.getFloor());
 		floor.setBounds(70, 270, 400, 60);
-		final JLabel favourite = new JLabel("Favourite: " + curr.getIsFavourite());
-		favourite.setBounds(70, 320, 200, 60);
+		final JLabel favourite = new JLabel("Favourite: ");
+		favourite.setBounds(70, 320, 100, 60);
+
+		final JCheckBox favCheckbox = new JCheckBox("Toggle for Favourite");
+		favCheckbox.setBounds(175, 340, 150, 20);
+		favCheckbox.setVisible(true);
+		if (curr.getIsFavourite()) {
+			favCheckbox.setSelected(true);
+		} else {
+			favCheckbox.setSelected(false);
+		}
+		favCheckbox.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (favCheckbox.isSelected() == true) {
+					curr.setIsFavourite(true);
+				} else {
+					curr.setIsFavourite(false);
+				}
+			}
+		});
+
 		final JLabel adminEdit = new JLabel("Admin Edit");
 		adminEdit.setBounds(70, 390, 150, 30);
 		final JButton edit = new JButton("Edit");
@@ -180,6 +200,7 @@ public class POIInfo extends JFrame {
 		this.add(description);
 		this.add(floor);
 		this.add(favourite);
+		this.add(favCheckbox);
 		this.add(adminEdit);
 		this.add(edit);
 		this.add(delete);

@@ -35,6 +35,8 @@ public class MapPOI extends JLabel {
                 infoPanel.addWindowListener(new WindowAdapter() {
                     public void windowClosed(WindowEvent e) {
                         setIcon(normalPin);
+                        mapExplorePanel.updateFavouritePOI();
+                        mapExplorePanel.updateUserPOI();
                     }
                 });
             }

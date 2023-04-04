@@ -4,11 +4,11 @@ import java.io.*;
 import java.nio.file.*;
 import java.util.*;
 
-class Json {
    /**
     * @author Group 51
     *This class is responsible for setting JSON information for built in POIs
     */
+class Json {
 
     /**
      * Read file reads from the POI data json and parses the information, handles any exceptions if file not found

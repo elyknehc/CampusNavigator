@@ -85,7 +85,8 @@ public class Main {
                    rightContainer.revalidate();
                    rightContainer.add(mapScroll);
                    MapScrollPanel.loadMap();
-                    mapExplorePanel.loadFloors();
+                   mapExplorePanel.loadFloors();
+                   mapExplorePanel.updateCurrentPOI();
                    MapScrollPanel.repaintMapPOI();
                 }
             });

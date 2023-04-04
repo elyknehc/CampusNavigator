@@ -93,7 +93,6 @@ public class MapScrollPanel extends JPanel {
     }
 
     public static void loadMap() {
-        // NEED TO ADD CURRENT FLOOR
         String currentUserSelection = "./images/" + User.getCurBuilding() + "-BF/" + User.getCurBuilding() + "-BF-" + Integer.toString(User.getCurFloor()) + ".jpg";
         
         if (currentMap.equals("")) {
@@ -113,7 +112,5 @@ public class MapScrollPanel extends JPanel {
 
     public static void loadMapSelectedPOI() {
         loadMap();
-
-        // ADD CODE TO HIGHLIGHT SELECTED POI
     }
 }

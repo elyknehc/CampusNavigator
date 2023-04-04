@@ -49,8 +49,8 @@ public class POIInfo extends JFrame {
 
 		// Set the font for each label
 		title.setFont(new Font("Balsamiq", Font.PLAIN, 20));
-		description.setFont(new Font("Balsamiq", Font.PLAIN, 10));
-		building.setFont(new Font("Balsamiq", Font.PLAIN, 10));
+		description.setFont(new Font("Balsamiq", Font.PLAIN, 20));
+		building.setFont(new Font("Balsamiq", Font.PLAIN, 20));
 		poiName.setFont(new Font("Balsamiq", Font.BOLD, 20));
 		edit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -147,13 +147,13 @@ public class POIInfo extends JFrame {
 
 		// Set the font for each label
 		title.setFont(new Font("Balsamiq", Font.PLAIN, 20));
-        category.setFont(new Font("Balsamiq", Font.PLAIN, 10));
-        description.setFont(new Font("Balsamiq", Font.PLAIN, 10));
-        building.setFont(new Font("Balsamiq", Font.PLAIN, 10));
+        category.setFont(new Font("Balsamiq", Font.PLAIN, 20));
+        description.setFont(new Font("Balsamiq", Font.PLAIN, 20));
+        building.setFont(new Font("Balsamiq", Font.PLAIN, 20));
         poiName.setFont(new Font("Balsamiq", Font.BOLD, 20));
-		floor.setFont(new Font("Balsamiq", Font.PLAIN, 10));
-		favourite.setFont(new Font("Balsamiq", Font.PLAIN, 10));
-		adminEdit.setFont(new Font("Balsamiq", Font.PLAIN, 10));
+		floor.setFont(new Font("Balsamiq", Font.PLAIN, 20));
+		favourite.setFont(new Font("Balsamiq", Font.PLAIN, 20));
+		adminEdit.setFont(new Font("Balsamiq", Font.PLAIN, 20));
 
 		FrameListener listener = new FrameListener();
 

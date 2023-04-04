@@ -110,6 +110,7 @@ public class mapExplorePanel extends JPanel {
             User.setCurFloor(selected.getFloor());
             User.setCurPoi(selected);
             MapScrollPanel.loadMapSelectedPOI();
+            updateCurrentPOI();
             MapScrollPanel.repaintMapPOI();
             new POIInfo(selected);
         }
@@ -206,6 +207,7 @@ public class mapExplorePanel extends JPanel {
             User.setCurPoi(selected);
 
             MapScrollPanel.loadMapSelectedPOI();
+            updateCurrentPOI();
             MapScrollPanel.repaintMapPOI();
             new POIInfo(selected);
         }
@@ -222,6 +224,7 @@ public class mapExplorePanel extends JPanel {
             User.setCurPoi(selected);
 
             MapScrollPanel.loadMapSelectedPOI();
+            updateCurrentPOI();
             MapScrollPanel.repaintMapPOI();
             new POIInfo(selected);
         }
@@ -288,7 +291,7 @@ public class mapExplorePanel extends JPanel {
 
 private void updateUserPOI() {
     userPOIPulled = (ArrayList<POI>) User.getAllPOI();
-
+    users.clear();
     for (int i = 0; i < userPOIPulled.size(); i++ ) {
         if (userPOIPulled.get(i).getIsUser()) {
             users.addElement(userPOIPulled.get(i));
@@ -306,7 +309,7 @@ private void updateUserPOI() {
 
 private void updateFavouritePOI() {
     favouritePOIPulled = (ArrayList<POI>) User.getAllPOI();
-
+    favouritePOIs.clear();
     for (int i = 0; i < favouritePOIPulled.size(); i++ ) {
         if (favouritePOIPulled.get(i).getIsFavourite()) {
             favouritePOIs.addElement(favouritePOIPulled.get(i));
@@ -323,6 +326,7 @@ private void updateFavouritePOI() {
 
 
 public static void updateCurrentPOI() {
+    allCurrentPOI.clear();
     filteredPOI = (ArrayList<POI>) User.getFilteredPOI();
       for (int i = 0; i < filteredPOI.size() ; i++) {
          allCurrentPOI.addElement(filteredPOI.get(i));
@@ -436,6 +440,7 @@ private void sendFilterValues() {
 
                 loadFloors();
                 MapScrollPanel.loadMapSelectedPOI();
+                updateCurrentPOI();
                 MapScrollPanel.repaintMapPOI();
             }
         });

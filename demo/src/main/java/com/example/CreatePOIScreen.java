@@ -4,19 +4,32 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * This class represents a POI creation screen when the user wants to create a new POI, it asks them to enter fields for a new POI being created.
+ * @author Kyle Chen
+ */
 public class CreatePOIScreen extends JFrame {
+    
+    //Declare constants
     private JTextField nameField;
-    private JTextField categoryField;
     private JTextField descriptionField;
     private JTextField roomNumberField;
     private JTextField idField;
     private JCheckBox favoriteCheckBox;
     private JTextField floorField;
+    private JComboBox<String> categoryComboBox;
     private boolean invalid = false;
     private JLabel unfinished;
     private POI currentPOI;
 
+    /**
+     * 
+     * @param x: X coordinate
+     * @param y: y coordinate
+     * @param currPOI: currentPOI of user
+     */
     public CreatePOIScreen(int x, int y, POI curPOI) {
+        
         setTitle("CreatePOIScreen");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLayout(new GridLayout(7, 2));
@@ -26,6 +39,8 @@ public class CreatePOIScreen extends JFrame {
         final int coordinateY = y;
         currentPOI = curPOI;
 
+
+        //Add labels and buttons to the POI screen
         JLabel nameLabel = new JLabel("Name of POI: ");
         add(nameLabel);
         nameField = new JTextField();
@@ -33,14 +48,20 @@ public class CreatePOIScreen extends JFrame {
         add(nameField);
 
         JLabel categoryLabel = new JLabel("Category: ");
+        String[] categories = {"washrooms", "classrooms", "genLabs", "sports", "entryExits", "elevators", "userCreatedPOIs", "favourites", "restaurants", "computerLabs", "collabRooms"};
+        categoryComboBox = new JComboBox<>(categories);
         add(categoryLabel);
-        categoryField = new JTextField();
-        add(categoryField);
+        add(categoryComboBox);
+
 
         JLabel descriptionLabel = new JLabel("Description: ");
         add(descriptionLabel);
         descriptionField = new JTextField();
         add(descriptionField);
+
+
+        //Building options
+        String[] buildings = {"MC", "HSB", "UC"};
 
         JLabel roomNumberLabel = new JLabel("Room Number: ");
         add(roomNumberLabel);
@@ -58,6 +79,8 @@ public class CreatePOIScreen extends JFrame {
         add(favoriteCheckBox);
 
 
+
+        //If the information is not completely filled
         unfinished = new JLabel("Invalid Response");
         unfinished.setForeground(Color.RED);
 
@@ -68,31 +91,32 @@ public class CreatePOIScreen extends JFrame {
                 // Save the information here
             try{
                 String poiName = nameField.getText();
-                String poiCategory = categoryField.getText();
                 String poiDescription = descriptionField.getText();
                 String poiBuilding = User.getCurBuilding();
-                    int poiRoomNumber = Integer.parseInt(roomNumberField.getText());
-                    int poiFloor = User.getCurFloor();
+                int poiRoomNumber = Integer.parseInt(roomNumberField.getText());
+                int poiFloor = User.getCurFloor();
+                String poiCategory = (String) categoryComboBox.getSelectedItem();
+
                 // String labelID = idLabel.getText();
                 // int poiID = Integer.parseInt(labelID);
                 boolean poiFavorite = favoriteCheckBox.isSelected();
                 
-                    if (poiName.length() == 0 || poiCategory.length() == 0 || poiDescription.length() == 0
+                    if (poiName.length() == 0 || poiDescription.length() == 0
                             || poiDescription.length() == 0) {
                         invalid = true;
                         add(unfinished);
                         repaint();
                         return;
                 }
-
+                //Set the POI info that the user entering
                 POI changeCurrentPOI = User.getCurPoi();
                 changeCurrentPOI.setName(poiName);
-                changeCurrentPOI.setCategory(poiCategory);
                 changeCurrentPOI.setBuilding(poiBuilding);
                 changeCurrentPOI.setDescription(poiDescription);
                 changeCurrentPOI.setRoomNum(poiRoomNumber);
                 changeCurrentPOI.setFloor(poiFloor);
                 changeCurrentPOI.setIsFavourite(poiFavorite);
+                changeCurrentPOI.setCategory(poiCategory);
                 
                 User.setCurPoi(null);
                 MapScrollPanel.repaintMapPOI();
@@ -111,7 +135,7 @@ public class CreatePOIScreen extends JFrame {
 
         });
         add(submitButton);
-
+        //Cancelling a POI and removing it from the screen
         JButton cancelButton = new JButton("Cancel");
         cancelButton.addActionListener(new ActionListener() {
             

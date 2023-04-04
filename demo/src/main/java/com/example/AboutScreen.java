@@ -12,6 +12,7 @@ import javax.swing.*;
 
 public class AboutScreen extends JFrame {
     AboutScreen(){
+        //Set properties of the about screen
         String panelBackground1 = "#a012ff";
         JLabel title = new JLabel("Western GIS");
         title.setFont(new Font("Balsamiq", Font.BOLD, 55));

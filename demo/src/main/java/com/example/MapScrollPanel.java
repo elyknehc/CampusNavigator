@@ -7,7 +7,15 @@ import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Map Scroll panel holds the image of the user and the user can scroll through the image to see parts of it.
+ * @author group 51
+ */
+
+
 public class MapScrollPanel extends JPanel {
+
+    //Declare instance varaibles
     private JLabel mapHolder;
     private static Layers poiLayer;
     private JScrollPane scrollPane;
@@ -19,6 +27,10 @@ public class MapScrollPanel extends JPanel {
     private final String NOMAPSELECTED = "./images/noMapAvailable.jpg";
 
     // public MapScrollPanel(String building, int floor) {
+
+    /**
+     * Constructor for Map Scroll panel. Sets up the image
+     */
     public MapScrollPanel() {
         mapHolder = new JLabel() {
             // protected void paintComponent(Graphics g) {
@@ -91,6 +103,10 @@ public class MapScrollPanel extends JPanel {
         }
     }
 
+    public static void removeCancelledPOI(POI currentPOI) {
+        
+    }
+
     public void loadMap() {
         // NEED TO ADD CURRENT FLOOR
         String currentUserSelection = "./images/" + User.getCurBuilding() + "-BF/" + User.getCurBuilding() + "-BF-" + "1" + ".jpg";
@@ -101,7 +117,7 @@ public class MapScrollPanel extends JPanel {
         } else if (!currentMap.equals(currentUserSelection) && (User.getCurBuilding() != null)){
             map = new ImageIcon(currentUserSelection);
             currentMap = currentUserSelection;
-        }
+        }   
 
         System.out.println(currentMap);
         

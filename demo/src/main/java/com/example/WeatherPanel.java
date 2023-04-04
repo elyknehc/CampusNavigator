@@ -18,6 +18,10 @@ public class WeatherPanel extends JPanel {
         float temperature = 0;
         String conditions = WeatherApi.translateWeatherCode(values[1]);
         temperature = values[0];
+
+        if (values[0] == -99 || values[1] == -99) {
+
+        }
         JLabel weatherTitle = new JLabel("London");
         JLabel weatherTemperature = new JLabel(temperature + "C");
         JLabel weatherConditions = new JLabel();
@@ -56,6 +60,11 @@ public class WeatherPanel extends JPanel {
         }
         if (conditions.equals("Thunderstorm")) {
             ImageIcon cloudyIcon = new ImageIcon("./images/weather/Thunder.png");
+            weatherConditions.setIcon(cloudyIcon);
+        }
+        if (values[0] == -99 || values[1] == -99) {
+            weatherTemperature.setText("Weather Unavailable");
+            ImageIcon cloudyIcon = new ImageIcon("./images/weather/nointernet.png");
             weatherConditions.setIcon(cloudyIcon);
         }
         add(weatherTitle);

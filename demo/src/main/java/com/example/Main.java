@@ -12,6 +12,7 @@ import java.awt.event.WindowEvent;
  * @authors Kevin Chau, Andy Hwang, Kyle Chen, Arsalaan Ali, Michael Gao
  */
 public class Main {
+
     static JButton adminEdit;
     private static JFrame main;
 

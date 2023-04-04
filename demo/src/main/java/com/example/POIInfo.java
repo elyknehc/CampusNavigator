@@ -56,18 +56,21 @@ public class POIInfo extends JFrame {
 			}
 		});
 
-		final JLabel adminEdit = new JLabel("Admin Edit");
+		final JLabel adminEdit = new JLabel("Edit POI");
 		adminEdit.setBounds(70, 390, 150, 30);
+		final JButton move = new JButton("Move");
+		move.setBounds(160, 392, 100, 30);
 		final JButton edit = new JButton("Edit");
-		edit.setBounds(220, 392, 100, 30);
+		edit.setBounds(270, 392, 100, 30);
 		final JButton delete = new JButton("Delete");
-		delete.setBounds(360, 392, 100, 30);
+		delete.setBounds(380, 392, 100, 30);
 
 		// For the admin side if they are an admin
 		if (!curr.getIsUser() && !User.getAdmin()) {
 			adminEdit.setVisible(false);
 			edit.setVisible(false);
 			delete.setVisible(false);
+			move.setVisible(false);
 		}
 
 		// Set the font for each label
@@ -80,6 +83,7 @@ public class POIInfo extends JFrame {
 				// Create a new JFrame for editing the POI information
 				final JFrame editFrame = new JFrame("Edit POI Information");
 				editFrame.setSize(400, 400);
+				User.setCreating(true);
 				
 				// Create labels and text fields for editing each POI property
 				JLabel nameLabel = new JLabel("Name:");
@@ -150,6 +154,7 @@ public class POIInfo extends JFrame {
 						favourite.setText("Favorite: " + curr.getIsFavourite());
 						
 						User.addToAllPOI(curr);
+						User.setCreating(false);
 						// Close the edit frame
 						editFrame.dispose();
 					}
@@ -169,7 +174,16 @@ public class POIInfo extends JFrame {
 				User.deleteDefaultPOI(curr);
 				setVisible(false);
 		}
-	});
+		});
+		move.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				User.setCurPoi(curr);
+				MapScrollPanel.setEditPos(true);
+				MapScrollPanel.repaintMapPOI();
+				setVisible(false);
+			}
+		});
+	
 
 		
 
@@ -204,6 +218,7 @@ public class POIInfo extends JFrame {
 		this.add(adminEdit);
 		this.add(edit);
 		this.add(delete);
+		this.add(move);
 		this.setVisible(true);
 	}
 	private class FrameListener extends WindowAdapter {

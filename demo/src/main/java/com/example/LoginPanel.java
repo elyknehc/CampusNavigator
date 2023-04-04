@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 public class LoginPanel extends JPanel{
     //Declare constants
     private JLabel IncorrectPassword;
+    private JLabel CorrectPassword;
     private JButton enterButton;
     private JTextField passwordField;
     private String password;
@@ -37,6 +38,10 @@ public class LoginPanel extends JPanel{
         IncorrectPassword.setFont(new Font("Balsamiq", Font.BOLD, 20));
         IncorrectPassword.setForeground(Color.RED);
 
+        CorrectPassword = new JLabel("Correct Password");
+        CorrectPassword.setFont(new Font("Balsamiq", Font.BOLD, 20));
+        CorrectPassword.setForeground(Color.GREEN);
+
         // create JButton for entering password and set properties
         enterButton = new JButton("Enter");
         enterButton.addActionListener(new ActionListener() {
@@ -44,6 +49,9 @@ public class LoginPanel extends JPanel{
                 if (e.getSource() == enterButton) {
                     password = passwordField.getText();
                     if (password.equals("adminPassword")) {
+                        add(CorrectPassword);
+                        remove(IncorrectPassword);
+                        repaint();
                         User.setAdmin(true);
                     } else {
                         add(IncorrectPassword);
@@ -59,6 +67,8 @@ public class LoginPanel extends JPanel{
         passwordField.setBounds(100, 300, 200, 25);
         enterButton.setBounds(100, 340, 200, 20);
         IncorrectPassword.setBounds(90, 380, 600, 50);
+        CorrectPassword.setBounds(90, 380, 600, 50);
+
 
 
         // add components to left panel

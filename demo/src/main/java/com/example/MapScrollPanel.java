@@ -23,6 +23,8 @@ public class MapScrollPanel extends JPanel {
     private static String currentMap = "";
     private static ImageIcon map;
     private static final String NOMAPSELECTED = "./images/noMapAvailable.jpg";
+    private static boolean editPos = false;
+    private static JLabel editPosPrompt;
 
     // public MapScrollPanel(String building, int floor) {
 
@@ -48,6 +50,7 @@ public class MapScrollPanel extends JPanel {
         layersContainer.add(mapHolder, Integer.valueOf(0));
         layersContainer.add(poiLayer, Integer.valueOf(1));
 
+
         layersContainer.setPreferredSize(new Dimension(map.getIconWidth(), map.getIconHeight()));
 
         // Set Scrollable Panel
@@ -67,7 +70,19 @@ public class MapScrollPanel extends JPanel {
                 User.setCreating(true);
                     Point viewPosition = scrollPane.getViewport().getViewPosition();
                     int x = e.getX() + viewPosition.x;
-                    int y = e.getY() + viewPosition.y;
+                int y = e.getY() + viewPosition.y;
+                
+                if (editPos) {
+                    POI editPOI = User.getCurPoi();
+                    editPOI.setX(x);
+                    editPOI.setY(y);
+                    editPos = false;
+                    User.setCurPoi(null);
+                    User.setCreating(false);
+                    MapScrollPanel.repaintMapPOI();
+                    return;
+                }
+                
                     POI curPOI = new POI("Name", "Description", "Category", User.getCurBuilding(), 1, x, y, 1,
                             User.getCurFloor(), false, !User.getAdmin());
                     User.setCurPoi(curPOI);
@@ -88,6 +103,10 @@ public class MapScrollPanel extends JPanel {
             }
             poiLayer.addPOItoMap(tempPin);
         }
+    }
+
+    public static void setEditPos(boolean set) {
+        editPos = set;
     }
 
     public static void loadMap() {

@@ -1,6 +1,9 @@
 package com.example;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
@@ -26,13 +29,20 @@ public class MapPOI extends JLabel {
             public void mouseClicked(MouseEvent e) {
                 System.out.println("image clicked");
                 setIcon(highlightPin);
-                new POIInfo(poiData);
-            }
-            public void mouseExited(MouseEvent e) {
-                setIcon(normalPin);
+                POIInfo infoPanel = new POIInfo(poiData);
+                infoPanel.setVisible(true);
+
+                infoPanel.addWindowListener(new WindowAdapter() {
+                    public void windowClosed(WindowEvent e) {
+                        setIcon(normalPin);
+                    }
+                });
             }
         });
+    }
 
+    public POI getPoi() {
+        return poiData;
     }
     
 }

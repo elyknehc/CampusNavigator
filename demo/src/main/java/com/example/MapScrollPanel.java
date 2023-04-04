@@ -38,7 +38,7 @@ public class MapScrollPanel extends JPanel {
 
 
         // TEST CODE
-        User.addToAllPOI(new POI("testPOI", "testDescrip", "test", "MC", 1, 100, 100, 201, 3, false, false));
+        User.addToAllPOI(new POI("testPOI", "testDescrip", "classrooms", "MC", 1, 100, 100, 201, 3, false, false));
         for (POI poi : User.getFilteredPOI()) {
             MapPOI tempPin = new MapPOI(poi);
             poiLayer.addPOItoMap(tempPin);

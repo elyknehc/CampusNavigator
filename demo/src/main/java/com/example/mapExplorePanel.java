@@ -91,6 +91,7 @@ public class mapExplorePanel extends JPanel {
             User.setCurPoi(selected);
 
             MapScrollPanel.loadMapSelectedPOI();
+            new POIInfo(selected);
         }
      });
 

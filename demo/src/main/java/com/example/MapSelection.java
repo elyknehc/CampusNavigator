@@ -18,11 +18,12 @@ public class MapSelection extends JPanel {
     final JButton middlesexButton;
     final JButton hsbButton;
     final JButton ucButton;
-    
+ 
+    /**
+     * Creates a new map selection panel
+     */
     MapSelection() {
-        /**
-         * Creates a new map selection panel
-         */
+
         this.setLayout(null);
 
         //Adding buttons
@@ -58,10 +59,10 @@ public class MapSelection extends JPanel {
         this.add(ucButton);
     }
 
+    /**
+     * Change button colors on click
+     */
     private void setButtonColors() {
-        /**
-         * Change button colors on click
-         */
 
         //Selects buttons and changes colors based on user  selection
         if (User.getCurBuilding().equals(MIDDLESEX)) {

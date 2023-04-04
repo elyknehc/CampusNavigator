@@ -23,7 +23,7 @@ public class CreatePOIScreen extends JFrame {
     private POI currentPOI;
 
     /**
-     * 
+     * This function creates a new POI screen
      * @param x: X coordinate
      * @param y: y coordinate
      * @param currPOI: currentPOI of user
@@ -68,17 +68,10 @@ public class CreatePOIScreen extends JFrame {
         roomNumberField = new JTextField();
         add(roomNumberField);
 
-        // JLabel idLabel = new JLabel("POI ID: ");
-        // add(idLabel);
-        // idField = new JTextField();
-        // add(idField);
-
         JLabel favoriteLabel = new JLabel("Favorite: ");
         add(favoriteLabel);
         favoriteCheckBox = new JCheckBox();
         add(favoriteCheckBox);
-
-
 
         //If the information is not completely filled
         unfinished = new JLabel("Invalid Response");
@@ -88,6 +81,7 @@ public class CreatePOIScreen extends JFrame {
         submitButton.addActionListener(new ActionListener() {
             
             public void actionPerformed(ActionEvent e) {
+
                 // Save the information here
             try{
                 String poiName = nameField.getText();
@@ -96,8 +90,6 @@ public class CreatePOIScreen extends JFrame {
                 int poiRoomNumber = Integer.parseInt(roomNumberField.getText());
                 int poiFloor = User.getCurFloor();
                 String poiCategory = (String) categoryComboBox.getSelectedItem();
-                // String labelID = idLabel.getText();
-                // int poiID = Integer.parseInt(labelID);
                 boolean poiFavorite = favoriteCheckBox.isSelected();
             
                     if (poiName.length() == 0 || poiDescription.length() == 0
@@ -134,6 +126,7 @@ public class CreatePOIScreen extends JFrame {
 
         });
         add(submitButton);
+        
         //Cancelling a POI and removing it from the screen
         JButton cancelButton = new JButton("Cancel");
         cancelButton.addActionListener(new ActionListener() {

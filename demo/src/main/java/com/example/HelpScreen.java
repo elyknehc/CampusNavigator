@@ -27,7 +27,7 @@ public class HelpScreen extends JFrame{
 
         JLabel instructionsTag = new JLabel("Instructions:");
         JTextArea instructions = new JTextArea();
-        instructions.setText("Welcome to Western GIS. Select the desired building that you want to visit in the map selection panel. You can browse the default point of interests that are set by our system or you can create your own new point of interests. You can filter the types of point of interests with and see the categories that you desire. You can favorite POIs that you like the most. If you are an admin, you can edit POIs.");
+        instructions.setText("Welcome to Western GIS. Select the desired building that you want to visit in the map selection panel. You can browse the default point of interests that are set by our system or you can create your own new point of interests. You can filter the types of point of interests with and see the categories that you desire. To read more about a POI, you can click on them. You can favorite POIs that you like the most. If you are an admin, you can edit POIs. To create your own POIs, simply click where you want the POI to be located on the map and enter all necessary information.");
         instructions.setWrapStyleWord(true);
         instructions.setLineWrap(true);
         instructions.setEditable(false);

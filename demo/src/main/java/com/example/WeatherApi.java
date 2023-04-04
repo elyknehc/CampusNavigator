@@ -13,6 +13,10 @@ public class WeatherApi {
     //Set up connection to API
     private static String weatherApiURL = "https://api.open-meteo.com/v1/forecast?latitude=43.0083&longitude=-81.27&current_weather=true&timeformat=unixtime&timezone=auto";
 
+    /**
+     * Method that retrieves the weather from the weather API
+     * @return an array that contains the temperature, as well as a code that represents the weather condition
+     */
     public static float[] getWeather() {
         float[] weatherReturn = new float[2];
         try {
@@ -39,7 +43,7 @@ public class WeatherApi {
 
     /**
      * Returns the  number from the API that can be interpreted.
-     * @param code
+     * @param code the code received from the Weather API
      * @return returns a string for the user that can be interpreted.
      */
     public static String translateWeatherCode(float code) {

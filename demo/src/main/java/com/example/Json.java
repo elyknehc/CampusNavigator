@@ -6,7 +6,7 @@ import java.util.*;
 
    /**
     * @author Group 51
-    *This class is responsible for setting JSON information for built in POIs
+    * This class is responsible for setting JSON information for built in POIs
     */
 class Json {
 

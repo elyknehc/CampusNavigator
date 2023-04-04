@@ -20,17 +20,17 @@ public class POI {
 
     /**
      * Constructor to create a new point of interest object.
-     * @param name
-     * @param description
-     * @param category
-     * @param building
-     * @param ID
-     * @param x
-     * @param y
-     * @param roomNum
-     * @param floor
-     * @param isFavourite
-     * @param isUser
+     * @param name Name of the POI
+     * @param description Description of the POI
+     * @param category Category of the POI type
+     * @param building Building type of POI
+     * @param ID POI's ID
+     * @param x Cooridnate of POI
+     * @param y Coordinate of POI
+     * @param roomNum - Number of the Room of POI
+     * @param floor - Floor number of the POI
+     * @param isFavourite - If User had selected Favorite for POI
+     * @param isUser - If the User is an admin or a normal user
      */
     public POI(String name, String description, String category, String building, int ID, int x, int y, int roomNum, int floor, boolean isFavourite, boolean isUser) {
         this.name = name;
@@ -50,6 +50,7 @@ public class POI {
 
     /**
      * ToString method for the object. Prints the information of the POI.
+     * @return string representation of the POI
      */
     public String toString() {
         return name + "                                                                " + description + " " + category + " " + building + " " + roomNum + " " + floor;
@@ -57,9 +58,8 @@ public class POI {
 
     /**
      * Stringifies a JSON object
-     * @return
+     * @return Returns JSON
      */
-
     public String stringify() {
         JSONObject temp = new JSONObject(this);
         return temp.toString();
@@ -67,10 +67,9 @@ public class POI {
 
     /**
      * Changes the POI into json format
-     * @param json
-     * @return
+     * @param json of a POI
+     * @return Returns the POI as a string instead of JSON
      */
-
     public static POI toPOI(String json) {
         JSONObject tempJson = new JSONObject(json);
         return new POI((String) tempJson.get("name"), (String) tempJson.get("description"), (String) tempJson.get("category"), (String) tempJson.get("building"), (int) tempJson.get("ID"), (int) tempJson.get("x"), (int) tempJson.get("y"), (int) tempJson.get("roomNum"), (int) tempJson.get("floor"), (boolean) tempJson.get("isFavourite"), (boolean) tempJson.get("isUser"));
@@ -78,7 +77,7 @@ public class POI {
     
     /**
      * Getter method for getting the name of the POI
-     * @return POI name
+     * @return POI name 
      */
     public String getName() {
         return this.name;
@@ -86,7 +85,7 @@ public class POI {
 
     /**
      * Setter method for setting the name
-     * @param name of POI
+     * @param name name of POI
      */
     public void setName(String name) {
         this.name = name;
@@ -102,9 +101,8 @@ public class POI {
 
     /**
      * Setter method for description of POI
-     * @param description of POI
+     * @param description description of POI
      */
-
     public void setDescription(String description) {
         this.description = description;
     }
@@ -113,16 +111,14 @@ public class POI {
      * Getter method of the POI category
      * @return Category of the POI
      */
-
     public String getCategory() {
         return this.category;
     }
 
     /**
      * Setter method of category 
-     * @param category
+     * @param category categoty of POI
      */
-
     public void setCategory(String category) {
         this.category = category;
     }
@@ -131,22 +127,20 @@ public class POI {
      * Getter method of the building that the user is on
      * @return building that the user is on
      */
-
     public String getBuilding() {
         return this.building;
     }
     /**
      * Setter method for the users building
-     * @param building
+     * @param building - building of POI
      */
-
     public void setBuilding(String building) {
         this.building = building;
     }
 
     /**
      * Getter method for getting POI id
-     * @return
+     * @return ID of POI
      */
     public int getID() {
         return this.ID;
@@ -154,7 +148,7 @@ public class POI {
 
     /**
      * Setter method for setting a POis ID
-     * @param ID
+     * @param ID - ID of POI
      */
     public void setID(int ID) {
         this.ID = ID;
@@ -162,7 +156,7 @@ public class POI {
 
     /**
      * Getter method for if the POI is favorite
-     * @return
+     * @return if the POI is favorite or not
      */
     public boolean getIsFavourite() {
         return this.isFavourite;
@@ -170,7 +164,7 @@ public class POI {
 
     /**
      * Setter method for setting a POI being favorite
-     * @param isFavourite
+     * @param isFavourite boolean representing whether the POI is favourited or not
      */
     public void setIsFavourite(boolean isFavourite) {
         this.isFavourite = isFavourite;
@@ -178,7 +172,7 @@ public class POI {
 
     /**
      * Getter method for if the POI is a user created POI or not 
-     * @return
+     * @return User - if the user is admin 
      */
     public boolean getIsUser() {
         return this.isUser;
@@ -186,7 +180,7 @@ public class POI {
 
     /**
      * Setter method for declaring if the POI has been created by a user 
-     * @param isUser
+     * @param isUser - if user is admin or not
      */
     public void setIsUser(boolean isUser) {
         this.isUser = isUser;
@@ -194,7 +188,7 @@ public class POI {
 
     /**
      * Getter method for the X coordinate of the POI
-     * @return
+     * @return x - x cooridinate of POI
      */
     public int getX() {
         return this.x;
@@ -202,7 +196,7 @@ public class POI {
 
     /**
      * Setter method of setting the X coordinate of the POI
-     * @param x
+     * @param x - Sets X coordinate
      */
 
     public void setX(int x) {
@@ -211,7 +205,7 @@ public class POI {
 
     /**
      * Getter method for getting the Y coordinate of POI
-     * @return
+     * @return y - Y coordinate of POI
      */
     public int getY() {
         return this.y;
@@ -219,7 +213,7 @@ public class POI {
 
     /**
      * Setter method of setting the Y coordinate of POI
-     * @param y
+     * @param y - Sets y coordinate of POI
      */
     public void setY(int y) {
         this.y = y;
@@ -227,7 +221,7 @@ public class POI {
 
     /**
      * Getting the room number of POI
-     * @return roomNum
+     * @return roomNum - Room number of POI
      */
     public int getRoomNum() {
         return this.roomNum;
@@ -235,16 +229,15 @@ public class POI {
 
     /**
      * Setting the room number of the POI that it is in 
-     * @param roomNum
+     * @param roomNum - Room number of POI
      */
-
     public void setRoomNum(int roomNum) {
         this.roomNum = roomNum;
     }
 
     /**
      * Getting the floor of the POI
-     * @return floor
+     * @return floor - Returns floor number
      */
     public int getFloor() {
         return this.floor;
@@ -252,9 +245,8 @@ public class POI {
 
     /**
      * Setting the floor of the POI
-     * @param floor
+     * @param floor - Sets floor 
      */
-
     public void setFloor(int floor) {
         this.floor = floor;
     }

@@ -26,8 +26,6 @@ public class MapScrollPanel extends JPanel {
     private static boolean editPos = false;
     private static JLabel editPosPrompt;
 
-    // public MapScrollPanel(String building, int floor) {
-
     /**
      * Constructor for Map Scroll panel. Sets up the image
      */
@@ -94,6 +92,9 @@ public class MapScrollPanel extends JPanel {
 
     }
     
+    /**
+     * Methods redraws the map after a POI has been added/removed from the map
+     */
     public static void repaintMapPOI() {
         poiLayer.removeAllPOI();
         for (POI poi : User.getFilteredPOI()) {
@@ -109,6 +110,9 @@ public class MapScrollPanel extends JPanel {
         editPos = set;
     }
 
+    /**
+     * Method that loads the map into the program
+     */
     public static void loadMap() {
         String currentUserSelection = "./images/" + User.getCurBuilding() + "-BF/" + User.getCurBuilding() + "-BF-" + Integer.toString(User.getCurFloor()) + ".jpg";
         
@@ -126,6 +130,9 @@ public class MapScrollPanel extends JPanel {
         mapHolder.setLocation(0, 0);   
     }
 
+    /**
+     * Method that loads in a map based on the POI selected
+     */
     public static void loadMapSelectedPOI() {
         loadMap();
     }

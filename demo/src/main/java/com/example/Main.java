@@ -13,6 +13,7 @@ import java.awt.event.WindowEvent;
  */
 public class Main {
 
+    //Declare instance variables
     static JButton adminEdit;
     private static JFrame main;
 
@@ -21,12 +22,17 @@ public class Main {
         Json.readFile();
     }
 
+    /**
+     * Method to create the GUI of the application
+     */
     public void createGUI() {
+        //Creating the GUI, setting up panels
             String  panelBackground1 = "#a012ff";
             JPanel footerPanel = new JPanel();
             footerPanel.setBounds(0, 0, 1384, 72);
             footerPanel.setBackground(Color.decode(panelBackground1));
 
+            // Inserts the logo of Western
             JLabel logoLabel = new JLabel();
             logoLabel.setBounds(50, 125, 200, 50);
             ImageIcon westernLogo = new ImageIcon("./images/westernLogo.png");
@@ -44,7 +50,6 @@ public class Main {
 
             final LoginPanel first = new LoginPanel();
             panelSwitch.add(first);
-
 
             final mapExplorePanel second = new mapExplorePanel();
             second.setBackground(Color.white);
@@ -73,6 +78,7 @@ public class Main {
             });
             footerPanel.add(mapSelect);
 
+            //Adding the map explore screen as a frame
             JButton mapExplore = new JButton("Map Explore Screen");
             mapExplore.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
@@ -94,6 +100,7 @@ public class Main {
             });
             footerPanel.add(mapExplore);
 
+            //Adding the help button as a button
             JButton helpButton = new JButton("Help Button");
             helpButton.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
@@ -102,6 +109,7 @@ public class Main {
             });
             footerPanel.add(helpButton);
 
+            //Adding about button
             JButton aboutButton = new JButton("About");
             aboutButton.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
@@ -141,6 +149,10 @@ public class Main {
             MapScrollPanel.repaintMapPOI();
         }
 
+        /** 
+         * This method sets the admin status of the user
+         * @param set boolean value representing whether the user is an admin or not
+         */
         public static void setAdmin(boolean set) {
             if (User.getAdmin()) {
                 adminEdit.setVisible(true);
@@ -148,6 +160,8 @@ public class Main {
                 adminEdit.setVisible(false);
             }
         }
+
+        //When window gets closed
 
         private class FrameListener extends WindowAdapter {
             public void windowClosing(WindowEvent e) {
@@ -159,6 +173,9 @@ public class Main {
             }
         }
     
+        /**
+         * Writes to JSON and closes the program.
+         */
         public static void exitProgram() {
             Json.writeFile();
             main.setVisible(false);

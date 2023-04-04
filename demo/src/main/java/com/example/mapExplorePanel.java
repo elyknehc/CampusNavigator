@@ -5,14 +5,22 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.*;
 
 public class mapExplorePanel extends JPanel {
    JTextField searchBar;
    JCheckBox washrooms, classrooms, genLabs, stairwells, entryExits, elevators, userCreatedPOIs, favourites;
+   static JList<String> floors;
+   static JScrollPane floorDropdown;
    
    private JScrollPane exploreScroll;
-   private JPanel container = new JPanel();
+   private static JPanel container = new JPanel();
+
+   // Initializing for Search function
+   final DefaultListModel<POI> preResultsList = new DefaultListModel<POI>();
+   ArrayList<POI> allPOI = new ArrayList<POI>();
 
 
    public mapExplorePanel() {
@@ -47,31 +55,39 @@ public class mapExplorePanel extends JPanel {
         search = new ImageIcon(searchImage);
       searchButton.setIcon(search);
 
-     // SEARCH BAR TEST
-    final String[] items = new String[]{"aasd", "bfsadf", "casdf", "dfasdf", "asdfe", "asdf", "dfg"};
-    final DefaultListModel<String> listModel = new DefaultListModel<String>();
-      
       // Function to return text from the searchbar
       searchButton.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e) {
+            allPOI = (ArrayList<POI>) User.getAllPOI();
+
             String searchText = searchBar.getText().toLowerCase();
-            listModel.clear();
-            for (int i = 0; i < items.length; i++) {
-                if ((items[i].toLowerCase()).contains(searchText)) {
-                    listModel.addElement(items[i]);
+            preResultsList.clear();
+            for (int i = 0; i < allPOI.size(); i++) {
+                if ((allPOI.get(i).toString().toLowerCase()).contains(searchText)) {
+                    preResultsList.addElement(allPOI.get(i));
                 }
-                System.out.println(items[i]);
             }
         }
     });
 
-    // SEARCH BAR TEST CONTINUED
-    JList<String> resultList = new JList<String>(listModel);
+     final JList<POI> resultList = new JList<POI>(preResultsList);
      JScrollPane searchDisplay = new JScrollPane(resultList);
      searchDisplay.setBounds(100,100,200,175);
+     searchDisplay.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
      container.add(searchDisplay);
      searchDisplay.setVisible(true);
+     
+     resultList.addMouseListener(new MouseAdapter() {
+        public void mouseClicked(MouseEvent e) {
+            POI selected = resultList.getSelectedValue();
 
+            User.setCurBuilding(selected.getBuilding());
+            User.setCurFloor(selected.getFloor());
+            User.setCurPoi(selected);
+
+            MapScrollPanel.loadMapSelectedPOI();
+        }
+     });
 
       // create JLabel for POI Layers subheading and set properties
       JLabel poiLabel = new JLabel("POI Layers");
@@ -97,9 +113,10 @@ public class mapExplorePanel extends JPanel {
       userCreatedPOIs.setBounds(100, 430, 200, 20);
       favourites.setBounds(100, 450, 200, 20);
       
-      // create dropdown menu for floors and set properties
-      String[] floors = {"Floor 1", "Floor 2", "Floor 3"};
-      JComboBox<String> floorDropdown = new JComboBox<>(floors);
+      // Floors dropdown to edit the floor map displayed
+     
+      loadFloors();
+
       JLabel floorTitle = new JLabel("Floors");
       
       String[] allCurrentPOI = {"1","2","3","4","5", "6", "7", "8", "9", "10"};
@@ -131,9 +148,8 @@ public class mapExplorePanel extends JPanel {
       userScroll.setBounds(100, 700, 200, 75);
 
       floorTitle.setBounds(100, 780, 200, 20);
-      floorDropdown.setBounds(100, 800, 200, 20);
 
-      addPOIButton.setBounds(100, 840, 200, 20);
+      addPOIButton.setBounds(100, 870, 200, 20);
 
       // add components to left panel
       container.add(searchBar);
@@ -148,7 +164,6 @@ public class mapExplorePanel extends JPanel {
       container.add(userCreatedPOIs);
       container.add(favourites);
 
-      container.add(floorDropdown);
       container.add(allCurrentScroll);
       container.add(favouriteScroll);
       container.add(userScroll);
@@ -170,6 +185,7 @@ public class mapExplorePanel extends JPanel {
       exploreScroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
       exploreScroll.setBounds(0, 0, 446, 590);
       exploreScroll.setWheelScrollingEnabled(true);
+      exploreScroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
       add(exploreScroll, BorderLayout.CENTER);
    }
     private boolean[] getFilterValeus() {
@@ -177,5 +193,38 @@ public class mapExplorePanel extends JPanel {
         return filterValues;
     }
 
+    public static void loadFloors() {
+        String[] floorNums = {"1", "2", "3", "4", "5"};
+        if (User.getCurBuilding() == null) {
+            User.setCurFloor(1);
+        }
+
+
+        floors = new JList<String>(floorNums);
+        floorDropdown = new JScrollPane(floors);
+
+        floors.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                JList target = (JList)e.getSource();
+                int index = target.locationToIndex(e.getPoint());
+                Object item = target.getModel().getElementAt(index);
+
+                String selectedFloor = item.toString();
+                if (!User.getCurBuilding().equals("MC") && selectedFloor.equals("5")) {
+                    selectedFloor = "4";
+                }
+
+                User.setCurFloor(Integer.parseInt(selectedFloor));
+
+                System.out.println(User.getCurFloor());
+
+                loadFloors();
+                MapScrollPanel.loadMapSelectedPOI();
+            }
+        });
+
+          floorDropdown.setBounds(100, 800, 200, 50);
+          container.add(floorDropdown);
+    }
 
 }

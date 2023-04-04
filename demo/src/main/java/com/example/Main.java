@@ -83,7 +83,8 @@ public class Main {
                    rightContainer.repaint();
                    rightContainer.revalidate();
                    rightContainer.add(mapScroll);
-                   mapScroll.loadMap();
+                   MapScrollPanel.loadMap();
+                   mapExplorePanel.loadFloors();
                 }
             });
             footerPanel.add(mapExplore);

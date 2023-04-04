@@ -28,9 +28,7 @@ public class POI {
 
     @Override
     public String toString() {
-        return "{\n name: " + name + "\n" + " description: " + description + "\n" + " category: " + category
-                + "\n" + " building: " + building + "\n" + " ID: " + ID + "\n" + " x: " + x + "\n" + " y: " + y + "\n" 
-                + " roomNum: " + roomNum + "\n" + " floor: " + floor + "\n" + " isFavourite: " + isFavourite + "\n" + " isUser: " + isUser + "\n}";
+        return name + "                                                                " + description + " " + category + " " + building + " " + roomNum + " " + floor;
     }
 
     public String stringify() {

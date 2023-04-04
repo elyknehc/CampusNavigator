@@ -17,9 +17,8 @@ public class Main {
     private static JFrame main;
 
     public static void main(String[] args) {
-        Json.readFile();
         new Main().createGUI();
-        System.out.println(User.getAllPOI());
+        Json.readFile();
     }
 
     public void createGUI() {
@@ -45,7 +44,7 @@ public class Main {
 
             final LoginPanel first = new LoginPanel();
             panelSwitch.add(first);
-        
+
 
             final mapExplorePanel second = new mapExplorePanel();
             second.setBackground(Color.white);
@@ -85,7 +84,9 @@ public class Main {
                    rightContainer.repaint();
                    rightContainer.revalidate();
                    rightContainer.add(mapScroll);
-                   mapScroll.loadMap();
+                   MapScrollPanel.loadMap();
+                    mapExplorePanel.loadFloors();
+                   MapScrollPanel.repaintMapPOI();
                 }
             });
             footerPanel.add(mapExplore);
@@ -106,7 +107,7 @@ public class Main {
             });
             footerPanel.add(aboutButton);
 
-            adminEdit = new JButton("Admin Edit");
+            adminEdit = new JButton("Admin Login");
             adminEdit.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     panelSwitch.removeAll();
@@ -116,6 +117,8 @@ public class Main {
                 }
             });
             footerPanel.add(adminEdit);
+
+            User.initialize();
 
             // Framing
             main = new JFrame();
@@ -131,6 +134,8 @@ public class Main {
             main.getContentPane().add(footerPanel);
             main.getContentPane().add(rightContainer);
             main.setVisible(true);
+
+            MapScrollPanel.repaintMapPOI();
         }
 
         public static void setAdmin(boolean set) {
@@ -144,7 +149,7 @@ public class Main {
         private class FrameListener extends WindowAdapter {
             public void windowClosing(WindowEvent e) {
                 System.out.println("WindowListener method called: windowClosed.");
-                if (true) {
+                if (User.getIsCreating()) {
                     new ExitWarning();
                 } else {
                     exitProgram();
@@ -153,6 +158,7 @@ public class Main {
         }
     
         public static void exitProgram() {
+            Json.writeFile();
             main.setVisible(false);
             System.exit(0);
         }

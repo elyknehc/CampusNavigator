@@ -20,6 +20,7 @@ public class CreatePOIScreen extends JFrame {
     private JComboBox<String> categoryComboBox;
     private boolean invalid = false;
     private JLabel unfinished;
+    private POI currentPOI;
 
     /**
      * 
@@ -27,7 +28,7 @@ public class CreatePOIScreen extends JFrame {
      * @param y: y coordinate
      * @param currPOI: currentPOI of user
      */
-    public CreatePOIScreen(int x, int y, POI currPOI) {
+    public CreatePOIScreen(int x, int y, POI curPOI) {
         
         setTitle("CreatePOIScreen");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -36,6 +37,7 @@ public class CreatePOIScreen extends JFrame {
 
         final int coordinateX = x;
         final int coordinateY = y;
+        currentPOI = curPOI;
 
 
         //Add labels and buttons to the POI screen
@@ -114,6 +116,10 @@ public class CreatePOIScreen extends JFrame {
                 changeCurrentPOI.setFloor(poiFloor);
                 changeCurrentPOI.setIsFavourite(poiFavorite);
                 changeCurrentPOI.setCategory(poiCategory);
+                
+                User.setCurPoi(null);
+                MapScrollPanel.repaintMapPOI();
+                User.setCreating(false);
             
                 dispose(); // Close the frame
             }
@@ -134,7 +140,11 @@ public class CreatePOIScreen extends JFrame {
         cancelButton.addActionListener(new ActionListener() {
             
             public void actionPerformed(ActionEvent e) {
-            dispose(); // Close the frame
+                User.removeFromAllPOI(currentPOI);
+                User.setCurPoi(null);
+                MapScrollPanel.repaintMapPOI();
+                User.setCreating(false);
+                dispose(); // Close the frame
             }
         });
         add(cancelButton);

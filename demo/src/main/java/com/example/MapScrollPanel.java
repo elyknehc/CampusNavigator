@@ -14,17 +14,15 @@ import java.util.List;
 
 
 public class MapScrollPanel extends JPanel {
-
-    //Declare instance varaibles
-    private JLabel mapHolder;
+    private static JLabel mapHolder;
     private static Layers poiLayer;
     private JScrollPane scrollPane;
 
     private int kylesSmallDick = 20;
     
-    private String currentMap = "";
-    private ImageIcon map;
-    private final String NOMAPSELECTED = "./images/noMapAvailable.jpg";
+    private static String currentMap = "";
+    private static ImageIcon map;
+    private static final String NOMAPSELECTED = "./images/noMapAvailable.jpg";
 
     // public MapScrollPanel(String building, int floor) {
 
@@ -32,17 +30,7 @@ public class MapScrollPanel extends JPanel {
      * Constructor for Map Scroll panel. Sets up the image
      */
     public MapScrollPanel() {
-        mapHolder = new JLabel() {
-            // protected void paintComponent(Graphics g) {
-            //     super.paintComponent(g);
-            //     for (POI poi : User.getAllPOI()) {
-            //         g.setColor(Color.black);
-            //         g.drawOval(poi.getX() - kylesSmallDick / 2, poi.getY() - kylesSmallDick / 2, kylesSmallDick, kylesSmallDick);
-            //     }
-            // }
-        };
-
-        
+        mapHolder = new JLabel();
         loadMap();
 
         poiLayer = new Layers();
@@ -50,13 +38,11 @@ public class MapScrollPanel extends JPanel {
 
 
         // TEST CODE
-        User.addToAllPOI(new POI("testPOI", "testDescrip", "test", "MC", 1, 100, 100, 201, 1, false, false));
+        User.addToAllPOI(new POI("testPOI", "testDescrip", "classrooms", "MC", 1, 100, 100, 201, 3, false, false));
         for (POI poi : User.getFilteredPOI()) {
             MapPOI tempPin = new MapPOI(poi);
             poiLayer.addPOItoMap(tempPin);
         }
-
-
 
         // Set up container for layers and add all layers
         JLayeredPane layersContainer = new JLayeredPane();
@@ -78,37 +64,34 @@ public class MapScrollPanel extends JPanel {
 
         scrollPane.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
+                System.out.println(User.getAdmin());
 
-                if (User.getIsCreating() == true) {
+                User.setCreating(true);
                     Point viewPosition = scrollPane.getViewport().getViewPosition();
                     int x = e.getX() + viewPosition.x;
                     int y = e.getY() + viewPosition.y;
                     POI curPOI = new POI("Name", "Description", "Category", User.getCurBuilding(), 1, x, y, 1,
-                            User.getCurFloor(), false, false);
+                            User.getCurFloor(), false, !User.getAdmin());
                     User.setCurPoi(curPOI);
                     User.addToAllPOI(curPOI);
                     scrollPane.repaint();
                     new CreatePOIScreen(x, y, curPOI);
-                }
             }
         });
 
     }
     
     public static void repaintMapPOI() {
+        poiLayer.removeAllPOI();
         for (POI poi : User.getFilteredPOI()) {
             MapPOI tempPin = new MapPOI(poi);
             poiLayer.addPOItoMap(tempPin);
         }
     }
 
-    public static void removeCancelledPOI(POI currentPOI) {
-        
-    }
-
-    public void loadMap() {
+    public static void loadMap() {
         // NEED TO ADD CURRENT FLOOR
-        String currentUserSelection = "./images/" + User.getCurBuilding() + "-BF/" + User.getCurBuilding() + "-BF-" + "1" + ".jpg";
+        String currentUserSelection = "./images/" + User.getCurBuilding() + "-BF/" + User.getCurBuilding() + "-BF-" + Integer.toString(User.getCurFloor()) + ".jpg";
         
         if (currentMap.equals("")) {
             map = new ImageIcon(NOMAPSELECTED);
@@ -122,7 +105,12 @@ public class MapScrollPanel extends JPanel {
         
         mapHolder.setIcon(map);
         mapHolder.setSize(new Dimension(map.getIconWidth(), map.getIconHeight()));
-        mapHolder.setLocation(0, 0);
-        
+        mapHolder.setLocation(0, 0);   
+    }
+
+    public static void loadMapSelectedPOI() {
+        loadMap();
+
+        // ADD CODE TO HIGHLIGHT SELECTED POI
     }
 }

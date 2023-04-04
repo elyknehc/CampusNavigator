@@ -1,5 +1,6 @@
 package com.example;
 import java.util.*;
+import javax.swing.plaf.metal.MetalFileChooserUI.FilterComboBoxRenderer;
 
 /**
  * @author Group 51
@@ -15,7 +16,7 @@ public class User {
     private static String curBuilding;
     private static int curFloor;
     private static POI curPoi;
-    private static boolean isCreating = true;
+    private static boolean isCreating;
 
     // CHANGED CONSTRUCTOR -- NO BOOLEAN PARAMETER 
     // public User(boolean adminStatus) {
@@ -25,39 +26,69 @@ public class User {
     // }
 
     
-    public static List<POI> getFilteredPOI() {
+    public static void initialize() {
+        filteredCategories.add("washrooms");
+        filteredCategories.add("elevators");
         
-        if (filteredCategories.size() == 0) {
-            return allPOI;
+    }
+    
+    public static List<POI> getFilteredPOI() {
+        List<POI> temp = new ArrayList<POI>();
+        if (filteredCategories.size() <= 2) {
+            for (POI poi : allPOI) {
+                if (filteredCategories.contains("favourites") && poi.getIsFavourite()) {
+                    temp.add(poi);
+                }
+                if (filteredCategories.contains("userCreatedPOIs") && poi.getIsUser()) {
+                    temp.add(poi);
+                }
+                if (poi.getBuilding().equals(User.getCurBuilding()) && poi.getFloor() == User.getCurFloor()) {
+                    temp.add(poi);
+                }
+            }
+            if (User.getCurPoi() != null) {
+                temp.add(User.getCurPoi());
+            }
+            return temp;
         }
 
-        List<POI> temp = new ArrayList<POI>();
         for (POI poi : allPOI) {
-            if (poi.getBuilding().equals(User.getCurBuilding()) || poi.getFloor() == User.getCurFloor()) {
+            System.out.println(poi.getIsUser() + " USER " + filteredCategories.toString());
+            if (poi.getBuilding().equals(User.getCurBuilding()) && poi.getFloor() == User.getCurFloor()) {
+                if (filteredCategories.contains("favourites") && poi.getIsFavourite()) {
+                    temp.add(poi);
+                }
+                if (filteredCategories.contains("userCreatedPOIs") && poi.getIsUser()) {
+                    temp.add(poi);
+
+                }
                 if (filteredCategories.contains(poi.getCategory())) {
                     temp.add(poi);
                 }
             }
         }
-        System.out.println(temp.toString());
+        if (User.getCurPoi() != null) {
+            temp.add(User.getCurPoi());
+        }
         return temp;
     }
 
     public static void addFilters(List<String> categories) {
+        System.out.println("add");
         for (String category : categories) {
             if (!filteredCategories.contains(category)) {
-                filteredCategories.add(category);      
+                filteredCategories.add(category);
             }
         }
         MapScrollPanel.repaintMapPOI();
     }
 
     public static void removeFilters(List<String> categories) {
+        System.out.println("remove");
         for (String category : categories) {
-            try{
-                filteredCategories.remove(category);    
-            }
-            catch(Exception e){
+            try {
+                filteredCategories.remove(category);
+            } catch (Exception e) {
                 ;
             }
         }
@@ -91,6 +122,15 @@ public class User {
     public static void addToAllPOI(POI poi) {
         allPOI.add(poi);
         MapScrollPanel.repaintMapPOI();
+    }
+
+    public static void removeFromAllPOI(POI poi) {
+        try {
+            allPOI.remove(poi);
+            MapScrollPanel.repaintMapPOI();
+        } catch (Exception e) {
+            ;
+        }
     }
 
     /**
@@ -174,71 +214,6 @@ public class User {
 
     public static void setEditing(boolean newIsEditing) {
         isEditing = newIsEditing;
-    }
-
-    /**
-     * Returns the list of UserPois
-     * @return list of UserPois
-     */
-
-    public static List<POI> getUserPOI() {
-        return userPOIList;
-    }
-
-    /**
-     * Adds a user poi to the list of user created POIs.
-     * @param input
-     */
-    public static void addUserPOI(POI input) {
-        userPOIList.add(input);
-    }
-
-    /**
-     * Returns a list of favorite POIs - getter method
-     * @return list of all pois that the user has favorited
-     */
-
-    public static List<POI> getFavouritePOI() {
-        return favouritePOIList;
-    }
-
-    /**
-     * Adds favorite POI to the list of favorite POIs of the user.
-     * @param input
-     */
-
-    public static void addFavouritePOI(POI input) {
-        favouritePOIList.add(input);
-    }
-
-    // ASK GROUP LATER --> isn't this similar to POI.java toString() method?
-    /*public void viewPOIInfo() {
-    }
-    */
-
-    /**
-     * Deletes a user POI that exists.
-     * @param input
-     */
-
-    public static void deleteUserPOI(POI input) {
-        try {
-            userPOIList.remove(input);
-        } catch (NullPointerException e) {
-            ;
-        }   
-    }
-
-    /**
-     * Removes a POI from the favorites list.
-     * @param input
-     */
-    public static void deleteFavouritePOI(POI input) {
-        try {
-            favouritePOIList.remove(input);
-        } catch (NullPointerException e) {
-            ;
-        }
     }
 
     /**

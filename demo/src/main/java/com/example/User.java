@@ -181,7 +181,7 @@ public class User {
 
     /**
      * Getter method for getting the current poi that the user has selected
-     * @return
+     * @return curPoi 
      */
 
 

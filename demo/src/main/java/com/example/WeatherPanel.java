@@ -13,16 +13,51 @@ public class WeatherPanel extends JPanel {
     public WeatherPanel() {
         String  panelBackground1 = "#a012ff";
         setBackground(Color.decode(panelBackground1));
-        setBounds(1200, 0, 200, 72);
+        setBounds(1190, 0, 220, 72);
         float[] values = WeatherApi.getWeather();
         float temperature = 0;
         String conditions = WeatherApi.translateWeatherCode(values[1]);
         temperature = values[0];
         JLabel weatherTitle = new JLabel("London");
         JLabel weatherTemperature = new JLabel(temperature + "C");
-        JLabel weatherConditions = new JLabel(conditions);
-        weatherTitle.setFont(new Font("Balsamiq", Font.PLAIN, 20));
-        weatherTemperature.setFont(new Font("Balsamiq", Font.PLAIN, 32));
+        JLabel weatherConditions = new JLabel();
+
+        if (conditions.equals("Cloudy")) {
+            ImageIcon cloudyIcon = new ImageIcon("./images/weather/cloudy.png");
+            weatherConditions.setIcon(cloudyIcon);
+        }
+        if (conditions.equals("Rain")) {
+            ImageIcon cloudyIcon = new ImageIcon("./images/weather/Drizzle.png");
+            weatherConditions.setIcon(cloudyIcon);
+        }
+        if (conditions.equals("Clear")) {
+            ImageIcon cloudyIcon = new ImageIcon("./images/weather/sun.png");
+            weatherConditions.setIcon(cloudyIcon);
+        }
+        if (conditions.equals("Foggy")) {
+            ImageIcon cloudyIcon = new ImageIcon("./images/weather/Foggy.png");
+            weatherConditions.setIcon(cloudyIcon);
+        }
+        if (conditions.equals("Drizzle")) {
+            ImageIcon cloudyIcon = new ImageIcon("./images/weather/Drizzle.png");
+            weatherConditions.setIcon(cloudyIcon);
+        }
+        if (conditions.equals("Snow")) {
+            ImageIcon cloudyIcon = new ImageIcon("./images/weather/Snow.png");
+            weatherConditions.setIcon(cloudyIcon);
+        }
+        if (conditions.equals("Heavy Rain")) {
+            ImageIcon cloudyIcon = new ImageIcon("./images/weather/Drizzle.png");
+            weatherConditions.setIcon(cloudyIcon);
+        }
+        if (conditions.equals("Heavy Snow")) {
+            ImageIcon cloudyIcon = new ImageIcon("./images/weather/Snow.png");
+            weatherConditions.setIcon(cloudyIcon);
+        }
+        if (conditions.equals("Thunderstorm")) {
+            ImageIcon cloudyIcon = new ImageIcon("./images/weather/Thunder.png");
+            weatherConditions.setIcon(cloudyIcon);
+        }
         add(weatherTitle);
         add(weatherTemperature);
         add(weatherConditions);

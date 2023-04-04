@@ -27,7 +27,6 @@ public class MapPOI extends JLabel {
         //Adds a mouse listener for the POI to be clickable
         addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
-                System.out.println("image clicked");
                 setIcon(highlightPin);
                 POIInfo infoPanel = new POIInfo(poiData);
                 infoPanel.setVisible(true);

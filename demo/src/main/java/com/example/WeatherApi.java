@@ -26,7 +26,6 @@ public class WeatherApi {
             inputLine = in.readLine();
             JSONObject weatherParse = new JSONObject(inputLine);
             JSONObject currentWeather = (JSONObject) weatherParse.get("current_weather");
-            System.out.println(currentWeather);
             weatherReturn[0] = ((BigDecimal) currentWeather.get("temperature")).floatValue();
             weatherReturn[1] = (float) (int) currentWeather.get("weathercode");
             in.close();

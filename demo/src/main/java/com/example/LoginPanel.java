@@ -44,10 +44,8 @@ public class LoginPanel extends JPanel{
                 if (e.getSource() == enterButton) {
                     password = passwordField.getText();
                     if (password.equals("adminPassword")) {
-                        System.out.println("Correct password");
                         User.setAdmin(true);
                     } else {
-                        System.out.println("hello?");
                         add(IncorrectPassword);
                         addIncorrect();
                         repaint();

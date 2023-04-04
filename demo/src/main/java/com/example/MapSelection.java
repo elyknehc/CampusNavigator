@@ -87,6 +87,5 @@ public class MapSelection extends JPanel {
             ucButton.setForeground(Color.WHITE);
         }
 
-        System.out.println(User.getCurBuilding());
     }
 }

@@ -133,6 +133,7 @@ public class mapExplorePanel extends JPanel {
         boolean[] filterValues = { washrooms.isSelected(), classrooms.isSelected(), genLabs.isSelected(),
                 stairwells.isSelected(), entryExits.isSelected(), elevators.isSelected(), userCreatedPOIs.isSelected(),
                 favourites.isSelected() };
+                
         if (washrooms.isSelected()) {
             temp.add("washroom");
         }

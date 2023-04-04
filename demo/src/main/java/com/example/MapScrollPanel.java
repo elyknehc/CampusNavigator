@@ -64,13 +64,14 @@ public class MapScrollPanel extends JPanel {
 
         scrollPane.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
+                System.out.println(User.getAdmin());
 
                 User.setCreating(true);
                     Point viewPosition = scrollPane.getViewport().getViewPosition();
                     int x = e.getX() + viewPosition.x;
                     int y = e.getY() + viewPosition.y;
                     POI curPOI = new POI("Name", "Description", "Category", User.getCurBuilding(), 1, x, y, 1,
-                            User.getCurFloor(), false, false);
+                            User.getCurFloor(), false, !User.getAdmin());
                     User.setCurPoi(curPOI);
                     User.addToAllPOI(curPOI);
                     scrollPane.repaint();

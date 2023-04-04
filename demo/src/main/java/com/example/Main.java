@@ -17,8 +17,8 @@ public class Main {
     private static JFrame main;
 
     public static void main(String[] args) {
-        Json.readFile();
         new Main().createGUI();
+        Json.readFile();
     }
 
     public void createGUI() {
@@ -85,7 +85,8 @@ public class Main {
                    rightContainer.revalidate();
                    rightContainer.add(mapScroll);
                    MapScrollPanel.loadMap();
-                   mapExplorePanel.loadFloors();
+                    mapExplorePanel.loadFloors();
+                   MapScrollPanel.repaintMapPOI();
                 }
             });
             footerPanel.add(mapExplore);
@@ -106,7 +107,7 @@ public class Main {
             });
             footerPanel.add(aboutButton);
 
-            adminEdit = new JButton("Admin Edit");
+            adminEdit = new JButton("Admin Login");
             adminEdit.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     panelSwitch.removeAll();
@@ -157,6 +158,7 @@ public class Main {
         }
     
         public static void exitProgram() {
+            Json.writeFile();
             main.setVisible(false);
             System.exit(0);
         }

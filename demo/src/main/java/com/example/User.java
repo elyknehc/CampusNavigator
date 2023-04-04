@@ -33,11 +33,15 @@ public class User {
     }
     
     public static List<POI> getFilteredPOI() {
-        System.out.println("Filter Size " + filteredCategories.size());
         List<POI> temp = new ArrayList<POI>();
         if (filteredCategories.size() <= 2) {
             for (POI poi : allPOI) {
-                System.out.println(poi.getFloor() + " FLOOR " + User.getCurFloor());
+                if (filteredCategories.contains("favourites") && poi.getIsFavourite()) {
+                    temp.add(poi);
+                }
+                if (filteredCategories.contains("userCreatedPOIs") && poi.getIsUser()) {
+                    temp.add(poi);
+                }
                 if (poi.getBuilding().equals(User.getCurBuilding()) && poi.getFloor() == User.getCurFloor()) {
                     temp.add(poi);
                 }
@@ -49,8 +53,15 @@ public class User {
         }
 
         for (POI poi : allPOI) {
-            System.out.println(poi.getFloor() + " FLOOR " + User.getCurFloor());
+            System.out.println(poi.getIsUser() + " USER " + filteredCategories.toString());
             if (poi.getBuilding().equals(User.getCurBuilding()) && poi.getFloor() == User.getCurFloor()) {
+                if (filteredCategories.contains("favourites") && poi.getIsFavourite()) {
+                    temp.add(poi);
+                }
+                if (filteredCategories.contains("userCreatedPOIs") && poi.getIsUser()) {
+                    temp.add(poi);
+
+                }
                 if (filteredCategories.contains(poi.getCategory())) {
                     temp.add(poi);
                 }

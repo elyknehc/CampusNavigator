@@ -1,0 +1,26 @@
+-classpath
+'C:/Users/0113a/.m2/repository/org/json/json/20230227/json-20230227.jar'
+-encoding
+'UTF-8'
+-protected
+-source
+'1.7'
+-sourcepath
+'C:/Users/0113a/OneDrive/Desktop/2212project/group51/demo/src/main/java'
+-author
+-bottom
+'Copyright &#169; 2023. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'C:/Users/0113a/OneDrive/Desktop/2212project/group51/demo/target/site/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'demo 1.0-SNAPSHOT API'
+-linkoffline
+'https://docs.oracle.com/javase/7/docs/api' 'C:/Users/0113a/OneDrive/Desktop/2212project/group51/demo/target/javadoc-bundle-options'
+-use
+-version
+-windowtitle
+'demo 1.0-SNAPSHOT API'

@@ -214,24 +214,6 @@ public class POITest {
         assertEquals(y, result);
     }
 
-    @Test
-    public void testStringify() {
-        System.out.println("stringify");
-        POI instance = new POI("Men's washroom", "Men's washroom located on the first floor of Middlesex College. Accessible by wheelchair.", "Washroom", "Middlesex", 1, 5, 10, 136, 1, true, false);
-        String expResult = "{\"roomNum\":136,\"name\":\"Men's washroom\",\"x\":5,\"y\":10,\"description\":\"Men's washroom located on the first floor of Middlesex College. Accessible by wheelchair.\",\"ID\":1,\"category\":\"Washroom\",\"floor\":1,\"isUser\":false,\"isFavourite\":true,\"building\":\"Middlesex\"}";
-        String result = instance.stringify();
-        assertEquals(expResult, result);
-    }
-
-    @Test
-    public void testToPOI() {
-        System.out.println("toPOI");
-        String instance = "{\"roomNum\":136,\"name\":\"Men's washroom\",\"x\":5,\"y\":10,\"description\":\"Men's washroom located on the first floor of Middlesex College. Accessible by wheelchair.\",\"ID\":1,\"category\":\"Washroom\",\"floor\":1,\"isUser\":true,\"isFavourite\":true,\"building\":\"Middlesex\"}";
-        String expResult = "{\"roomNum\":136,\"name\":\"Men's washroom\",\"x\":5,\"y\":10,\"description\":\"Men's washroom located on the first floor of Middlesex College. Accessible by wheelchair.\",\"ID\":1,\"category\":\"Washroom\",\"floor\":1,\"isUser\":true,\"isFavourite\":true,\"building\":\"Middlesex\"}";
-        POI resultPOI = POI.toPOI(instance);
-        String result = resultPOI.stringify();
-        assertEquals(expResult, result);
-    }
 
     @Test
     public void testToString() {

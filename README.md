@@ -22,7 +22,7 @@ Users will need to have Java 19 installed and clone the application locally. Mav
 
 Use the Maven Local repository to run your Java SE Maven application.
 
-To compile a maven project: you shoud be in the directory of the maven project in a terminal and execute:
+To compile a maven project: you shoud be in the "demo" directory of the maven project in a terminal, which contains the pom.xml file, and execute:
 mvn compile
 
 # Running the Application
@@ -30,15 +30,8 @@ mvn compile
 To clean a maven package:
 mvn clean package
 
-To execute the file:
-mvn exec: java -Dexec.mainClass="com.example.bank.App" -s "location of settings.xml file."
-
-Execute the JAR file with following commands:
-cd target
-
-java -jar OracleBanking-1.0-SNAPSHOT.jar
-For more detailed reference visit:
-https://www.oracle.com/webfolder/technetwork/tutorials/obe/java/Maven_SE/Maven.html
+To execute the jar file:
+java -jar target/demo-1.0-SNAPSHOT.jar
 
 Alternatively, you can add extensions on your code editor to run the application. For example: Code Runner and Java project manager allow Java code to be run in VSCode.
 
